@@ -1,6 +1,6 @@
 # Sign Language Transformers (CVPR'20)
 
-This repo contains the training and evaluation code for the paper [Sign Language Transformers: Sign Language Transformers: Joint End-to-end Sign Language Recognition and Translation](https://www.cihancamgoz.com/pub/camgoz2020cvpr.pdf). 
+This repo contains the training and evaluation code for the paper [Sign Language Transformers: Sign Language Transformers: Joint End-to-end Sign Language Recognition and Translation on Indian Sign Language](pending_link). 
 
 This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modified to realize joint continuous sign language recognition and translation. For text-to-text translation experiments, you can use the original Joey NMT framework.
  
@@ -34,7 +34,7 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 ## ToDo:
 
 - [X] *Initial code release.*
-- [X] *Release image features for Phoenix2014T.*
+- [ ] *Release image features for ISL dataset.*
 - [ ] Share extensive qualitative and quantitative results & config files to generate them.
 - [ ] (Nice to have) - Guide to set up conda environment and docker image.
 
@@ -43,10 +43,10 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 Please cite the paper below if you use this code in your research:
 
     @inproceedings{camgoz2020sign,
-      author = {Necati Cihan Camgoz and Oscar Koller and Simon Hadfield and Richard Bowden},
-      title = {Sign Language Transformers: Joint End-to-end Sign Language Recognition and Translation},
-      booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-      year = {2020}
+      author = {Praveen Kumar and Rina Damdoo and Rahul Gogoi},
+      title = {Sign Language Transformers: Joint End-to-end Sign Language Recognition and Translation on Indian Sign language},
+      booktitle = {pending},
+      year = {2023}
     }
 
 ## Acknowledgements
