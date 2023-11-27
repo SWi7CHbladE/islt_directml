@@ -1,0 +1,23 @@
+# ignore all jpg files
+*.jpg
+
+#ignore all pycache files
+*.pycache
+*.pyc
+
+#ignore all pickle files
+*.pickle
+*.test
+*.train
+*.dev
+*.val
+
+#ignore all log files
+*.log
+*validations.txt
+
+#ignore all data files
+PHEONIX2014T/
+"Pickle maker"/excels/
+"Pickle maker"/"Final folder for frames"/
+"Pickle maker"/Pickles/
