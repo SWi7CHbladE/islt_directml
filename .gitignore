@@ -18,6 +18,6 @@
 
 #ignore all data files
 PHEONIX2014T/
-"Pickle maker"/Dataset/excels/
-"Pickle maker"/Dataset/"Final folder for frames"/
-"Pickle maker"/Dataset/Pickles/
+"Pickle maker"/*/excels/
+"Pickle maker"/*/"Final folder for frames"/
+"Pickle maker"/*/Pickles/
