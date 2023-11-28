@@ -35,7 +35,7 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 
 - [X] *Initial code release.*
 - [X] (Nice to have) - Guide to set up conda environment included.
-- [ ] Ported the model to DirectML, code now compatible with AMD, Intel and Nvidia GPUs.
+- [X] Ported the model to DirectML, code now compatible with AMD, Intel and Nvidia GPUs.
 - [ ] *Release image features for ISL dataset.*
 - [ ] Share extensive qualitative and quantitative results & config files to generate them.
 
