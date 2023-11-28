@@ -5,9 +5,9 @@ data:
     sgn: sign
     txt: text
     gls: gloss
-    train: PHOENIX2014T/excel_data.train
-    dev: PHOENIX2014T/excel_data.dev
-    test: PHOENIX2014T/excel_data.test
+    train: excel_data.train
+    dev: excel_data.dev
+    test: excel_data.test
     feature_size: 2560
     level: word
     txt_lowercase: true
@@ -101,7 +101,7 @@ model:
             activation_type: softsign
         hidden_size: 512
         ff_size: 2048
-        dropout: 0.1
+        dropout: 0.2
     decoder:
         type: transformer
         num_layers: 3
@@ -114,4 +114,4 @@ model:
             activation_type: softsign
         hidden_size: 512
         ff_size: 2048
-        dropout: 0.1
+        dropout: 0.2
