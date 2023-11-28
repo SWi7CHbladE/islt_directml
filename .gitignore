@@ -12,12 +12,17 @@
 *.dev
 *.val
 
+#ignore all excel files
+*.xls
+*.xlsx
+
 #ignore all log files
 *.log
 *validations.txt
 
 #ignore all data files
 PHEONIX2014T/
-"Pickle maker"/*/excels/
+"Pickle maker"/*/excels/*.xls
+"Pickle maker"/*/excels/*.xlsx
 "Pickle maker"/*/"Final folder for frames"/
 "Pickle maker"/*/Pickles/
