@@ -20,9 +20,15 @@
 *.log
 *validations.txt
 
+#ignore all ckpt files
+*.ckpt
+
 #ignore all data files
 PHEONIX2014T/
 "Pickle maker"/*/excels/*.xls
 "Pickle maker"/*/excels/*.xlsx
 "Pickle maker"/*/"Final folder for frames"/*
 "Pickle maker"/*/Pickles/*
+
+#ignore all tensorboard files
+/sign_sample_model/tensorboard/
