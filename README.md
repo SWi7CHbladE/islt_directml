@@ -26,6 +26,9 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
     `pip install torchtext==0.6.0`
     `pip install portalocker`
     `pip install progress`
+    `pip install jupyterlab`
+    `pip install notebook`
+    `pip install voila`
 
 ## Usage
 
