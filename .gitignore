@@ -17,8 +17,8 @@
 *.xlsx
 
 #ignore all log files
-*.log
-*validations.txt
+#*.log
+#*validations.txt
 
 #ignore all ckpt files
 *.ckpt

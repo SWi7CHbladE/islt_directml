@@ -5,6 +5,8 @@ This repo contains the training and evaluation code for the paper [Sign Language
 This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modified to realize joint continuous sign language recognition and translation. For text-to-text translation experiments, you can use the original Joey NMT framework.
  
 ## Requirements
+* It is recommended to use Windows 10+ due to better GPU shared memory and support for DirectML
+
 * Download the feature files using the `data/download.sh` script.
 
 * Create a conda or python virtual environment. Use these commands for conda environment creation:
