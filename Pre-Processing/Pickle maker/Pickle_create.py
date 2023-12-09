@@ -3,6 +3,7 @@ import gzip
 import os
 from tensorflow import keras
 import tensorflow as tf
+from tensorflow.keras import mixed_precision
 # import tensorflow_addons as tfa
 # import keras_tuner
 import cv2
@@ -12,7 +13,7 @@ import os
 import torch
 from tqdm.notebook import tqdm
 from tensorflow.keras.applications import imagenet_utils
-from tensorflow.keras.applications.efficientnet import EfficientNetB7
+from tensorflow.keras.applications.efficientnet import EfficientNetB7, EfficientNetB0 
 from tensorflow.keras.layers import GlobalAveragePooling2D
 from tensorflow.keras.models import Model
 from tensorflow.keras.applications.efficientnet import preprocess_input
@@ -21,6 +22,11 @@ from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
 import tqdm
+import multiprocessing
+import concurrent.futures
+
+tf.config.run_functions_eagerly(True)
+
 
 ## quietly deep-reload tqdm
 # import sys
@@ -119,7 +125,7 @@ def get_features(filename, destination):
 
 # ***Function to create the pickle file***
 def create_pickle(workbook_dest, output_dest, frame_dest):
-    #load the excel file
+    # Load the excel file
     workbook = load_workbook(workbook_dest)
     sheet = workbook.active
 
@@ -133,26 +139,78 @@ def create_pickle(workbook_dest, output_dest, frame_dest):
     # Get the features
     list_of_inputs = []
     
-    for tmp in excel_data:
-        features = get_features(str(tmp[0]),frame_dest)
-        if(features!= None):
-            data_dict = {}
-            data_dict['name'] = tmp[0]
-            data_dict['signer'] = tmp[1]
-            data_dict['gloss'] = tmp[2]
-            data_dict['text'] = tmp[3]
-            data_dict['sign'] = features + 1e-8
-            #print(data_dict)
-            #input()
-            list_of_inputs.append(data_dict)
-        
-        
+    def process_data(tmp, frame_dest):
+        features = get_features(str(tmp[0]), frame_dest)
+        if features is not None:
+            data_dict = {
+                'name': tmp[0],
+                'signer': tmp[1],
+                'gloss': tmp[2],
+                'text': tmp[3],
+                'sign': features + 1e-8
+            }
+            return data_dict
+        else:
+            return None
 
-    
+    # Assuming excel_data is a list of tuples
+    # excel_data = [...]
+
+    # Set the number of threads as desired
+    num_threads = 15
+
+    list_of_inputs = []
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+        # Use the executor to map the process_data function to each element in excel_data
+        results = list(executor.map(lambda tmp: process_data(tmp, frame_dest), excel_data))
+
+    # Filter out None values (where features is None)
+    list_of_inputs = [data_dict for data_dict in results if data_dict is not None]
+
+    # Now list_of_inputs contains the processed data from the loop in parallel
+
     # print("\nlist_of_input:\n")
     # print(list_of_inputs)
     with gzip.open(os.getcwd() + output_dest,'wb') as f:
         pickle.dump(list_of_inputs,f)
+
+
+# def create_pickle(workbook_dest, output_dest, frame_dest):
+#     #load the excel file
+#     workbook = load_workbook(workbook_dest)
+#     sheet = workbook.active
+
+#     # Extract data from the Excel file
+#     excel_data = []
+#     for row in sheet.iter_rows(values_only=True):
+#         excel_data.append(row)
+#         # print(excel_data,"\n")
+#         # print(excel_data)list_of_inputs = []
+    
+#     # Get the features
+#     list_of_inputs = []
+    
+#     for tmp in excel_data:
+#         features = get_features(str(tmp[0]),frame_dest)
+#         if(features!= None):
+#             data_dict = {}
+#             data_dict['name'] = tmp[0]
+#             data_dict['signer'] = tmp[1]
+#             data_dict['gloss'] = tmp[2]
+#             data_dict['text'] = tmp[3]
+#             data_dict['sign'] = features + 1e-8
+#             #print(data_dict)
+#             #input()
+#             list_of_inputs.append(data_dict)
+        
+        
+
+    
+#     # print("\nlist_of_input:\n")
+#     # print(list_of_inputs)
+#     with gzip.open(os.getcwd() + output_dest,'wb') as f:
+#         pickle.dump(list_of_inputs,f)
 
 
 
