@@ -54,6 +54,23 @@ def cls():
         os.system('clear')
 
 
+# Files to access:
+# validation
+vw_dest = "Dataset/excels/ISH_News_Business VAL.xlsx"
+vo_dest = "/Dataset/Pickles/excel_data.dev"
+vf_dest = "Dataset/Final folder for frames"
+
+# test
+tw_dest = "Dataset/excels/ISH_News_Business TEST.xlsx"
+to_dest = "/Dataset/Pickles/excel_data.test"
+tf_dest = "Dataset/Final folder for frames"
+
+# train
+w_dest = "Dataset/excels/ISH_News_Business TRAIN.xlsx"
+o_dest = "/Dataset/Pickles/excel_data.train"
+f_dest = "Dataset/Final folder for frames"
+
+
 
 # ***Initialise the CNN model***
 base_model = EfficientNetB7(weights='imagenet', include_top=False)
@@ -63,9 +80,7 @@ feature_extractor = Model(inputs=base_model.input, outputs=x)
 
 
 
-
 # ***Function for extraction of features***
-
 def get_features(filename, destination):
     input_string = filename
     pattern = r'\d+'
@@ -81,7 +96,6 @@ def get_features(filename, destination):
         # x = base_model.output
         # x = GlobalAveragePooling2D()(x)
         # feature_extractor = Model(inputs=base_model.input, outputs=x)
-    
     
         features_listofList=[]
         for indx, frame_file in enumerate(file_paths_frames):
@@ -114,18 +128,16 @@ def get_features(filename, destination):
         print("No match found.")
         return None
 
-    
-       
     # after this, the video must be in the form of features
-    
-    return torch.tensor(features_listofList)
+    return torch.tensor(np.array(features_listofList))
+    # return torch.tensor(features_listofList)
 
 
 
 
 # ***Function to create the pickle file***
 def create_pickle(workbook_dest, output_dest, frame_dest):
-    # Load the excel file
+    #load the excel file
     workbook = load_workbook(workbook_dest)
     sheet = workbook.active
 
@@ -139,98 +151,23 @@ def create_pickle(workbook_dest, output_dest, frame_dest):
     # Get the features
     list_of_inputs = []
     
-    def process_data(tmp, frame_dest):
-        features = get_features(str(tmp[0]), frame_dest)
-        if features is not None:
-            data_dict = {
-                'name': tmp[0],
-                'signer': tmp[1],
-                'gloss': tmp[2],
-                'text': tmp[3],
-                'sign': features + 1e-8
-            }
-            return data_dict
-        else:
-            return None
-
-    # Assuming excel_data is a list of tuples
-    # excel_data = [...]
-
-    # Set the number of threads as desired
-    num_threads = 15
-
-    list_of_inputs = []
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
-        # Use the executor to map the process_data function to each element in excel_data
-        results = list(executor.map(lambda tmp: process_data(tmp, frame_dest), excel_data))
-
-    # Filter out None values (where features is None)
-    list_of_inputs = [data_dict for data_dict in results if data_dict is not None]
-
-    # Now list_of_inputs contains the processed data from the loop in parallel
-
+    for tmp in excel_data:
+        features = get_features(str(tmp[0]),frame_dest)
+        if(features!= None):
+            data_dict = {}
+            data_dict['name'] = tmp[0]
+            data_dict['signer'] = tmp[1]
+            data_dict['gloss'] = tmp[2]
+            data_dict['text'] = tmp[3]
+            data_dict['sign'] = features + 1e-8
+            #print(data_dict)
+            #input()
+            list_of_inputs.append(data_dict)
+        
     # print("\nlist_of_input:\n")
     # print(list_of_inputs)
     with gzip.open(os.getcwd() + output_dest,'wb') as f:
         pickle.dump(list_of_inputs,f)
-
-
-# def create_pickle(workbook_dest, output_dest, frame_dest):
-#     #load the excel file
-#     workbook = load_workbook(workbook_dest)
-#     sheet = workbook.active
-
-#     # Extract data from the Excel file
-#     excel_data = []
-#     for row in sheet.iter_rows(values_only=True):
-#         excel_data.append(row)
-#         # print(excel_data,"\n")
-#         # print(excel_data)list_of_inputs = []
-    
-#     # Get the features
-#     list_of_inputs = []
-    
-#     for tmp in excel_data:
-#         features = get_features(str(tmp[0]),frame_dest)
-#         if(features!= None):
-#             data_dict = {}
-#             data_dict['name'] = tmp[0]
-#             data_dict['signer'] = tmp[1]
-#             data_dict['gloss'] = tmp[2]
-#             data_dict['text'] = tmp[3]
-#             data_dict['sign'] = features + 1e-8
-#             #print(data_dict)
-#             #input()
-#             list_of_inputs.append(data_dict)
-        
-        
-
-    
-#     # print("\nlist_of_input:\n")
-#     # print(list_of_inputs)
-#     with gzip.open(os.getcwd() + output_dest,'wb') as f:
-#         pickle.dump(list_of_inputs,f)
-
-
-
-
-# Files to access:
-# validation
-vw_dest = "Dataset/excels/ISH_News_Business VAL.xlsx"
-vo_dest = "/Dataset/Pickles/excel_data.dev"
-vf_dest = "Dataset/Final folder for frames"
-
-# test
-tw_dest = "Dataset/excels/ISH_News_Business TEST.xlsx"
-to_dest = "/Dataset/Pickles/excel_data.test"
-tf_dest = "Dataset/Final folder for frames"
-
-# train
-w_dest = "Dataset/excels/ISH_News_Business TRAIN.xlsx"
-o_dest = "/Dataset/Pickles/excel_data.train"
-f_dest = "Dataset/Final folder for frames"
-
 
 
 
