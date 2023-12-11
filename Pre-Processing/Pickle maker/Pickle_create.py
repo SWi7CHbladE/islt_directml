@@ -25,7 +25,7 @@ import tqdm
 import multiprocessing
 import concurrent.futures
 
-tf.config.run_functions_eagerly(True)
+# tf.config.run_functions_eagerly(True)
 
 
 ## quietly deep-reload tqdm
@@ -56,18 +56,18 @@ def cls():
 
 # Files to access:
 # validation
-vw_dest = "Dataset/excels/ISH_News_Business VAL.xlsx"
-vo_dest = "/Dataset/Pickles/excel_data.dev"
+vw_dest = "Dataset/excels/ISH_News_Sports final VAL.xlsx"
+vo_dest = "Dataset/Pickles/excel_data.dev"
 vf_dest = "Dataset/Final folder for frames"
 
 # test
-tw_dest = "Dataset/excels/ISH_News_Business TEST.xlsx"
-to_dest = "/Dataset/Pickles/excel_data.test"
+tw_dest = "Dataset/excels/ISH_News_Sports final TEST.xlsx"
+to_dest = "Dataset/Pickles/excel_data.test"
 tf_dest = "Dataset/Final folder for frames"
 
 # train
-w_dest = "Dataset/excels/ISH_News_Business TRAIN.xlsx"
-o_dest = "/Dataset/Pickles/excel_data.train"
+w_dest = "Dataset/excels/ISH_News_Sports final TRAIN.xlsx"
+o_dest = "Dataset/Pickles/excel_data.train"
 f_dest = "Dataset/Final folder for frames"
 
 
