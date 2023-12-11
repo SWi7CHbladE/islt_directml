@@ -25,6 +25,9 @@ import tqdm
 import multiprocessing
 import concurrent.futures
 
+
+tf.config.list_physical_devices('GPU')
+tf.keras.backend.clear_session()
 # tf.config.run_functions_eagerly(True)
 
 
