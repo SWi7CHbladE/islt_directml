@@ -11,7 +11,7 @@ data:
     feature_size: 2560
     level: word
     txt_lowercase: true
-    max_sent_length: 400
+    max_sent_length: 500
     random_train_subset: -1
     random_dev_subset: -1
 testing:
@@ -55,8 +55,8 @@ training:
     translation_loss_weight: 1.0
     eval_metric: bleu
     optimizer: adam
-    learning_rate: 0.001
-    batch_size: 256
+    learning_rate: 0.0001
+    batch_size: 192
     num_valid_log: 5
     epochs: 50000
     early_stopping_metric: eval_metric
@@ -67,8 +67,8 @@ training:
     eval_translation_beam_alpha: -1
     overwrite: true
     shuffle: true
-    use_cuda: false
-    translation_max_output_length: 30
+    use_cuda: true
+    translation_max_output_length: 40
     keep_last_ckpts: 1
     batch_multiplier: 1
     logging_freq: 100
@@ -77,22 +77,22 @@ training:
     - 0.9
     - 0.998
     scheduling: plateau
-    learning_rate_min: 1.0e-07
-    weight_decay: 0.001
-    patience: 8
-    decrease_factor: 0.7
-    label_smoothing: 0.0
+    learning_rate_min: 1.0e-08
+    weight_decay: 0.0001
+    patience: 12
+    decrease_factor: 0.5
+    label_smoothing: 0.1
 model:
     initializer: xavier
     bias_initializer: zeros
     init_gain: 1.0
     embed_initializer: xavier
     embed_init_gain: 1.0
-    tied_softmax: false
+    tied_softmax: true
     encoder:
         type: transformer
-        num_layers: 4
-        num_heads: 16
+        num_layers: 3
+        num_heads: 32
         embeddings:
             embedding_dim: 512
             scale: false
@@ -105,7 +105,7 @@ model:
     decoder:
         type: transformer
         num_layers: 3
-        num_heads: 8
+        num_heads: 32
         embeddings:
             embedding_dim: 512
             scale: false

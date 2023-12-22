@@ -169,7 +169,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest):
         
     # print("\nlist_of_input:\n")
     # print(list_of_inputs)
-    with gzip.open(os.getcwd() + output_dest,'wb') as f:
+    with gzip.open(os.getcwd() + "/" + output_dest,'wb') as f:
         pickle.dump(list_of_inputs,f)
 
 
