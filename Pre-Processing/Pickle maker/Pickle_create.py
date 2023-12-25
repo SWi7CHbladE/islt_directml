@@ -93,42 +93,45 @@ def get_features(filename, destination):
         #print(first_match)
         # Get file path name
         input_folder = os.getcwd()+"/"+destination+"/"+first_match+"/"+input_string
-        file_paths_frames = [file for file in sorted(os.listdir(input_folder)) if file.endswith(".jpg")]
+        try:
+            file_paths_frames = [file for file in sorted(os.listdir(input_folder)) if file.endswith(".jpg")]
 
-        # base_model needs to be initialised first
-        # x = base_model.output
-        # x = GlobalAveragePooling2D()(x)
-        # feature_extractor = Model(inputs=base_model.input, outputs=x)
+            # base_model needs to be initialised first
+            # x = base_model.output
+            # x = GlobalAveragePooling2D()(x)
+            # feature_extractor = Model(inputs=base_model.input, outputs=x)
     
-        features_listofList=[]
-        for indx, frame_file in enumerate(file_paths_frames):
-            # Get the file
-            frame_filename =  input_folder+"/" + frame_file
-            print("frame_filename============", frame_filename,"\n")
-            image = cv2.imread(frame_filename)
+            features_listofList=[]
+            for indx, frame_file in enumerate(file_paths_frames):
+                # Get the file
+                frame_filename =  input_folder+"/" + frame_file
+                print("frame_filename============", frame_filename,"\n")
+                image = cv2.imread(frame_filename)
                 
-            #Image processing part
+                #Image processing part
         
-            # Define the coordinates of the ROI (top-left and bottom-right)
-            x1, y1 = 535, 0  # Top-left corner of ROI
-            x2, y2 = 1385, 1080  # Bottom-right corner of ROI
-            #210*260
-            # Crop the image to the specified ROI
-            image = image[y1:y2, x1:x2]
-            image = cv2.resize(image, (224, 224))  # Resize to the input size of MobileNet
+                # Define the coordinates of the ROI (top-left and bottom-right)
+                x1, y1 = 535, 0  # Top-left corner of ROI
+                x2, y2 = 1385, 1080  # Bottom-right corner of ROI
+                #210*260
+                # Crop the image to the specified ROI
+                image = image[y1:y2, x1:x2]
+                image = cv2.resize(image, (224, 224))  # Resize to the input size of MobileNet
 
-            # Preprocess the image
-            image = preprocess_input(image)
+                # Preprocess the image
+                image = preprocess_input(image)
         
-            # Expand dimensions to match the expected input shape (batch size of 1)
-            image = np.expand_dims(image, axis=0)
+                # Expand dimensions to match the expected input shape (batch size of 1)
+                image = np.expand_dims(image, axis=0)
                 
-            # Extract spatial embedding
-            spatial_embedding = feature_extractor.predict(image)[0]
+                # Extract spatial embedding
+                spatial_embedding = feature_extractor.predict(image)[0]
                 
-            features_listofList.append(spatial_embedding)
+                features_listofList.append(spatial_embedding)
+        except:
+            print("The file is missing in the frames dataset\n")
     else:
-        print("No match found.")
+        print("No match found.\n")
         return None
 
     # after this, the video must be in the form of features
