@@ -88,6 +88,7 @@ def get_features(filename, destination):
     input_string = filename
     pattern = r'\d+'
     match = re.search(pattern, input_string)
+    features_listofList=[]
     if match:
         first_match = match.group()
         #print(first_match)
@@ -101,7 +102,7 @@ def get_features(filename, destination):
             # x = GlobalAveragePooling2D()(x)
             # feature_extractor = Model(inputs=base_model.input, outputs=x)
     
-            features_listofList=[]
+            
             for indx, frame_file in enumerate(file_paths_frames):
                 # Get the file
                 frame_filename =  input_folder+"/" + frame_file
@@ -178,11 +179,11 @@ def create_pickle(workbook_dest, output_dest, frame_dest):
 
 
 # Validation pickle
-create_pickle(vw_dest, vo_dest, vf_dest)
+# create_pickle(vw_dest, vo_dest, vf_dest)
 
 
 # Testing pickle
-create_pickle(tw_dest, to_dest, tf_dest)
+# create_pickle(tw_dest, to_dest, tf_dest)
 
 
 # Training pickle
