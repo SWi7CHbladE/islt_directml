@@ -1,0 +1,215 @@
+2023-12-31 02:28:58,392 Hello! This is Joey-NMT.
+2023-12-31 02:28:58,394 Total params: 25636872
+2023-12-31 02:28:58,394 Trainable parameters: ['decoder.layer_norm.bias', 'decoder.layer_norm.weight', 'decoder.layers.0.dec_layer_norm.bias', 'decoder.layers.0.dec_layer_norm.weight', 'decoder.layers.0.feed_forward.layer_norm.bias', 'decoder.layers.0.feed_forward.layer_norm.weight', 'decoder.layers.0.feed_forward.pwff_layer.0.bias', 'decoder.layers.0.feed_forward.pwff_layer.0.weight', 'decoder.layers.0.feed_forward.pwff_layer.3.bias', 'decoder.layers.0.feed_forward.pwff_layer.3.weight', 'decoder.layers.0.src_trg_att.k_layer.bias', 'decoder.layers.0.src_trg_att.k_layer.weight', 'decoder.layers.0.src_trg_att.output_layer.bias', 'decoder.layers.0.src_trg_att.output_layer.weight', 'decoder.layers.0.src_trg_att.q_layer.bias', 'decoder.layers.0.src_trg_att.q_layer.weight', 'decoder.layers.0.src_trg_att.v_layer.bias', 'decoder.layers.0.src_trg_att.v_layer.weight', 'decoder.layers.0.trg_trg_att.k_layer.bias', 'decoder.layers.0.trg_trg_att.k_layer.weight', 'decoder.layers.0.trg_trg_att.output_layer.bias', 'decoder.layers.0.trg_trg_att.output_layer.weight', 'decoder.layers.0.trg_trg_att.q_layer.bias', 'decoder.layers.0.trg_trg_att.q_layer.weight', 'decoder.layers.0.trg_trg_att.v_layer.bias', 'decoder.layers.0.trg_trg_att.v_layer.weight', 'decoder.layers.0.x_layer_norm.bias', 'decoder.layers.0.x_layer_norm.weight', 'decoder.layers.1.dec_layer_norm.bias', 'decoder.layers.1.dec_layer_norm.weight', 'decoder.layers.1.feed_forward.layer_norm.bias', 'decoder.layers.1.feed_forward.layer_norm.weight', 'decoder.layers.1.feed_forward.pwff_layer.0.bias', 'decoder.layers.1.feed_forward.pwff_layer.0.weight', 'decoder.layers.1.feed_forward.pwff_layer.3.bias', 'decoder.layers.1.feed_forward.pwff_layer.3.weight', 'decoder.layers.1.src_trg_att.k_layer.bias', 'decoder.layers.1.src_trg_att.k_layer.weight', 'decoder.layers.1.src_trg_att.output_layer.bias', 'decoder.layers.1.src_trg_att.output_layer.weight', 'decoder.layers.1.src_trg_att.q_layer.bias', 'decoder.layers.1.src_trg_att.q_layer.weight', 'decoder.layers.1.src_trg_att.v_layer.bias', 'decoder.layers.1.src_trg_att.v_layer.weight', 'decoder.layers.1.trg_trg_att.k_layer.bias', 'decoder.layers.1.trg_trg_att.k_layer.weight', 'decoder.layers.1.trg_trg_att.output_layer.bias', 'decoder.layers.1.trg_trg_att.output_layer.weight', 'decoder.layers.1.trg_trg_att.q_layer.bias', 'decoder.layers.1.trg_trg_att.q_layer.weight', 'decoder.layers.1.trg_trg_att.v_layer.bias', 'decoder.layers.1.trg_trg_att.v_layer.weight', 'decoder.layers.1.x_layer_norm.bias', 'decoder.layers.1.x_layer_norm.weight', 'decoder.layers.2.dec_layer_norm.bias', 'decoder.layers.2.dec_layer_norm.weight', 'decoder.layers.2.feed_forward.layer_norm.bias', 'decoder.layers.2.feed_forward.layer_norm.weight', 'decoder.layers.2.feed_forward.pwff_layer.0.bias', 'decoder.layers.2.feed_forward.pwff_layer.0.weight', 'decoder.layers.2.feed_forward.pwff_layer.3.bias', 'decoder.layers.2.feed_forward.pwff_layer.3.weight', 'decoder.layers.2.src_trg_att.k_layer.bias', 'decoder.layers.2.src_trg_att.k_layer.weight', 'decoder.layers.2.src_trg_att.output_layer.bias', 'decoder.layers.2.src_trg_att.output_layer.weight', 'decoder.layers.2.src_trg_att.q_layer.bias', 'decoder.layers.2.src_trg_att.q_layer.weight', 'decoder.layers.2.src_trg_att.v_layer.bias', 'decoder.layers.2.src_trg_att.v_layer.weight', 'decoder.layers.2.trg_trg_att.k_layer.bias', 'decoder.layers.2.trg_trg_att.k_layer.weight', 'decoder.layers.2.trg_trg_att.output_layer.bias', 'decoder.layers.2.trg_trg_att.output_layer.weight', 'decoder.layers.2.trg_trg_att.q_layer.bias', 'decoder.layers.2.trg_trg_att.q_layer.weight', 'decoder.layers.2.trg_trg_att.v_layer.bias', 'decoder.layers.2.trg_trg_att.v_layer.weight', 'decoder.layers.2.x_layer_norm.bias', 'decoder.layers.2.x_layer_norm.weight', 'decoder.output_layer.weight', 'encoder.layer_norm.bias', 'encoder.layer_norm.weight', 'encoder.layers.0.feed_forward.layer_norm.bias', 'encoder.layers.0.feed_forward.layer_norm.weight', 'encoder.layers.0.feed_forward.pwff_layer.0.bias', 'encoder.layers.0.feed_forward.pwff_layer.0.weight', 'encoder.layers.0.feed_forward.pwff_layer.3.bias', 'encoder.layers.0.feed_forward.pwff_layer.3.weight', 'encoder.layers.0.layer_norm.bias', 'encoder.layers.0.layer_norm.weight', 'encoder.layers.0.src_src_att.k_layer.bias', 'encoder.layers.0.src_src_att.k_layer.weight', 'encoder.layers.0.src_src_att.output_layer.bias', 'encoder.layers.0.src_src_att.output_layer.weight', 'encoder.layers.0.src_src_att.q_layer.bias', 'encoder.layers.0.src_src_att.q_layer.weight', 'encoder.layers.0.src_src_att.v_layer.bias', 'encoder.layers.0.src_src_att.v_layer.weight', 'encoder.layers.1.feed_forward.layer_norm.bias', 'encoder.layers.1.feed_forward.layer_norm.weight', 'encoder.layers.1.feed_forward.pwff_layer.0.bias', 'encoder.layers.1.feed_forward.pwff_layer.0.weight', 'encoder.layers.1.feed_forward.pwff_layer.3.bias', 'encoder.layers.1.feed_forward.pwff_layer.3.weight', 'encoder.layers.1.layer_norm.bias', 'encoder.layers.1.layer_norm.weight', 'encoder.layers.1.src_src_att.k_layer.bias', 'encoder.layers.1.src_src_att.k_layer.weight', 'encoder.layers.1.src_src_att.output_layer.bias', 'encoder.layers.1.src_src_att.output_layer.weight', 'encoder.layers.1.src_src_att.q_layer.bias', 'encoder.layers.1.src_src_att.q_layer.weight', 'encoder.layers.1.src_src_att.v_layer.bias', 'encoder.layers.1.src_src_att.v_layer.weight', 'encoder.layers.2.feed_forward.layer_norm.bias', 'encoder.layers.2.feed_forward.layer_norm.weight', 'encoder.layers.2.feed_forward.pwff_layer.0.bias', 'encoder.layers.2.feed_forward.pwff_layer.0.weight', 'encoder.layers.2.feed_forward.pwff_layer.3.bias', 'encoder.layers.2.feed_forward.pwff_layer.3.weight', 'encoder.layers.2.layer_norm.bias', 'encoder.layers.2.layer_norm.weight', 'encoder.layers.2.src_src_att.k_layer.bias', 'encoder.layers.2.src_src_att.k_layer.weight', 'encoder.layers.2.src_src_att.output_layer.bias', 'encoder.layers.2.src_src_att.output_layer.weight', 'encoder.layers.2.src_src_att.q_layer.bias', 'encoder.layers.2.src_src_att.q_layer.weight', 'encoder.layers.2.src_src_att.v_layer.bias', 'encoder.layers.2.src_src_att.v_layer.weight', 'gloss_output_layer.bias', 'gloss_output_layer.weight', 'sgn_embed.ln.bias', 'sgn_embed.ln.weight', 'sgn_embed.norm.norm.bias', 'sgn_embed.norm.norm.weight', 'txt_embed.norm.norm.bias', 'txt_embed.norm.norm.weight']
+2023-12-31 02:28:59,017 cfg.name                           : sign_experiment
+2023-12-31 02:28:59,017 cfg.data.data_path                 : ./data/
+2023-12-31 02:28:59,017 cfg.data.version                   : phoenix_2014_trans
+2023-12-31 02:28:59,017 cfg.data.sgn                       : sign
+2023-12-31 02:28:59,017 cfg.data.txt                       : text
+2023-12-31 02:28:59,017 cfg.data.gls                       : gloss
+2023-12-31 02:28:59,017 cfg.data.train                     : excel_data.train
+2023-12-31 02:28:59,017 cfg.data.dev                       : excel_data.dev
+2023-12-31 02:28:59,017 cfg.data.test                      : excel_data.test
+2023-12-31 02:28:59,017 cfg.data.feature_size              : 2560
+2023-12-31 02:28:59,017 cfg.data.level                     : word
+2023-12-31 02:28:59,017 cfg.data.txt_lowercase             : True
+2023-12-31 02:28:59,018 cfg.data.max_sent_length           : 500
+2023-12-31 02:28:59,018 cfg.data.random_train_subset       : -1
+2023-12-31 02:28:59,018 cfg.data.random_dev_subset         : -1
+2023-12-31 02:28:59,018 cfg.testing.recognition_beam_sizes : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+2023-12-31 02:28:59,018 cfg.testing.translation_beam_sizes : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+2023-12-31 02:28:59,018 cfg.testing.translation_beam_alphas : [-1, 0, 1, 2, 3, 4, 5]
+2023-12-31 02:28:59,018 cfg.training.reset_best_ckpt       : False
+2023-12-31 02:28:59,018 cfg.training.reset_scheduler       : False
+2023-12-31 02:28:59,018 cfg.training.reset_optimizer       : False
+2023-12-31 02:28:59,018 cfg.training.random_seed           : 42
+2023-12-31 02:28:59,018 cfg.training.model_dir             : ./sign_sample_model/8head/8batch
+2023-12-31 02:28:59,018 cfg.training.recognition_loss_weight : 1.0
+2023-12-31 02:28:59,018 cfg.training.translation_loss_weight : 1.0
+2023-12-31 02:28:59,018 cfg.training.eval_metric           : bleu
+2023-12-31 02:28:59,018 cfg.training.optimizer             : adam
+2023-12-31 02:28:59,019 cfg.training.learning_rate         : 0.0001
+2023-12-31 02:28:59,019 cfg.training.batch_size            : 8
+2023-12-31 02:28:59,019 cfg.training.num_valid_log         : 5
+2023-12-31 02:28:59,019 cfg.training.epochs                : 50000
+2023-12-31 02:28:59,019 cfg.training.early_stopping_metric : eval_metric
+2023-12-31 02:28:59,019 cfg.training.batch_type            : sentence
+2023-12-31 02:28:59,019 cfg.training.translation_normalization : batch
+2023-12-31 02:28:59,019 cfg.training.eval_recognition_beam_size : 1
+2023-12-31 02:28:59,019 cfg.training.eval_translation_beam_size : 1
+2023-12-31 02:28:59,019 cfg.training.eval_translation_beam_alpha : -1
+2023-12-31 02:28:59,019 cfg.training.overwrite             : True
+2023-12-31 02:28:59,019 cfg.training.shuffle               : True
+2023-12-31 02:28:59,019 cfg.training.use_cuda              : True
+2023-12-31 02:28:59,019 cfg.training.translation_max_output_length : 40
+2023-12-31 02:28:59,019 cfg.training.keep_last_ckpts       : 1
+2023-12-31 02:28:59,019 cfg.training.batch_multiplier      : 1
+2023-12-31 02:28:59,020 cfg.training.logging_freq          : 100
+2023-12-31 02:28:59,020 cfg.training.validation_freq       : 100
+2023-12-31 02:28:59,020 cfg.training.betas                 : [0.9, 0.998]
+2023-12-31 02:28:59,020 cfg.training.scheduling            : plateau
+2023-12-31 02:28:59,020 cfg.training.learning_rate_min     : 1e-08
+2023-12-31 02:28:59,020 cfg.training.weight_decay          : 0.0001
+2023-12-31 02:28:59,020 cfg.training.patience              : 12
+2023-12-31 02:28:59,020 cfg.training.decrease_factor       : 0.5
+2023-12-31 02:28:59,020 cfg.training.label_smoothing       : 0.1
+2023-12-31 02:28:59,020 cfg.model.initializer              : xavier
+2023-12-31 02:28:59,020 cfg.model.bias_initializer         : zeros
+2023-12-31 02:28:59,020 cfg.model.init_gain                : 1.0
+2023-12-31 02:28:59,020 cfg.model.embed_initializer        : xavier
+2023-12-31 02:28:59,020 cfg.model.embed_init_gain          : 1.0
+2023-12-31 02:28:59,020 cfg.model.tied_softmax             : True
+2023-12-31 02:28:59,021 cfg.model.encoder.type             : transformer
+2023-12-31 02:28:59,021 cfg.model.encoder.num_layers       : 3
+2023-12-31 02:28:59,021 cfg.model.encoder.num_heads        : 8
+2023-12-31 02:28:59,021 cfg.model.encoder.embeddings.embedding_dim : 512
+2023-12-31 02:28:59,021 cfg.model.encoder.embeddings.scale : False
+2023-12-31 02:28:59,021 cfg.model.encoder.embeddings.dropout : 0.1
+2023-12-31 02:28:59,021 cfg.model.encoder.embeddings.norm_type : batch
+2023-12-31 02:28:59,021 cfg.model.encoder.embeddings.activation_type : softsign
+2023-12-31 02:28:59,021 cfg.model.encoder.hidden_size      : 512
+2023-12-31 02:28:59,021 cfg.model.encoder.ff_size          : 2048
+2023-12-31 02:28:59,021 cfg.model.encoder.dropout          : 0.1
+2023-12-31 02:28:59,021 cfg.model.decoder.type             : transformer
+2023-12-31 02:28:59,021 cfg.model.decoder.num_layers       : 3
+2023-12-31 02:28:59,021 cfg.model.decoder.num_heads        : 8
+2023-12-31 02:28:59,021 cfg.model.decoder.embeddings.embedding_dim : 512
+2023-12-31 02:28:59,021 cfg.model.decoder.embeddings.scale : False
+2023-12-31 02:28:59,022 cfg.model.decoder.embeddings.dropout : 0.1
+2023-12-31 02:28:59,022 cfg.model.decoder.embeddings.norm_type : batch
+2023-12-31 02:28:59,022 cfg.model.decoder.embeddings.activation_type : softsign
+2023-12-31 02:28:59,022 cfg.model.decoder.hidden_size      : 512
+2023-12-31 02:28:59,022 cfg.model.decoder.ff_size          : 2048
+2023-12-31 02:28:59,022 cfg.model.decoder.dropout          : 0.1
+2023-12-31 02:28:59,022 Data set sizes: 
+	train 2123,
+	valid 708,
+	test 708
+2023-12-31 02:28:59,022 First training example:
+	[GLS] A B C D E
+	[TXT] india now has two cricket teams preparing simultaneously to compete in two different countries
+2023-12-31 02:28:59,022 First 10 words (gls): (0) <si> (1) <unk> (2) <pad> (3) A (4) B (5) C (6) D (7) E
+2023-12-31 02:28:59,022 First 10 words (txt): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) the (5) to (6) and (7) in (8) a (9) of
+2023-12-31 02:28:59,022 Number of unique glosses (types): 8
+2023-12-31 02:28:59,022 Number of unique words (types): 4391
+2023-12-31 02:28:59,022 SignModel(
+	encoder=TransformerEncoder(num_layers=3, num_heads=8),
+	decoder=TransformerDecoder(num_layers=3, num_heads=8),
+	sgn_embed=SpatialEmbeddings(embedding_dim=512, input_size=2560),
+	txt_embed=Embeddings(embedding_dim=512, vocab_size=4391))
+2023-12-31 02:28:59,024 EPOCH 1
+2023-12-31 02:29:02,404 [Epoch: 001 Step: 00000100] Batch Recognition Loss:   1.146976 => Gls Tokens per Sec:     1184 || Batch Translation Loss:  67.427048 => Txt Tokens per Sec:     3284 || Lr: 0.000100
+2023-12-31 02:29:09,350 Hooray! New best validation result [eval_metric]!
+2023-12-31 02:29:09,350 Saving new checkpoint.
+2023-12-31 02:29:09,625 Validation result at epoch   1, step      100: duration: 7.2211s
+	Recognition Beam Size: 1	Translation Beam Size: 1	Translation Beam Alpha: -1
+	Recognition Loss: 101.58070	Translation Loss: 56278.75000	PPL: 293.49274
+	Eval Metric: BLEU
+	WER 100.00	(DEL: 97.32,	INS: 0.00,	SUB: 2.68)
+	BLEU-4 0.00	(BLEU-1: 6.56,	BLEU-2: 0.00,	BLEU-3: 0.00,	BLEU-4: 0.00)
+	CHRF 6.25	ROUGE 6.33
+2023-12-31 02:29:09,626 Logging Recognition and Translation Outputs
+2023-12-31 02:29:09,626 ========================================================================================================================
+2023-12-31 02:29:09,626 Logging Sequence: 123_24.00
+2023-12-31 02:29:09,626 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:09,626 	Gloss Hypothesis:	* *******
+2023-12-31 02:29:09,626 	Gloss Alignment :	D D      
+2023-12-31 02:29:09,626 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:09,627 	Text Reference  :	*** did you know that other than cricket dhoni has another passion
+2023-12-31 02:29:09,627 	Text Hypothesis :	the the the the  the  the   the  the     the   the the     the    
+2023-12-31 02:29:09,627 	Text Alignment  :	I   S   S   S    S    S     S    S       S     S   S       S      
+2023-12-31 02:29:09,627 ========================================================================================================================
+2023-12-31 02:29:09,627 Logging Sequence: 140_55.00
+2023-12-31 02:29:09,627 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:09,627 	Gloss Hypothesis:	* *******
+2023-12-31 02:29:09,627 	Gloss Alignment :	D D      
+2023-12-31 02:29:09,628 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:09,629 	Text Reference  :	pant has also played 31 test matches in  which he  scored 5   centuries and 10  half centuries wonderful
+2023-12-31 02:29:09,629 	Text Hypothesis :	**** *** **** ****** ** the  the     the the   the the    the the       the the the  the       the      
+2023-12-31 02:29:09,629 	Text Alignment  :	D    D   D    D      D  S    S       S   S     S   S      S   S         S   S   S    S         S        
+2023-12-31 02:29:09,629 ========================================================================================================================
+2023-12-31 02:29:09,629 Logging Sequence: 149_14.00
+2023-12-31 02:29:09,629 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:09,629 	Gloss Hypothesis:	* *******
+2023-12-31 02:29:09,629 	Gloss Alignment :	D D      
+2023-12-31 02:29:09,629 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:09,630 	Text Reference  :	*** is  is  related to  cricket or  to  the t20 world cup
+2023-12-31 02:29:09,630 	Text Hypothesis :	the the the the     the the     the the the the the   the
+2023-12-31 02:29:09,630 	Text Alignment  :	I   S   S   S       S   S       S   S       S   S     S  
+2023-12-31 02:29:09,630 ========================================================================================================================
+2023-12-31 02:29:09,630 Logging Sequence: 164_394.00
+2023-12-31 02:29:09,630 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:09,630 	Gloss Hypothesis:	* *******
+2023-12-31 02:29:09,631 	Gloss Alignment :	D D      
+2023-12-31 02:29:09,631 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:09,631 	Text Reference  :	*** *** calculating will bring the total to  98400 balls in  5   years
+2023-12-31 02:29:09,631 	Text Hypothesis :	the the the         the  the   the the   the the   the   the the the  
+2023-12-31 02:29:09,631 	Text Alignment  :	I   I   S           S    S         S     S   S     S     S   S   S    
+2023-12-31 02:29:09,631 ========================================================================================================================
+2023-12-31 02:29:09,632 Logging Sequence: 81_134.00
+2023-12-31 02:29:09,632 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:09,632 	Gloss Hypothesis:	* *******
+2023-12-31 02:29:09,632 	Gloss Alignment :	D D      
+2023-12-31 02:29:09,632 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:09,632 	Text Reference  :	*** following the social media controversy ms  dhoni quit as  brand ambassador
+2023-12-31 02:29:09,633 	Text Hypothesis :	the the       the the    the   the         the the   the  the the   the       
+2023-12-31 02:29:09,633 	Text Alignment  :	I   S             S      S     S           S   S     S    S   S     S         
+2023-12-31 02:29:09,633 ========================================================================================================================
+2023-12-31 02:29:12,665 [Epoch: 001 Step: 00000200] Batch Recognition Loss:   0.602854 => Gls Tokens per Sec:     1316 || Batch Translation Loss:  24.917568 => Txt Tokens per Sec:     3661 || Lr: 0.000100
+2023-12-31 02:29:29,366 Validation result at epoch   1, step      200: duration: 16.7013s
+	Recognition Beam Size: 1	Translation Beam Size: 1	Translation Beam Alpha: -1
+	Recognition Loss: 35.96678	Translation Loss: 55350.55078	PPL: 267.23874
+	Eval Metric: BLEU
+	WER 91.45	(DEL: 41.45,	INS: 0.00,	SUB: 50.00)
+	BLEU-4 0.00	(BLEU-1: 3.21,	BLEU-2: 0.00,	BLEU-3: 0.00,	BLEU-4: 0.00)
+	CHRF 5.42	ROUGE 4.78
+2023-12-31 02:29:29,367 Logging Recognition and Translation Outputs
+2023-12-31 02:29:29,367 ========================================================================================================================
+2023-12-31 02:29:29,367 Logging Sequence: 115_112.00
+2023-12-31 02:29:29,367 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:29,367 	Gloss Hypothesis:	* A+B+C  
+2023-12-31 02:29:29,367 	Gloss Alignment :	D S      
+2023-12-31 02:29:29,368 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:29,369 	Text Reference  :	*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** and because of  the risks of  covid-19
+2023-12-31 02:29:29,369 	Text Hypothesis :	the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the     the the the   the the     
+2023-12-31 02:29:29,369 	Text Alignment  :	I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   S   S       S       S     S   S       
+2023-12-31 02:29:29,369 ========================================================================================================================
+2023-12-31 02:29:29,369 Logging Sequence: 167_112.00
+2023-12-31 02:29:29,369 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:29,369 	Gloss Hypothesis:	* A+B+C  
+2023-12-31 02:29:29,369 	Gloss Alignment :	D S      
+2023-12-31 02:29:29,369 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:29,370 	Text Reference  :	*** *** 6   muscle and joints pain
+2023-12-31 02:29:29,370 	Text Hypothesis :	the the the the    the the    the 
+2023-12-31 02:29:29,370 	Text Alignment  :	I   I   S   S      S   S      S   
+2023-12-31 02:29:29,370 ========================================================================================================================
+2023-12-31 02:29:29,370 Logging Sequence: 58_39.00
+2023-12-31 02:29:29,370 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:29,370 	Gloss Hypothesis:	* A+B+C  
+2023-12-31 02:29:29,370 	Gloss Alignment :	D S      
+2023-12-31 02:29:29,370 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:29,374 	Text Reference  :	*** *** *** *** *** *** *** *** *** *** *** *** *** *** but due to  the covid pandemic they were postponed and are now being held at  the same place from 23rd september 2023 to  8th october 2023
+2023-12-31 02:29:29,374 	Text Hypothesis :	the the the the the the the the the the the the the the the the the the the   the      the  the  the       the the the the   the  the the the  the   the  the  the       the  the the the     the 
+2023-12-31 02:29:29,374 	Text Alignment  :	I   I   I   I   I   I   I   I   I   I   I   I   I   I   S   S   S       S     S        S    S    S         S   S   S   S     S    S       S    S     S    S    S         S    S   S   S       S   
+2023-12-31 02:29:29,374 ========================================================================================================================
+2023-12-31 02:29:29,374 Logging Sequence: 69_172.00
+2023-12-31 02:29:29,375 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:29,375 	Gloss Hypothesis:	* A+B+C  
+2023-12-31 02:29:29,375 	Gloss Alignment :	D S      
+2023-12-31 02:29:29,375 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:29,375 	Text Reference  :	this is why i have decided to  not retire and continue playing'
+2023-12-31 02:29:29,375 	Text Hypothesis :	**** ** *** * **** ******* the the the    the the      the     
+2023-12-31 02:29:29,375 	Text Alignment  :	D    D  D   D D    D       S   S   S      S   S        S       
+2023-12-31 02:29:29,375 ========================================================================================================================
+2023-12-31 02:29:29,376 Logging Sequence: 79_222.00
+2023-12-31 02:29:29,376 	Gloss Reference :	A B+C+D+E
+2023-12-31 02:29:29,376 	Gloss Hypothesis:	* A+B+C  
+2023-12-31 02:29:29,376 	Gloss Alignment :	D S      
+2023-12-31 02:29:29,376 	--------------------------------------------------------------------------------------------------------------------
+2023-12-31 02:29:29,377 	Text Reference  :	*** *** *** *** *** *** *** *** *** which is  why the game was reschedule relocated it  to  dubai
+2023-12-31 02:29:29,377 	Text Hypothesis :	the the the the the the the the the the   the the the the  the the        the       the the the  
+2023-12-31 02:29:29,377 	Text Alignment  :	I   I   I   I   I   I   I   I   I   S     S   S       S    S   S          S         S   S   S    
+2023-12-31 02:29:29,377 ========================================================================================================================
+2023-12-31 02:29:31,395 Epoch   1: Total Training Recognition Loss 310.35  Total Training Translation Loss 21189.04 
+2023-12-31 02:29:31,395 EPOCH 2
+2023-12-31 02:29:32,456 [Epoch: 002 Step: 00000300] Batch Recognition Loss:   0.205597 => Gls Tokens per Sec:     1283 || Batch Translation Loss:  82.823723 => Txt Tokens per Sec:     3530 || Lr: 0.000100
