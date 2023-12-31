@@ -23,6 +23,9 @@
 #ignore all ckpt files
 *.ckpt
 
+#ignore all code-workspace files
+*.code-workspace
+
 #ignore all data files
 PHEONIX2014T/
 "Pickle maker"/*/excels/*.xls
