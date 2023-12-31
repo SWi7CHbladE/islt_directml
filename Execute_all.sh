@@ -9,6 +9,9 @@ chdir "~/islt_directml/"
 conda activate slt_directml
 echo environment activated
 
+rm -rf sign_sample_model
+mkdir sign_sample_model
+touch sign_sample_model/.gitkeep
 rm -r result_stats
 mkdir result_stats
 head_number=8
