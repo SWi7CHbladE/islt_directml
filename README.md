@@ -32,6 +32,8 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
     `pip install jupyterlab`
     `pip install notebook`
     `pip install voila`
+    alternatively instead of installint torch-directml
+    `conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia`
 
 ## Usage
 
