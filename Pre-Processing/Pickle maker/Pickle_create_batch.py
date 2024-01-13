@@ -159,26 +159,26 @@ def create_pickle(workbook_dest, output_dest, frame_dest):
         
     # print("\nlist_of_input:\n")
     # print(list_of_inputs)
-    with gzip.open(os.getcwd() + "/" + output_dest,'wb') as f:
+    with gzip.open(os.getcwd() + "\\" + output_dest,'wb') as f:
         pickle.dump(list_of_inputs,f)
 
 
 
 # Files to access:
 # validation
-vw_dest = "Dataset/excels/Sports_dataset"
-vo_dest = "Dataset/Pickles/Sports_dataset"
-vf_dest = "Dataset/Final folder for frames"
+vw_dest = "Dataset\\excels\\Sports_dataset"
+vo_dest = "Dataset\\Pickles\\Sports_dataset"
+vf_dest = "Dataset\\Final folder for frames"
 
 # test
-tw_dest = "Dataset/excels/Sports_dataset"
-to_dest = "Dataset/Pickles/Sports_dataset"
+tw_dest = "Dataset\\excels\\Sports_dataset"
+to_dest = "Dataset\\Pickles\\Sports_dataset"
 tf_dest = "Dataset/Final folder for frames"
 
 # train
-w_dest = "Dataset/excels/Sports_dataset"
-o_dest = "Dataset/Pickles/Sports_dataset"
-f_dest = "Dataset/Final folder for frames"
+w_dest = "Dataset\\excels\\Sports_dataset"
+o_dest = "Dataset\\Pickles\\Sports_dataset"
+f_dest = "Dataset\\Final folder for frames"
 
 val_excel_postfix = "ISH_News_Sports final VAL.xlsx"
 test_excel_postfix = "ISH_News_Sports final TEST.xlsx"
@@ -194,20 +194,20 @@ i = 0
 
 while i < 10:
     # Validation pickle
-    tmp1 = vw_dest + "/" + str(i) + "/" + val_excel_postfix
-    tmp2 = vo_dest + "/" + str(i) + "/" + val_output_postfix
+    tmp1 = vw_dest + "\\" + str(i) + "\\" + val_excel_postfix
+    tmp2 = vo_dest + "\\" + str(i) + "\\" + val_output_postfix
     create_pickle(tmp1, tmp2, vf_dest)
 
 
     # Testing pickle
-    tmp1 = tw_dest + "/" + str(i) + "/" + test_excel_postfix
-    tmp2 = to_dest + "/" + str(i) + "/" + test_output_postfix
+    tmp1 = tw_dest + "\\" + str(i) + "\\" + test_excel_postfix
+    tmp2 = to_dest + "\\" + str(i) + "\\" + test_output_postfix
     create_pickle(tmp1, tmp2, tf_dest)
 
 
     # Training pickle
-    tmp1 = w_dest + "/" + str(i) + "/" + train_excel_postfix
-    tmp2 = o_dest + "/" + str(i) + "/" + train_output_postfix
+    tmp1 = w_dest + "\\" + str(i) + "\\" + train_excel_postfix
+    tmp2 = o_dest + "\\" + str(i) + "\\" + train_output_postfix
     create_pickle(tmp1, tmp2, f_dest)
     
     i+=1
