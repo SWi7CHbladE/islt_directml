@@ -103,7 +103,7 @@ def subsequent_mask(size: int) -> Tensor:
     :return: Tensor with 0s and 1s of shape (1, size, size)
     """
     mask = np.triu(np.ones((1, size, size)), k=1).astype("uint8")
-    return torch.from_numpy(mask) == 0
+    return (torch.from_numpy(mask)).to(dml) == 0
 
 
 def set_seed(seed: int):
@@ -216,6 +216,7 @@ def load_checkpoint(path: str, use_cuda: bool = True) -> dict:
 
 # from onmt
 def tile(x: Tensor, count: int, dim=0) -> Tensor:
+    x = x.to(dml)
     """
     Tiles x on dimension dim count times. From OpenNMT. Used for beam search.
 

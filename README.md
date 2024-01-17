@@ -20,8 +20,7 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
     `conda install numpy pandas tensorboard matplotlib tqdm pyyaml -y`
     `pip install opencv-python`
     `pip install wget`
-    `pip install torchvision`
-    `conda install pytorch cpuonly -c pytorch -y`
+    `conda install pytorch torchvision torchaudio cpuonly -c pytorch-lts -y`
     `pip install torch-directml`
     `pip install tensorflow-cpu==2.10`
     `pip install tensorflow-directml-plugin`

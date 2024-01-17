@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import torch
-
 import torch_directml
 dml = torch_directml.device()
 
@@ -754,6 +753,8 @@ class TrainManager:
             if self.do_translation
             else None,
         )
+        recognition_loss = recognition_loss.to(dml) 
+        translation_loss = translation_loss.to(dml)
 
         # normalize translation loss
         if self.do_translation:
