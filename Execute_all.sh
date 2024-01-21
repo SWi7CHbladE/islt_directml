@@ -15,7 +15,7 @@ touch sign_sample_model/.gitkeep
 rm -r result_stats
 mkdir result_stats
 head_number=8
-while [ $head_number -lt 33 ]; do
+while [ $head_number -lt 65 ]; do
     batch_number=8
     mkdir result_stats/${head_number}head
     echo head $head_number

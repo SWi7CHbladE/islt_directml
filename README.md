@@ -20,7 +20,8 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
     `conda install numpy pandas tensorboard matplotlib tqdm pyyaml -y`
     `pip install opencv-python`
     `pip install wget`
-    `conda install pytorch torchvision torchaudio cpuonly -c pytorch-lts -y`
+    `pip install torchvision`
+    `conda install pytorch cpuonly -c pytorch -y`
     `pip install torch-directml`
     `pip install tensorflow-cpu==2.10`
     `pip install tensorflow-directml-plugin`
@@ -32,10 +33,11 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
     `pip install notebook`
     `pip install voila`
     alternatively instead of installint torch-directml
-    `conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia`
+    `conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y`
 
 ## Usage
 
+  `set CUDA_LAUNCH_BLOCKING=1`
   `python -m signjoey train configs/sign.yaml` 
 
 ## Alternate Usage
