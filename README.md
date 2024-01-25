@@ -18,27 +18,34 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 * Create a conda python 3.10 environment and execute the following commands on the environment terminal.
 
     `conda install numpy pandas tensorboard matplotlib tqdm pyyaml -y`
-    `pip install opencv-python`
-    `pip install wget`
-    `pip install torchvision`
+    `pip install opencv-python wget torchvision`
     `conda install pytorch cpuonly -c pytorch -y`
-    `pip install torch-directml`
-    `pip install tensorflow-cpu==2.10`
-    `pip install tensorflow-directml-plugin`
-    `pip install torchtext==0.6.0`
-    `pip install portalocker`
-    `pip install openpyxl`
-    `pip install progress`
-    `pip install jupyterlab`
-    `pip install notebook`
-    `pip install voila`
-    alternatively instead of installint torch-directml
+    `pip install torch-directml tensorflow-cpu==2.10 tensorflow-directml-plugin torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
+
+## Cuda installation
+* Create a conda or python virtual environment. Use these commands for conda environment creation:
+    `conda create --name slt_cuda python="3.10"`
+
+* Activate the environment. For conda:
+    `conda activate slt_cuda`
+
+* Create a conda python 3.10 environment and execute the following commands on the environment terminal.
+
+    `conda install numpy pandas tensorboard matplotlib tqdm pyyaml -y`
+    `conda install cuda -c nvidia`
+    `pip install opencv-python wget`
     `conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y`
+    `pip install torch-directml tensorflow-cpu==2.10 tensorflow-directml-plugin torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
 
 ## Usage
-
+* for CUDA version
   `set CUDA_LAUNCH_BLOCKING=1`
-  `python -m signjoey train configs/sign.yaml` 
+  `python -m signjoey train configs/sign.yaml`
+
+* for DirectML version
+  `set CUDA_LAUNCH_BLOCKING=1`
+  `python -m signjoey_dml train configs/sign.yaml`
+
 
 ## Alternate Usage
 
