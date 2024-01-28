@@ -46,9 +46,9 @@ testing:
     - 4
     - 5
 training:
-    reset_best_ckpt: false
-    reset_scheduler: false
-    reset_optimizer: false
+    reset_best_ckpt: true
+    reset_scheduler: true
+    reset_optimizer: true
     random_seed: 42
     model_dir: "./sign_sample_model/fold7/128head/32batch"
     recognition_loss_weight: 1.0
@@ -72,7 +72,7 @@ training:
     keep_last_ckpts: 1
     batch_multiplier: 1
     logging_freq: 100
-    validation_freq: 100
+    validation_freq: 2000
     betas:
     - 0.9
     - 0.998
