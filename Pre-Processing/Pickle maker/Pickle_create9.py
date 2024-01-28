@@ -143,16 +143,17 @@ def create_pickle(workbook_dest, output_dest, frame_dest):
     
     for tmp in excel_data:
         features = get_features(str(tmp[0]),frame_dest)
-        if(features!= None or len(features)!=0):
-            data_dict = {}
-            data_dict['name'] = tmp[0]
-            data_dict['signer'] = tmp[1]
-            data_dict['gloss'] = tmp[2]
-            data_dict['text'] = tmp[3]
-            data_dict['sign'] = features + 1e-8
-            #print(data_dict)
-            #input()
-            list_of_inputs.append(data_dict)
+        if(features!= None):
+            if(len(features)):
+                data_dict = {}
+                data_dict['name'] = tmp[0]
+                data_dict['signer'] = tmp[1]
+                data_dict['gloss'] = tmp[2]
+                data_dict['text'] = tmp[3]
+                data_dict['sign'] = features + 1e-8
+                #print(data_dict)
+                #input()
+                list_of_inputs.append(data_dict)
         
         
 
