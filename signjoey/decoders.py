@@ -5,7 +5,8 @@ Various decoders
 """
 from typing import Optional
 
-import torch
+import torch 
+# import torch_directml
 import torch.nn as nn
 from torch import Tensor
 from signjoey.attention import BahdanauAttention, LuongAttention

@@ -16,8 +16,8 @@ from typing import Callable, Optional
 import numpy as np
 
 import torch
-import torch_directml
-dml = torch_directml.device()
+# import torch_directml
+# dml = torch_directml.device()
 from torch import nn, Tensor
 from torchtext.data import Dataset
 import yaml

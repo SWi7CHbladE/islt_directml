@@ -5,6 +5,7 @@ tf.config.set_visible_devices([], "GPU")
 
 import numpy as np
 import torch.nn as nn
+# import torch_directml
 import torch.nn.functional as F
 
 from itertools import groupby

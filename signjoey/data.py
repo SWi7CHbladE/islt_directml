@@ -6,7 +6,8 @@ import os
 import sys
 import random
 
-import torch
+import torch 
+# import torch_directml
 from torchtext import data
 from torchtext.data import Dataset, Iterator
 import socket

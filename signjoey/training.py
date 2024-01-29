@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import torch
 
-import torch_directml
-dml = torch_directml.device()
+# import torch_directml
+# dml = torch_directml.device()
 
 torch.backends.cudnn.deterministic = True
 
@@ -166,11 +166,11 @@ class TrainManager:
 
         self.use_cuda = train_config["use_cuda"]
         if self.use_cuda:
-            self.model.to(dml)
+            self.model.cuda()
             if self.do_translation:
-                self.translation_loss_function.to(dml)
+                self.translation_loss_function.cuda()
             if self.do_recognition:
-                self.recognition_loss_function.to(dml)
+                self.recognition_loss_function.cuda()
 
         # initialize training statistics
         self.steps = 0
@@ -340,7 +340,7 @@ class TrainManager:
 
         # move parameters to cuda
         if self.use_cuda:
-            self.model.to(dml)
+            self.model.cuda()
 
     def train_and_validate(self, train_data: Dataset, valid_data: Dataset) -> None:
         """

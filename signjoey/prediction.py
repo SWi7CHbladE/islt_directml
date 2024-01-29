@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import torch
-import torch_directml
-dml = torch_directml.device()
+# import torch_directml
+# dml = torch_directml.device()
 
 torch.backends.cudnn.deterministic = True
 
@@ -344,7 +344,7 @@ def test(
     model.load_state_dict(model_checkpoint["model_state"])
 
     if use_cuda:
-        model.to(dml)
+        model.cuda()
 
     # Data Augmentation Parameters
     frame_subsampling_ratio = cfg["data"].get("frame_subsampling_ratio", None)
@@ -373,13 +373,13 @@ def test(
             blank=model.gls_vocab.stoi[SIL_TOKEN], zero_infinity=True
         )
         if use_cuda:
-            recognition_loss_function.to(dml)
+            recognition_loss_function.cuda()
     if do_translation:
         translation_loss_function = XentLoss(
             pad_index=txt_vocab.stoi[PAD_TOKEN], smoothing=0.0
         )
         if use_cuda:
-            translation_loss_function.to(dml)
+            translation_loss_function.cuda()
 
     # NOTE (Cihan): Currently Hardcoded to be 0 for TensorFlow decoding
     assert model.gls_vocab.stoi[SIL_TOKEN] == 0

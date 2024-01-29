@@ -1,6 +1,7 @@
 # coding: utf-8
 
-import torch
+import torch 
+# import torch_directml
 import torch.nn as nn
 from torch import Tensor
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence

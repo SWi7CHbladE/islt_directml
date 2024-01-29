@@ -3,7 +3,8 @@
 Module to implement training loss
 """
 
-import torch
+import torch 
+# import torch_directml
 from torch import nn, Tensor
 from torch.autograd import Variable
 

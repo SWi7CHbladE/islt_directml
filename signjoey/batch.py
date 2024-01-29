@@ -2,8 +2,8 @@
 import math
 import random
 import torch
-import torch_directml
-dml = torch_directml.device()
+# import torch_directml
+# dml = torch_directml.device()
 import numpy as np
 
 
@@ -77,6 +77,7 @@ class Batch:
             self.sgn = tmp_sgn
 
         self.sgn_dim = sgn_dim
+        # self.sgn_mask = (self.sgn != torch.zeros(sgn_dim)).any(dim=2, keepdim=True)
         self.sgn_mask = (self.sgn != torch.zeros(sgn_dim))[..., 0].unsqueeze(1)
 
         # Text
@@ -119,13 +120,13 @@ class Batch:
 
         :return:
         """
-        self.sgn = self.sgn.to(dml)
-        self.sgn_mask = self.sgn_mask.to(dml)
+        self.sgn = self.sgn.cuda()
+        self.sgn_mask = self.sgn_mask.cuda()
 
         if self.txt_input is not None:
-            self.txt = self.txt.to(dml)
-            self.txt_mask = self.txt_mask.to(dml)
-            self.txt_input = self.txt_input.to(dml)
+            self.txt = self.txt.cuda()
+            self.txt_mask = self.txt_mask.cuda()
+            self.txt_input = self.txt_input.cuda()
 
     def sort_by_sgn_lengths(self):
         """

@@ -6,7 +6,8 @@ Implements custom initialization
 
 import math
 
-import torch
+import torch 
+# import torch_directml
 import torch.nn as nn
 from torch import Tensor
 from torch.nn.init import _calculate_fan_in_and_fan_out

@@ -7,7 +7,8 @@ from torchtext.data import Field, RawField
 from typing import List, Tuple
 import pickle
 import gzip
-import torch
+import torch 
+# import torch_directml
 
 
 def load_dataset_file(filename):

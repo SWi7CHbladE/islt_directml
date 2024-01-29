@@ -3,7 +3,8 @@
 Attention modules
 """
 
-import torch
+import torch 
+# import torch_directml
 from torch import Tensor
 import torch.nn as nn
 import torch.nn.functional as F

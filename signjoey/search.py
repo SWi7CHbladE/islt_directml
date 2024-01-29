@@ -1,5 +1,6 @@
 # coding: utf-8
-import torch
+import torch 
+# import torch_directml
 import torch.nn.functional as F
 from torch import Tensor
 import numpy as np

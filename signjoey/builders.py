@@ -4,7 +4,8 @@ Collection of builder functions
 """
 from typing import Callable, Optional, Generator
 
-import torch
+import torch 
+# import torch_directml
 from torch import nn
 
 # Learning Rate Scheduler
