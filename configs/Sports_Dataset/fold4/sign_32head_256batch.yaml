@@ -46,9 +46,9 @@ testing:
     - 4
     - 5
 training:
-    reset_best_ckpt: true
-    reset_scheduler: true
-    reset_optimizer: true
+    reset_best_ckpt: false
+    reset_scheduler: false
+    reset_optimizer: false
     random_seed: 42
     model_dir: "./sign_sample_model/fold4/32head/256batch"
     recognition_loss_weight: 1.0
@@ -81,7 +81,8 @@ training:
     weight_decay: 0.0001
     patience: 12
     decrease_factor: 0.5
-    label_smoothing: 0.1
+    label_smoothing: 0.0
+    
 model:
     initializer: xavier
     bias_initializer: zeros

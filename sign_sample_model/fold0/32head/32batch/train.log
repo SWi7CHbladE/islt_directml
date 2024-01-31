@@ -1,3 +1,384 @@
-2024-01-29 08:15:08,086 Hello! This is Joey-NMT.
-2024-01-29 08:15:08,118 Total params: 25639944
-2024-01-29 08:15:08,118 Trainable parameters: ['decoder.layer_norm.bias', 'decoder.layer_norm.weight', 'decoder.layers.0.dec_layer_norm.bias', 'decoder.layers.0.dec_layer_norm.weight', 'decoder.layers.0.feed_forward.layer_norm.bias', 'decoder.layers.0.feed_forward.layer_norm.weight', 'decoder.layers.0.feed_forward.pwff_layer.0.bias', 'decoder.layers.0.feed_forward.pwff_layer.0.weight', 'decoder.layers.0.feed_forward.pwff_layer.3.bias', 'decoder.layers.0.feed_forward.pwff_layer.3.weight', 'decoder.layers.0.src_trg_att.k_layer.bias', 'decoder.layers.0.src_trg_att.k_layer.weight', 'decoder.layers.0.src_trg_att.output_layer.bias', 'decoder.layers.0.src_trg_att.output_layer.weight', 'decoder.layers.0.src_trg_att.q_layer.bias', 'decoder.layers.0.src_trg_att.q_layer.weight', 'decoder.layers.0.src_trg_att.v_layer.bias', 'decoder.layers.0.src_trg_att.v_layer.weight', 'decoder.layers.0.trg_trg_att.k_layer.bias', 'decoder.layers.0.trg_trg_att.k_layer.weight', 'decoder.layers.0.trg_trg_att.output_layer.bias', 'decoder.layers.0.trg_trg_att.output_layer.weight', 'decoder.layers.0.trg_trg_att.q_layer.bias', 'decoder.layers.0.trg_trg_att.q_layer.weight', 'decoder.layers.0.trg_trg_att.v_layer.bias', 'decoder.layers.0.trg_trg_att.v_layer.weight', 'decoder.layers.0.x_layer_norm.bias', 'decoder.layers.0.x_layer_norm.weight', 'decoder.layers.1.dec_layer_norm.bias', 'decoder.layers.1.dec_layer_norm.weight', 'decoder.layers.1.feed_forward.layer_norm.bias', 'decoder.layers.1.feed_forward.layer_norm.weight', 'decoder.layers.1.feed_forward.pwff_layer.0.bias', 'decoder.layers.1.feed_forward.pwff_layer.0.weight', 'decoder.layers.1.feed_forward.pwff_layer.3.bias', 'decoder.layers.1.feed_forward.pwff_layer.3.weight', 'decoder.layers.1.src_trg_att.k_layer.bias', 'decoder.layers.1.src_trg_att.k_layer.weight', 'decoder.layers.1.src_trg_att.output_layer.bias', 'decoder.layers.1.src_trg_att.output_layer.weight', 'decoder.layers.1.src_trg_att.q_layer.bias', 'decoder.layers.1.src_trg_att.q_layer.weight', 'decoder.layers.1.src_trg_att.v_layer.bias', 'decoder.layers.1.src_trg_att.v_layer.weight', 'decoder.layers.1.trg_trg_att.k_layer.bias', 'decoder.layers.1.trg_trg_att.k_layer.weight', 'decoder.layers.1.trg_trg_att.output_layer.bias', 'decoder.layers.1.trg_trg_att.output_layer.weight', 'decoder.layers.1.trg_trg_att.q_layer.bias', 'decoder.layers.1.trg_trg_att.q_layer.weight', 'decoder.layers.1.trg_trg_att.v_layer.bias', 'decoder.layers.1.trg_trg_att.v_layer.weight', 'decoder.layers.1.x_layer_norm.bias', 'decoder.layers.1.x_layer_norm.weight', 'decoder.layers.2.dec_layer_norm.bias', 'decoder.layers.2.dec_layer_norm.weight', 'decoder.layers.2.feed_forward.layer_norm.bias', 'decoder.layers.2.feed_forward.layer_norm.weight', 'decoder.layers.2.feed_forward.pwff_layer.0.bias', 'decoder.layers.2.feed_forward.pwff_layer.0.weight', 'decoder.layers.2.feed_forward.pwff_layer.3.bias', 'decoder.layers.2.feed_forward.pwff_layer.3.weight', 'decoder.layers.2.src_trg_att.k_layer.bias', 'decoder.layers.2.src_trg_att.k_layer.weight', 'decoder.layers.2.src_trg_att.output_layer.bias', 'decoder.layers.2.src_trg_att.output_layer.weight', 'decoder.layers.2.src_trg_att.q_layer.bias', 'decoder.layers.2.src_trg_att.q_layer.weight', 'decoder.layers.2.src_trg_att.v_layer.bias', 'decoder.layers.2.src_trg_att.v_layer.weight', 'decoder.layers.2.trg_trg_att.k_layer.bias', 'decoder.layers.2.trg_trg_att.k_layer.weight', 'decoder.layers.2.trg_trg_att.output_layer.bias', 'decoder.layers.2.trg_trg_att.output_layer.weight', 'decoder.layers.2.trg_trg_att.q_layer.bias', 'decoder.layers.2.trg_trg_att.q_layer.weight', 'decoder.layers.2.trg_trg_att.v_layer.bias', 'decoder.layers.2.trg_trg_att.v_layer.weight', 'decoder.layers.2.x_layer_norm.bias', 'decoder.layers.2.x_layer_norm.weight', 'decoder.output_layer.weight', 'encoder.layer_norm.bias', 'encoder.layer_norm.weight', 'encoder.layers.0.feed_forward.layer_norm.bias', 'encoder.layers.0.feed_forward.layer_norm.weight', 'encoder.layers.0.feed_forward.pwff_layer.0.bias', 'encoder.layers.0.feed_forward.pwff_layer.0.weight', 'encoder.layers.0.feed_forward.pwff_layer.3.bias', 'encoder.layers.0.feed_forward.pwff_layer.3.weight', 'encoder.layers.0.layer_norm.bias', 'encoder.layers.0.layer_norm.weight', 'encoder.layers.0.src_src_att.k_layer.bias', 'encoder.layers.0.src_src_att.k_layer.weight', 'encoder.layers.0.src_src_att.output_layer.bias', 'encoder.layers.0.src_src_att.output_layer.weight', 'encoder.layers.0.src_src_att.q_layer.bias', 'encoder.layers.0.src_src_att.q_layer.weight', 'encoder.layers.0.src_src_att.v_layer.bias', 'encoder.layers.0.src_src_att.v_layer.weight', 'encoder.layers.1.feed_forward.layer_norm.bias', 'encoder.layers.1.feed_forward.layer_norm.weight', 'encoder.layers.1.feed_forward.pwff_layer.0.bias', 'encoder.layers.1.feed_forward.pwff_layer.0.weight', 'encoder.layers.1.feed_forward.pwff_layer.3.bias', 'encoder.layers.1.feed_forward.pwff_layer.3.weight', 'encoder.layers.1.layer_norm.bias', 'encoder.layers.1.layer_norm.weight', 'encoder.layers.1.src_src_att.k_layer.bias', 'encoder.layers.1.src_src_att.k_layer.weight', 'encoder.layers.1.src_src_att.output_layer.bias', 'encoder.layers.1.src_src_att.output_layer.weight', 'encoder.layers.1.src_src_att.q_layer.bias', 'encoder.layers.1.src_src_att.q_layer.weight', 'encoder.layers.1.src_src_att.v_layer.bias', 'encoder.layers.1.src_src_att.v_layer.weight', 'encoder.layers.2.feed_forward.layer_norm.bias', 'encoder.layers.2.feed_forward.layer_norm.weight', 'encoder.layers.2.feed_forward.pwff_layer.0.bias', 'encoder.layers.2.feed_forward.pwff_layer.0.weight', 'encoder.layers.2.feed_forward.pwff_layer.3.bias', 'encoder.layers.2.feed_forward.pwff_layer.3.weight', 'encoder.layers.2.layer_norm.bias', 'encoder.layers.2.layer_norm.weight', 'encoder.layers.2.src_src_att.k_layer.bias', 'encoder.layers.2.src_src_att.k_layer.weight', 'encoder.layers.2.src_src_att.output_layer.bias', 'encoder.layers.2.src_src_att.output_layer.weight', 'encoder.layers.2.src_src_att.q_layer.bias', 'encoder.layers.2.src_src_att.q_layer.weight', 'encoder.layers.2.src_src_att.v_layer.bias', 'encoder.layers.2.src_src_att.v_layer.weight', 'gloss_output_layer.bias', 'gloss_output_layer.weight', 'sgn_embed.ln.bias', 'sgn_embed.ln.weight', 'sgn_embed.norm.norm.bias', 'sgn_embed.norm.norm.weight', 'txt_embed.norm.norm.bias', 'txt_embed.norm.norm.weight']
+2024-02-01 02:29:00,299 Hello! This is Joey-NMT.
+2024-02-01 02:29:00,306 Total params: 25639944
+2024-02-01 02:29:00,306 Trainable parameters: ['decoder.layer_norm.bias', 'decoder.layer_norm.weight', 'decoder.layers.0.dec_layer_norm.bias', 'decoder.layers.0.dec_layer_norm.weight', 'decoder.layers.0.feed_forward.layer_norm.bias', 'decoder.layers.0.feed_forward.layer_norm.weight', 'decoder.layers.0.feed_forward.pwff_layer.0.bias', 'decoder.layers.0.feed_forward.pwff_layer.0.weight', 'decoder.layers.0.feed_forward.pwff_layer.3.bias', 'decoder.layers.0.feed_forward.pwff_layer.3.weight', 'decoder.layers.0.src_trg_att.k_layer.bias', 'decoder.layers.0.src_trg_att.k_layer.weight', 'decoder.layers.0.src_trg_att.output_layer.bias', 'decoder.layers.0.src_trg_att.output_layer.weight', 'decoder.layers.0.src_trg_att.q_layer.bias', 'decoder.layers.0.src_trg_att.q_layer.weight', 'decoder.layers.0.src_trg_att.v_layer.bias', 'decoder.layers.0.src_trg_att.v_layer.weight', 'decoder.layers.0.trg_trg_att.k_layer.bias', 'decoder.layers.0.trg_trg_att.k_layer.weight', 'decoder.layers.0.trg_trg_att.output_layer.bias', 'decoder.layers.0.trg_trg_att.output_layer.weight', 'decoder.layers.0.trg_trg_att.q_layer.bias', 'decoder.layers.0.trg_trg_att.q_layer.weight', 'decoder.layers.0.trg_trg_att.v_layer.bias', 'decoder.layers.0.trg_trg_att.v_layer.weight', 'decoder.layers.0.x_layer_norm.bias', 'decoder.layers.0.x_layer_norm.weight', 'decoder.layers.1.dec_layer_norm.bias', 'decoder.layers.1.dec_layer_norm.weight', 'decoder.layers.1.feed_forward.layer_norm.bias', 'decoder.layers.1.feed_forward.layer_norm.weight', 'decoder.layers.1.feed_forward.pwff_layer.0.bias', 'decoder.layers.1.feed_forward.pwff_layer.0.weight', 'decoder.layers.1.feed_forward.pwff_layer.3.bias', 'decoder.layers.1.feed_forward.pwff_layer.3.weight', 'decoder.layers.1.src_trg_att.k_layer.bias', 'decoder.layers.1.src_trg_att.k_layer.weight', 'decoder.layers.1.src_trg_att.output_layer.bias', 'decoder.layers.1.src_trg_att.output_layer.weight', 'decoder.layers.1.src_trg_att.q_layer.bias', 'decoder.layers.1.src_trg_att.q_layer.weight', 'decoder.layers.1.src_trg_att.v_layer.bias', 'decoder.layers.1.src_trg_att.v_layer.weight', 'decoder.layers.1.trg_trg_att.k_layer.bias', 'decoder.layers.1.trg_trg_att.k_layer.weight', 'decoder.layers.1.trg_trg_att.output_layer.bias', 'decoder.layers.1.trg_trg_att.output_layer.weight', 'decoder.layers.1.trg_trg_att.q_layer.bias', 'decoder.layers.1.trg_trg_att.q_layer.weight', 'decoder.layers.1.trg_trg_att.v_layer.bias', 'decoder.layers.1.trg_trg_att.v_layer.weight', 'decoder.layers.1.x_layer_norm.bias', 'decoder.layers.1.x_layer_norm.weight', 'decoder.layers.2.dec_layer_norm.bias', 'decoder.layers.2.dec_layer_norm.weight', 'decoder.layers.2.feed_forward.layer_norm.bias', 'decoder.layers.2.feed_forward.layer_norm.weight', 'decoder.layers.2.feed_forward.pwff_layer.0.bias', 'decoder.layers.2.feed_forward.pwff_layer.0.weight', 'decoder.layers.2.feed_forward.pwff_layer.3.bias', 'decoder.layers.2.feed_forward.pwff_layer.3.weight', 'decoder.layers.2.src_trg_att.k_layer.bias', 'decoder.layers.2.src_trg_att.k_layer.weight', 'decoder.layers.2.src_trg_att.output_layer.bias', 'decoder.layers.2.src_trg_att.output_layer.weight', 'decoder.layers.2.src_trg_att.q_layer.bias', 'decoder.layers.2.src_trg_att.q_layer.weight', 'decoder.layers.2.src_trg_att.v_layer.bias', 'decoder.layers.2.src_trg_att.v_layer.weight', 'decoder.layers.2.trg_trg_att.k_layer.bias', 'decoder.layers.2.trg_trg_att.k_layer.weight', 'decoder.layers.2.trg_trg_att.output_layer.bias', 'decoder.layers.2.trg_trg_att.output_layer.weight', 'decoder.layers.2.trg_trg_att.q_layer.bias', 'decoder.layers.2.trg_trg_att.q_layer.weight', 'decoder.layers.2.trg_trg_att.v_layer.bias', 'decoder.layers.2.trg_trg_att.v_layer.weight', 'decoder.layers.2.x_layer_norm.bias', 'decoder.layers.2.x_layer_norm.weight', 'decoder.output_layer.weight', 'encoder.layer_norm.bias', 'encoder.layer_norm.weight', 'encoder.layers.0.feed_forward.layer_norm.bias', 'encoder.layers.0.feed_forward.layer_norm.weight', 'encoder.layers.0.feed_forward.pwff_layer.0.bias', 'encoder.layers.0.feed_forward.pwff_layer.0.weight', 'encoder.layers.0.feed_forward.pwff_layer.3.bias', 'encoder.layers.0.feed_forward.pwff_layer.3.weight', 'encoder.layers.0.layer_norm.bias', 'encoder.layers.0.layer_norm.weight', 'encoder.layers.0.src_src_att.k_layer.bias', 'encoder.layers.0.src_src_att.k_layer.weight', 'encoder.layers.0.src_src_att.output_layer.bias', 'encoder.layers.0.src_src_att.output_layer.weight', 'encoder.layers.0.src_src_att.q_layer.bias', 'encoder.layers.0.src_src_att.q_layer.weight', 'encoder.layers.0.src_src_att.v_layer.bias', 'encoder.layers.0.src_src_att.v_layer.weight', 'encoder.layers.1.feed_forward.layer_norm.bias', 'encoder.layers.1.feed_forward.layer_norm.weight', 'encoder.layers.1.feed_forward.pwff_layer.0.bias', 'encoder.layers.1.feed_forward.pwff_layer.0.weight', 'encoder.layers.1.feed_forward.pwff_layer.3.bias', 'encoder.layers.1.feed_forward.pwff_layer.3.weight', 'encoder.layers.1.layer_norm.bias', 'encoder.layers.1.layer_norm.weight', 'encoder.layers.1.src_src_att.k_layer.bias', 'encoder.layers.1.src_src_att.k_layer.weight', 'encoder.layers.1.src_src_att.output_layer.bias', 'encoder.layers.1.src_src_att.output_layer.weight', 'encoder.layers.1.src_src_att.q_layer.bias', 'encoder.layers.1.src_src_att.q_layer.weight', 'encoder.layers.1.src_src_att.v_layer.bias', 'encoder.layers.1.src_src_att.v_layer.weight', 'encoder.layers.2.feed_forward.layer_norm.bias', 'encoder.layers.2.feed_forward.layer_norm.weight', 'encoder.layers.2.feed_forward.pwff_layer.0.bias', 'encoder.layers.2.feed_forward.pwff_layer.0.weight', 'encoder.layers.2.feed_forward.pwff_layer.3.bias', 'encoder.layers.2.feed_forward.pwff_layer.3.weight', 'encoder.layers.2.layer_norm.bias', 'encoder.layers.2.layer_norm.weight', 'encoder.layers.2.src_src_att.k_layer.bias', 'encoder.layers.2.src_src_att.k_layer.weight', 'encoder.layers.2.src_src_att.output_layer.bias', 'encoder.layers.2.src_src_att.output_layer.weight', 'encoder.layers.2.src_src_att.q_layer.bias', 'encoder.layers.2.src_src_att.q_layer.weight', 'encoder.layers.2.src_src_att.v_layer.bias', 'encoder.layers.2.src_src_att.v_layer.weight', 'gloss_output_layer.bias', 'gloss_output_layer.weight', 'sgn_embed.ln.bias', 'sgn_embed.ln.weight', 'sgn_embed.norm.norm.bias', 'sgn_embed.norm.norm.weight', 'txt_embed.norm.norm.bias', 'txt_embed.norm.norm.weight']
+2024-02-01 02:29:00,484 cfg.name                           : sign_experiment
+2024-02-01 02:29:00,484 cfg.data.data_path                 : ./data/Sports_dataset/0/
+2024-02-01 02:29:00,484 cfg.data.version                   : phoenix_2014_trans
+2024-02-01 02:29:00,484 cfg.data.sgn                       : sign
+2024-02-01 02:29:00,484 cfg.data.txt                       : text
+2024-02-01 02:29:00,484 cfg.data.gls                       : gloss
+2024-02-01 02:29:00,484 cfg.data.train                     : excel_data.train
+2024-02-01 02:29:00,485 cfg.data.dev                       : excel_data.dev
+2024-02-01 02:29:00,485 cfg.data.test                      : excel_data.test
+2024-02-01 02:29:00,485 cfg.data.feature_size              : 2560
+2024-02-01 02:29:00,485 cfg.data.level                     : word
+2024-02-01 02:29:00,485 cfg.data.txt_lowercase             : True
+2024-02-01 02:29:00,485 cfg.data.max_sent_length           : 500
+2024-02-01 02:29:00,485 cfg.data.random_train_subset       : -1
+2024-02-01 02:29:00,485 cfg.data.random_dev_subset         : -1
+2024-02-01 02:29:00,485 cfg.testing.recognition_beam_sizes : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+2024-02-01 02:29:00,486 cfg.testing.translation_beam_sizes : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+2024-02-01 02:29:00,486 cfg.testing.translation_beam_alphas : [-1, 0, 1, 2, 3, 4, 5]
+2024-02-01 02:29:00,486 cfg.training.reset_best_ckpt       : False
+2024-02-01 02:29:00,486 cfg.training.reset_scheduler       : False
+2024-02-01 02:29:00,486 cfg.training.reset_optimizer       : False
+2024-02-01 02:29:00,486 cfg.training.random_seed           : 42
+2024-02-01 02:29:00,486 cfg.training.model_dir             : ./sign_sample_model/fold0/32head/32batch
+2024-02-01 02:29:00,487 cfg.training.recognition_loss_weight : 1.0
+2024-02-01 02:29:00,487 cfg.training.translation_loss_weight : 1.0
+2024-02-01 02:29:00,487 cfg.training.eval_metric           : bleu
+2024-02-01 02:29:00,487 cfg.training.optimizer             : adam
+2024-02-01 02:29:00,487 cfg.training.learning_rate         : 0.0001
+2024-02-01 02:29:00,487 cfg.training.batch_size            : 32
+2024-02-01 02:29:00,487 cfg.training.num_valid_log         : 5
+2024-02-01 02:29:00,487 cfg.training.epochs                : 50000
+2024-02-01 02:29:00,488 cfg.training.early_stopping_metric : eval_metric
+2024-02-01 02:29:00,488 cfg.training.batch_type            : sentence
+2024-02-01 02:29:00,488 cfg.training.translation_normalization : batch
+2024-02-01 02:29:00,488 cfg.training.eval_recognition_beam_size : 1
+2024-02-01 02:29:00,488 cfg.training.eval_translation_beam_size : 1
+2024-02-01 02:29:00,488 cfg.training.eval_translation_beam_alpha : -1
+2024-02-01 02:29:00,488 cfg.training.overwrite             : True
+2024-02-01 02:29:00,488 cfg.training.shuffle               : True
+2024-02-01 02:29:00,488 cfg.training.use_cuda              : True
+2024-02-01 02:29:00,489 cfg.training.translation_max_output_length : 40
+2024-02-01 02:29:00,489 cfg.training.keep_last_ckpts       : 1
+2024-02-01 02:29:00,489 cfg.training.batch_multiplier      : 1
+2024-02-01 02:29:00,489 cfg.training.logging_freq          : 100
+2024-02-01 02:29:00,489 cfg.training.validation_freq       : 2000
+2024-02-01 02:29:00,489 cfg.training.betas                 : [0.9, 0.998]
+2024-02-01 02:29:00,489 cfg.training.scheduling            : plateau
+2024-02-01 02:29:00,489 cfg.training.learning_rate_min     : 1e-08
+2024-02-01 02:29:00,489 cfg.training.weight_decay          : 0.0001
+2024-02-01 02:29:00,490 cfg.training.patience              : 12
+2024-02-01 02:29:00,490 cfg.training.decrease_factor       : 0.5
+2024-02-01 02:29:00,490 cfg.training.label_smoothing       : 0.1
+2024-02-01 02:29:00,490 cfg.model.initializer              : xavier
+2024-02-01 02:29:00,490 cfg.model.bias_initializer         : zeros
+2024-02-01 02:29:00,490 cfg.model.init_gain                : 1.0
+2024-02-01 02:29:00,490 cfg.model.embed_initializer        : xavier
+2024-02-01 02:29:00,490 cfg.model.embed_init_gain          : 1.0
+2024-02-01 02:29:00,490 cfg.model.tied_softmax             : True
+2024-02-01 02:29:00,491 cfg.model.encoder.type             : transformer
+2024-02-01 02:29:00,491 cfg.model.encoder.num_layers       : 3
+2024-02-01 02:29:00,491 cfg.model.encoder.num_heads        : 32
+2024-02-01 02:29:00,491 cfg.model.encoder.embeddings.embedding_dim : 512
+2024-02-01 02:29:00,491 cfg.model.encoder.embeddings.scale : False
+2024-02-01 02:29:00,491 cfg.model.encoder.embeddings.dropout : 0.1
+2024-02-01 02:29:00,491 cfg.model.encoder.embeddings.norm_type : batch
+2024-02-01 02:29:00,491 cfg.model.encoder.embeddings.activation_type : softsign
+2024-02-01 02:29:00,492 cfg.model.encoder.hidden_size      : 512
+2024-02-01 02:29:00,492 cfg.model.encoder.ff_size          : 2048
+2024-02-01 02:29:00,492 cfg.model.encoder.dropout          : 0.1
+2024-02-01 02:29:00,492 cfg.model.decoder.type             : transformer
+2024-02-01 02:29:00,492 cfg.model.decoder.num_layers       : 3
+2024-02-01 02:29:00,492 cfg.model.decoder.num_heads        : 32
+2024-02-01 02:29:00,492 cfg.model.decoder.embeddings.embedding_dim : 512
+2024-02-01 02:29:00,492 cfg.model.decoder.embeddings.scale : False
+2024-02-01 02:29:00,492 cfg.model.decoder.embeddings.dropout : 0.1
+2024-02-01 02:29:00,493 cfg.model.decoder.embeddings.norm_type : batch
+2024-02-01 02:29:00,493 cfg.model.decoder.embeddings.activation_type : softsign
+2024-02-01 02:29:00,493 cfg.model.decoder.hidden_size      : 512
+2024-02-01 02:29:00,493 cfg.model.decoder.ff_size          : 2048
+2024-02-01 02:29:00,493 cfg.model.decoder.dropout          : 0.1
+2024-02-01 02:29:00,493 Data set sizes: 
+	train 2126,
+	valid 708,
+	test 706
+2024-02-01 02:29:00,493 First training example:
+	[GLS] A B C D E
+	[TXT] although new zealand was disappointed to faltered at the finals against australia they did well throughout the tournament
+2024-02-01 02:29:00,493 First 10 words (gls): (0) <si> (1) <unk> (2) <pad> (3) A (4) B (5) C (6) D (7) E
+2024-02-01 02:29:00,494 First 10 words (txt): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) the (5) and (6) to (7) a (8) in (9) of
+2024-02-01 02:29:00,494 Number of unique glosses (types): 8
+2024-02-01 02:29:00,494 Number of unique words (types): 4397
+2024-02-01 02:29:00,494 SignModel(
+	encoder=TransformerEncoder(num_layers=3, num_heads=32),
+	decoder=TransformerDecoder(num_layers=3, num_heads=32),
+	sgn_embed=SpatialEmbeddings(embedding_dim=512, input_size=2560),
+	txt_embed=Embeddings(embedding_dim=512, vocab_size=4397))
+2024-02-01 02:29:00,497 EPOCH 1
+2024-02-01 02:29:23,657 Epoch   1: Total Training Recognition Loss 2127.40  Total Training Translation Loss 6848.39 
+2024-02-01 02:29:23,657 EPOCH 2
+2024-02-01 02:29:33,824 [Epoch: 002 Step: 00000100] Batch Recognition Loss:  37.479507 => Gls Tokens per Sec:      519 || Batch Translation Loss:  97.559067 => Txt Tokens per Sec:     1480 || Lr: 0.000100
+2024-02-01 02:29:43,368 Epoch   2: Total Training Recognition Loss 2133.68  Total Training Translation Loss 6848.63 
+2024-02-01 02:29:43,369 EPOCH 3
+2024-02-01 02:30:02,690 [Epoch: 003 Step: 00000200] Batch Recognition Loss:  27.671869 => Gls Tokens per Sec:      542 || Batch Translation Loss: 100.978226 => Txt Tokens per Sec:     1506 || Lr: 0.000100
+2024-02-01 02:30:02,852 Epoch   3: Total Training Recognition Loss 2130.82  Total Training Translation Loss 6850.80 
+2024-02-01 02:30:02,852 EPOCH 4
+2024-02-01 02:30:22,424 Epoch   4: Total Training Recognition Loss 2131.81  Total Training Translation Loss 6848.28 
+2024-02-01 02:30:22,425 EPOCH 5
+2024-02-01 02:30:30,868 [Epoch: 005 Step: 00000300] Batch Recognition Loss:  40.560577 => Gls Tokens per Sec:      606 || Batch Translation Loss: 110.987923 => Txt Tokens per Sec:     1607 || Lr: 0.000100
+2024-02-01 02:30:41,775 Epoch   5: Total Training Recognition Loss 2125.88  Total Training Translation Loss 6850.24 
+2024-02-01 02:30:41,775 EPOCH 6
+2024-02-01 02:31:00,646 [Epoch: 006 Step: 00000400] Batch Recognition Loss:  37.273888 => Gls Tokens per Sec:      546 || Batch Translation Loss:  95.559982 => Txt Tokens per Sec:     1513 || Lr: 0.000100
+2024-02-01 02:31:01,354 Epoch   6: Total Training Recognition Loss 2128.58  Total Training Translation Loss 6849.54 
+2024-02-01 02:31:01,354 EPOCH 7
+2024-02-01 02:31:20,939 Epoch   7: Total Training Recognition Loss 2131.71  Total Training Translation Loss 6848.34 
+2024-02-01 02:31:20,939 EPOCH 8
+2024-02-01 02:31:29,862 [Epoch: 008 Step: 00000500] Batch Recognition Loss:  18.843723 => Gls Tokens per Sec:      556 || Batch Translation Loss:  82.770561 => Txt Tokens per Sec:     1570 || Lr: 0.000100
+2024-02-01 02:31:40,167 Epoch   8: Total Training Recognition Loss 2126.59  Total Training Translation Loss 6847.71 
+2024-02-01 02:31:40,167 EPOCH 9
+2024-02-01 02:31:58,565 [Epoch: 009 Step: 00000600] Batch Recognition Loss:  38.546112 => Gls Tokens per Sec:      552 || Batch Translation Loss: 124.441856 => Txt Tokens per Sec:     1527 || Lr: 0.000100
+2024-02-01 02:31:59,371 Epoch   9: Total Training Recognition Loss 2133.02  Total Training Translation Loss 6849.25 
+2024-02-01 02:31:59,371 EPOCH 10
+2024-02-01 02:32:18,621 Epoch  10: Total Training Recognition Loss 2128.76  Total Training Translation Loss 6849.69 
+2024-02-01 02:32:18,621 EPOCH 11
+2024-02-01 02:32:27,057 [Epoch: 011 Step: 00000700] Batch Recognition Loss:  12.791843 => Gls Tokens per Sec:      569 || Batch Translation Loss:  65.302170 => Txt Tokens per Sec:     1553 || Lr: 0.000100
+2024-02-01 02:32:37,828 Epoch  11: Total Training Recognition Loss 2128.24  Total Training Translation Loss 6849.91 
+2024-02-01 02:32:37,828 EPOCH 12
+2024-02-01 02:32:56,021 [Epoch: 012 Step: 00000800] Batch Recognition Loss:  37.790092 => Gls Tokens per Sec:      549 || Batch Translation Loss: 126.517029 => Txt Tokens per Sec:     1525 || Lr: 0.000100
+2024-02-01 02:32:57,043 Epoch  12: Total Training Recognition Loss 2129.28  Total Training Translation Loss 6848.90 
+2024-02-01 02:32:57,044 EPOCH 13
+2024-02-01 02:33:16,341 Epoch  13: Total Training Recognition Loss 2131.11  Total Training Translation Loss 6849.29 
+2024-02-01 02:33:16,342 EPOCH 14
+2024-02-01 02:33:26,058 [Epoch: 014 Step: 00000900] Batch Recognition Loss:  36.953545 => Gls Tokens per Sec:      478 || Batch Translation Loss: 118.953285 => Txt Tokens per Sec:     1405 || Lr: 0.000100
+2024-02-01 02:33:35,666 Epoch  14: Total Training Recognition Loss 2128.70  Total Training Translation Loss 6850.11 
+2024-02-01 02:33:35,666 EPOCH 15
+2024-02-01 02:33:53,497 [Epoch: 015 Step: 00001000] Batch Recognition Loss:  27.901604 => Gls Tokens per Sec:      551 || Batch Translation Loss: 110.638824 => Txt Tokens per Sec:     1527 || Lr: 0.000100
+2024-02-01 02:33:54,983 Epoch  15: Total Training Recognition Loss 2129.08  Total Training Translation Loss 6849.91 
+2024-02-01 02:33:54,983 EPOCH 16
+2024-02-01 02:34:15,264 Epoch  16: Total Training Recognition Loss 2133.54  Total Training Translation Loss 6848.76 
+2024-02-01 02:34:15,264 EPOCH 17
+2024-02-01 02:34:24,502 [Epoch: 017 Step: 00001100] Batch Recognition Loss:  11.522730 => Gls Tokens per Sec:      475 || Batch Translation Loss:  63.113121 => Txt Tokens per Sec:     1328 || Lr: 0.000100
+2024-02-01 02:34:35,225 Epoch  17: Total Training Recognition Loss 2131.09  Total Training Translation Loss 6849.78 
+2024-02-01 02:34:35,226 EPOCH 18
+2024-02-01 02:34:52,784 [Epoch: 018 Step: 00001200] Batch Recognition Loss:  30.223463 => Gls Tokens per Sec:      551 || Batch Translation Loss: 106.142792 => Txt Tokens per Sec:     1512 || Lr: 0.000100
+2024-02-01 02:34:54,847 Epoch  18: Total Training Recognition Loss 2131.08  Total Training Translation Loss 6849.99 
+2024-02-01 02:34:54,847 EPOCH 19
+2024-02-01 02:35:14,802 Epoch  19: Total Training Recognition Loss 2131.37  Total Training Translation Loss 6848.12 
+2024-02-01 02:35:14,802 EPOCH 20
+2024-02-01 02:35:22,539 [Epoch: 020 Step: 00001300] Batch Recognition Loss:  27.798607 => Gls Tokens per Sec:      559 || Batch Translation Loss:  93.658478 => Txt Tokens per Sec:     1530 || Lr: 0.000100
+2024-02-01 02:35:34,410 Epoch  20: Total Training Recognition Loss 2128.94  Total Training Translation Loss 6850.36 
+2024-02-01 02:35:34,411 EPOCH 21
+2024-02-01 02:35:52,072 [Epoch: 021 Step: 00001400] Batch Recognition Loss:  27.177954 => Gls Tokens per Sec:      539 || Batch Translation Loss:  91.572105 => Txt Tokens per Sec:     1479 || Lr: 0.000100
+2024-02-01 02:35:54,270 Epoch  21: Total Training Recognition Loss 2131.13  Total Training Translation Loss 6848.04 
+2024-02-01 02:35:54,270 EPOCH 22
+2024-02-01 02:36:14,080 Epoch  22: Total Training Recognition Loss 2128.81  Total Training Translation Loss 6848.68 
+2024-02-01 02:36:14,080 EPOCH 23
+2024-02-01 02:36:21,602 [Epoch: 023 Step: 00001500] Batch Recognition Loss:  34.471214 => Gls Tokens per Sec:      553 || Batch Translation Loss:  91.120743 => Txt Tokens per Sec:     1497 || Lr: 0.000100
+2024-02-01 02:36:34,849 Epoch  23: Total Training Recognition Loss 2130.37  Total Training Translation Loss 6849.36 
+2024-02-01 02:36:34,849 EPOCH 24
+2024-02-01 02:36:51,775 [Epoch: 024 Step: 00001600] Batch Recognition Loss:  37.707623 => Gls Tokens per Sec:      552 || Batch Translation Loss: 125.201157 => Txt Tokens per Sec:     1537 || Lr: 0.000100
+2024-02-01 02:36:54,653 Epoch  24: Total Training Recognition Loss 2132.68  Total Training Translation Loss 6848.99 
+2024-02-01 02:36:54,653 EPOCH 25
+2024-02-01 02:37:14,596 Epoch  25: Total Training Recognition Loss 2126.45  Total Training Translation Loss 6850.14 
+2024-02-01 02:37:14,596 EPOCH 26
+2024-02-01 02:37:21,864 [Epoch: 026 Step: 00001700] Batch Recognition Loss:  40.384666 => Gls Tokens per Sec:      551 || Batch Translation Loss: 135.674866 => Txt Tokens per Sec:     1540 || Lr: 0.000100
+2024-02-01 02:37:34,620 Epoch  26: Total Training Recognition Loss 2131.70  Total Training Translation Loss 6849.09 
+2024-02-01 02:37:34,620 EPOCH 27
+2024-02-01 02:37:59,189 [Epoch: 027 Step: 00001800] Batch Recognition Loss:  38.724518 => Gls Tokens per Sec:      374 || Batch Translation Loss: 127.118820 => Txt Tokens per Sec:     1040 || Lr: 0.000100
+2024-02-01 02:38:02,537 Epoch  27: Total Training Recognition Loss 2129.14  Total Training Translation Loss 6849.30 
+2024-02-01 02:38:02,537 EPOCH 28
+2024-02-01 02:38:28,295 Epoch  28: Total Training Recognition Loss 2133.81  Total Training Translation Loss 6848.13 
+2024-02-01 02:38:28,295 EPOCH 29
+2024-02-01 02:38:35,637 [Epoch: 029 Step: 00001900] Batch Recognition Loss:  11.498765 => Gls Tokens per Sec:      523 || Batch Translation Loss:  63.240395 => Txt Tokens per Sec:     1483 || Lr: 0.000100
+2024-02-01 02:38:49,943 Epoch  29: Total Training Recognition Loss 2129.12  Total Training Translation Loss 6848.20 
+2024-02-01 02:38:49,943 EPOCH 30
+2024-02-01 02:39:07,629 [Epoch: 030 Step: 00002000] Batch Recognition Loss:  16.086716 => Gls Tokens per Sec:      511 || Batch Translation Loss:  73.017288 => Txt Tokens per Sec:     1400 || Lr: 0.000100
+2024-02-01 02:39:33,863 Hooray! New best validation result [eval_metric]!
+2024-02-01 02:39:33,863 Saving new checkpoint.
+2024-02-01 02:39:34,882 Validation result at epoch  30, step     2000: duration: 27.2523s
+	Recognition Beam Size: 1	Translation Beam Size: 1	Translation Beam Alpha: -1
+	Recognition Loss: 682.43323	Translation Loss: 73477.64844	PPL: 1560.73450
+	Eval Metric: BLEU
+	WER 541.17	(DEL: 3.95,	INS: 451.55,	SUB: 85.66)
+	BLEU-4 0.00	(BLEU-1: 0.01,	BLEU-2: 0.00,	BLEU-3: 0.00,	BLEU-4: 0.00)
+	CHRF 3.49	ROUGE 0.02
+2024-02-01 02:39:34,884 Logging Recognition and Translation Outputs
+2024-02-01 02:39:34,885 ========================================================================================================================
+2024-02-01 02:39:34,885 Logging Sequence: 182_115.00
+2024-02-01 02:39:34,885 	Gloss Reference :	A B+C+D+E
+2024-02-01 02:39:34,886 	Gloss Hypothesis:	E C+E+B+E
+2024-02-01 02:39:34,886 	Gloss Alignment :	S S      
+2024-02-01 02:39:34,886 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:39:34,891 	Text Reference  :	*** *** *** *** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** fans   are    unclear whether yuvraj will   be     returning to     play   test   match  odi    or     in     t20    leagues from   february 2022  
+2024-02-01 02:39:34,891 	Text Hypothesis :	<s> <s> <s> <s> chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen chosen  chosen  chosen chosen chosen chosen    chosen chosen chosen chosen chosen chosen chosen chosen chosen  chosen chosen   chosen
+2024-02-01 02:39:34,891 	Text Alignment  :	I   I   I   I   I      I      I      I      I      I      I      I      I      I      I      I      I      I      I      I      S      S      S       S       S      S      S      S         S      S      S      S      S      S      S      S      S       S      S        S     
+2024-02-01 02:39:34,892 ========================================================================================================================
+2024-02-01 02:39:34,892 Logging Sequence: 140_120.00
+2024-02-01 02:39:34,892 	Gloss Reference :	A B+C+D+E
+2024-02-01 02:39:34,892 	Gloss Hypothesis:	* E+C+E  
+2024-02-01 02:39:34,893 	Gloss Alignment :	D S      
+2024-02-01 02:39:34,893 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:39:34,898 	Text Reference  :	*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** but why so  it  is  because pant is  a   talented player and it  will help encouraging the youth of  uttarakhand toward sports
+2024-02-01 02:39:34,898 	Text Hypothesis :	<s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s>     <s>  <s> <s> <s>      <s>    <s> <s> <s>  <s>  <s>         <s> <s>   <s> <s>         <s>    <s>   
+2024-02-01 02:39:34,898 	Text Alignment  :	I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   S   S   S   S   S   S       S    S   S   S        S      S   S   S    S    S           S   S     S   S           S      S     
+2024-02-01 02:39:34,899 ========================================================================================================================
+2024-02-01 02:39:34,899 Logging Sequence: 85_36.00
+2024-02-01 02:39:34,899 	Gloss Reference :	***** * ***** ***** A ***** * ***** * ***** ******* ***** ********* ***** * ***** * ***** B+C+D+E
+2024-02-01 02:39:34,900 	Gloss Hypothesis:	<unk> E <pad> <unk> A <unk> C <unk> E <unk> E+B+E+C <pad> C+E+C+E+C <unk> C <unk> E <unk> E      
+2024-02-01 02:39:34,900 	Gloss Alignment :	I     I I     I       I     I I     I I     I       I     I         I     I I     I I     S      
+2024-02-01 02:39:34,900 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:39:34,903 	Text Reference  :	*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ******* ******* ******* ******* ******* ******* ******* ******* symonds has     scored  2       centuries in      26      tests   that    he      played  for     his     country
+2024-02-01 02:39:34,903 	Text Hypothesis :	<s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing   nothing nothing nothing nothing nothing nothing nothing nothing nothing
+2024-02-01 02:39:34,903 	Text Alignment  :	I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I       I       I       I       I       I       I       I       S       S       S       S       S         S       S       S       S       S       S       S       S       S      
+2024-02-01 02:39:34,904 ========================================================================================================================
+2024-02-01 02:39:34,904 Logging Sequence: 164_100.00
+2024-02-01 02:39:34,904 	Gloss Reference :	A B+C+D+E                        
+2024-02-01 02:39:34,905 	Gloss Hypothesis:	E D+E+D+E+C+E+D+E+C+E+C+E+C+E+C+E
+2024-02-01 02:39:34,905 	Gloss Alignment :	S S                              
+2024-02-01 02:39:34,905 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:39:34,909 	Text Reference  :	*** *** *** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** the    tv     rights for    broadcasting ipl    matches in     india  for    the    next   5      years  went   to     star   india  for    rs     23575  crore 
+2024-02-01 02:39:34,910 	Text Hypothesis :	<s> <s> <s> boards boards boards boards boards boards boards boards boards boards boards boards boards boards boards boards boards boards boards boards       boards boards  boards boards boards boards boards boards boards boards boards boards boards boards boards boards boards
+2024-02-01 02:39:34,910 	Text Alignment  :	I   I   I   I      I      I      I      I      I      I      I      I      I      I      I      I      I      I      S      S      S      S      S            S      S       S      S      S      S      S      S      S      S      S      S      S      S      S      S      S     
+2024-02-01 02:39:34,910 ========================================================================================================================
+2024-02-01 02:39:34,910 Logging Sequence: 76_79.00
+2024-02-01 02:39:34,910 	Gloss Reference :	***** ********* ***** * ***** * ***** * A     B+C+D+E    
+2024-02-01 02:39:34,911 	Gloss Hypothesis:	<unk> E+A+E+A+E <unk> C <unk> E <unk> E <unk> E+B+C+E+B+E
+2024-02-01 02:39:34,911 	Gloss Alignment :	I     I         I     I I     I I     I S     S          
+2024-02-01 02:39:34,911 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:39:34,913 	Text Reference  :	*** *** *** *** *** *** *** *** *** *** ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* speaking to      ani     csk     ceo     kasi    viswanathan said   
+2024-02-01 02:39:34,913 	Text Hypothesis :	<s> <s> <s> <s> <s> <s> <s> <s> <s> <s> nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing  nothing nothing nothing nothing nothing nothing     nothing
+2024-02-01 02:39:34,913 	Text Alignment  :	I   I   I   I   I   I   I   I   I   I   I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       S        S       S       S       S       S       S           S      
+2024-02-01 02:39:34,913 ========================================================================================================================
+2024-02-01 02:39:38,708 Epoch  30: Total Training Recognition Loss 2129.46  Total Training Translation Loss 6844.87 
+2024-02-01 02:39:38,709 EPOCH 31
+2024-02-01 02:39:58,749 Epoch  31: Total Training Recognition Loss 2127.55  Total Training Translation Loss 6848.19 
+2024-02-01 02:39:58,749 EPOCH 32
+2024-02-01 02:40:06,338 [Epoch: 032 Step: 00002100] Batch Recognition Loss:  17.427315 => Gls Tokens per Sec:      485 || Batch Translation Loss:  64.866699 => Txt Tokens per Sec:     1351 || Lr: 0.000100
+2024-02-01 02:40:18,361 Epoch  32: Total Training Recognition Loss 2128.11  Total Training Translation Loss 6849.07 
+2024-02-01 02:40:18,362 EPOCH 33
+2024-02-01 02:40:35,226 [Epoch: 033 Step: 00002200] Batch Recognition Loss:  32.146473 => Gls Tokens per Sec:      531 || Batch Translation Loss:  98.164368 => Txt Tokens per Sec:     1499 || Lr: 0.000100
+2024-02-01 02:40:38,220 Epoch  33: Total Training Recognition Loss 2132.17  Total Training Translation Loss 6849.16 
+2024-02-01 02:40:38,220 EPOCH 34
+2024-02-01 02:40:58,107 Epoch  34: Total Training Recognition Loss 2131.15  Total Training Translation Loss 6850.28 
+2024-02-01 02:40:58,107 EPOCH 35
+2024-02-01 02:41:05,257 [Epoch: 035 Step: 00002300] Batch Recognition Loss:  38.188992 => Gls Tokens per Sec:      480 || Batch Translation Loss: 116.457024 => Txt Tokens per Sec:     1323 || Lr: 0.000100
+2024-02-01 02:41:17,748 Epoch  35: Total Training Recognition Loss 2125.91  Total Training Translation Loss 6848.05 
+2024-02-01 02:41:17,748 EPOCH 36
+2024-02-01 02:41:32,680 [Epoch: 036 Step: 00002400] Batch Recognition Loss:   7.187506 => Gls Tokens per Sec:      583 || Batch Translation Loss:  55.082977 => Txt Tokens per Sec:     1600 || Lr: 0.000100
+2024-02-01 02:41:37,260 Epoch  36: Total Training Recognition Loss 2128.70  Total Training Translation Loss 6850.08 
+2024-02-01 02:41:37,260 EPOCH 37
+2024-02-01 02:41:56,919 Epoch  37: Total Training Recognition Loss 2132.27  Total Training Translation Loss 6847.44 
+2024-02-01 02:41:56,920 EPOCH 38
+2024-02-01 02:42:03,606 [Epoch: 038 Step: 00002500] Batch Recognition Loss:  22.687489 => Gls Tokens per Sec:      503 || Batch Translation Loss:  95.934181 => Txt Tokens per Sec:     1481 || Lr: 0.000100
+2024-02-01 02:42:16,307 Epoch  38: Total Training Recognition Loss 2128.81  Total Training Translation Loss 6847.91 
+2024-02-01 02:42:16,307 EPOCH 39
+2024-02-01 02:42:32,957 [Epoch: 039 Step: 00002600] Batch Recognition Loss:  27.571419 => Gls Tokens per Sec:      514 || Batch Translation Loss:  89.514420 => Txt Tokens per Sec:     1464 || Lr: 0.000100
+2024-02-01 02:42:35,813 Epoch  39: Total Training Recognition Loss 2129.25  Total Training Translation Loss 6848.14 
+2024-02-01 02:42:35,814 EPOCH 40
+2024-02-01 02:42:55,440 Epoch  40: Total Training Recognition Loss 2133.03  Total Training Translation Loss 6850.75 
+2024-02-01 02:42:55,440 EPOCH 41
+2024-02-01 02:43:00,391 [Epoch: 041 Step: 00002700] Batch Recognition Loss:  37.363930 => Gls Tokens per Sec:      646 || Batch Translation Loss: 121.719398 => Txt Tokens per Sec:     1723 || Lr: 0.000100
+2024-02-01 02:43:15,106 Epoch  41: Total Training Recognition Loss 2130.31  Total Training Translation Loss 6848.98 
+2024-02-01 02:43:15,106 EPOCH 42
+2024-02-01 02:43:30,976 [Epoch: 042 Step: 00002800] Batch Recognition Loss:  37.495644 => Gls Tokens per Sec:      534 || Batch Translation Loss: 109.040085 => Txt Tokens per Sec:     1496 || Lr: 0.000100
+2024-02-01 02:43:35,115 Epoch  42: Total Training Recognition Loss 2126.18  Total Training Translation Loss 6848.85 
+2024-02-01 02:43:35,115 EPOCH 43
+2024-02-01 02:43:55,694 Epoch  43: Total Training Recognition Loss 2130.97  Total Training Translation Loss 6849.11 
+2024-02-01 02:43:55,694 EPOCH 44
+2024-02-01 02:44:01,643 [Epoch: 044 Step: 00002900] Batch Recognition Loss:  12.646985 => Gls Tokens per Sec:      496 || Batch Translation Loss:  65.481110 => Txt Tokens per Sec:     1373 || Lr: 0.000100
+2024-02-01 02:44:16,257 Epoch  44: Total Training Recognition Loss 2128.25  Total Training Translation Loss 6848.28 
+2024-02-01 02:44:16,258 EPOCH 45
+2024-02-01 02:44:31,188 [Epoch: 045 Step: 00003000] Batch Recognition Loss:  34.644142 => Gls Tokens per Sec:      551 || Batch Translation Loss: 113.008034 => Txt Tokens per Sec:     1492 || Lr: 0.000100
+2024-02-01 02:44:36,341 Epoch  45: Total Training Recognition Loss 2127.52  Total Training Translation Loss 6848.85 
+2024-02-01 02:44:36,341 EPOCH 46
+2024-02-01 02:44:56,250 Epoch  46: Total Training Recognition Loss 2127.06  Total Training Translation Loss 6847.37 
+2024-02-01 02:44:56,250 EPOCH 47
+2024-02-01 02:45:00,040 [Epoch: 047 Step: 00003100] Batch Recognition Loss:  30.234844 => Gls Tokens per Sec:      760 || Batch Translation Loss:  92.337021 => Txt Tokens per Sec:     1859 || Lr: 0.000100
+2024-02-01 02:45:16,525 Epoch  47: Total Training Recognition Loss 2127.58  Total Training Translation Loss 6849.66 
+2024-02-01 02:45:16,525 EPOCH 48
+2024-02-01 02:45:31,612 [Epoch: 048 Step: 00003200] Batch Recognition Loss:  34.140884 => Gls Tokens per Sec:      541 || Batch Translation Loss:  97.483795 => Txt Tokens per Sec:     1485 || Lr: 0.000100
+2024-02-01 02:45:36,755 Epoch  48: Total Training Recognition Loss 2127.18  Total Training Translation Loss 6848.05 
+2024-02-01 02:45:36,755 EPOCH 49
+2024-02-01 02:45:56,881 Epoch  49: Total Training Recognition Loss 2125.17  Total Training Translation Loss 6848.31 
+2024-02-01 02:45:56,881 EPOCH 50
+2024-02-01 02:46:01,679 [Epoch: 050 Step: 00003300] Batch Recognition Loss:  38.179920 => Gls Tokens per Sec:      567 || Batch Translation Loss: 126.818474 => Txt Tokens per Sec:     1576 || Lr: 0.000100
+2024-02-01 02:46:17,149 Epoch  50: Total Training Recognition Loss 2133.84  Total Training Translation Loss 6848.41 
+2024-02-01 02:46:17,149 EPOCH 51
+2024-02-01 02:46:32,424 [Epoch: 051 Step: 00003400] Batch Recognition Loss:  33.309292 => Gls Tokens per Sec:      518 || Batch Translation Loss: 113.201324 => Txt Tokens per Sec:     1464 || Lr: 0.000100
+2024-02-01 02:46:37,199 Epoch  51: Total Training Recognition Loss 2128.38  Total Training Translation Loss 6849.94 
+2024-02-01 02:46:37,199 EPOCH 52
+2024-02-01 02:46:56,994 Epoch  52: Total Training Recognition Loss 2130.14  Total Training Translation Loss 6849.39 
+2024-02-01 02:46:56,994 EPOCH 53
+2024-02-01 02:47:01,893 [Epoch: 053 Step: 00003500] Batch Recognition Loss:  32.288673 => Gls Tokens per Sec:      523 || Batch Translation Loss:  94.742241 => Txt Tokens per Sec:     1496 || Lr: 0.000100
+2024-02-01 02:47:16,705 Epoch  53: Total Training Recognition Loss 2130.44  Total Training Translation Loss 6849.48 
+2024-02-01 02:47:16,705 EPOCH 54
+2024-02-01 02:47:30,936 [Epoch: 054 Step: 00003600] Batch Recognition Loss:  33.518063 => Gls Tokens per Sec:      551 || Batch Translation Loss: 103.517609 => Txt Tokens per Sec:     1510 || Lr: 0.000100
+2024-02-01 02:47:36,694 Epoch  54: Total Training Recognition Loss 2129.87  Total Training Translation Loss 6849.52 
+2024-02-01 02:47:36,694 EPOCH 55
+2024-02-01 02:47:56,657 Epoch  55: Total Training Recognition Loss 2130.16  Total Training Translation Loss 6848.34 
+2024-02-01 02:47:56,657 EPOCH 56
+2024-02-01 02:48:02,553 [Epoch: 056 Step: 00003700] Batch Recognition Loss:  28.124598 => Gls Tokens per Sec:      392 || Batch Translation Loss:  86.186401 => Txt Tokens per Sec:     1166 || Lr: 0.000100
+2024-02-01 02:48:16,621 Epoch  56: Total Training Recognition Loss 2129.90  Total Training Translation Loss 6849.92 
+2024-02-01 02:48:16,621 EPOCH 57
+2024-02-01 02:48:33,784 [Epoch: 057 Step: 00003800] Batch Recognition Loss:  37.407879 => Gls Tokens per Sec:      448 || Batch Translation Loss: 129.541046 => Txt Tokens per Sec:     1243 || Lr: 0.000100
+2024-02-01 02:48:39,836 Epoch  57: Total Training Recognition Loss 2134.44  Total Training Translation Loss 6849.04 
+2024-02-01 02:48:39,836 EPOCH 58
+2024-02-01 02:49:00,190 Epoch  58: Total Training Recognition Loss 2134.84  Total Training Translation Loss 6850.48 
+2024-02-01 02:49:00,190 EPOCH 59
+2024-02-01 02:49:04,306 [Epoch: 059 Step: 00003900] Batch Recognition Loss:  36.015026 => Gls Tokens per Sec:      545 || Batch Translation Loss: 132.952698 => Txt Tokens per Sec:     1494 || Lr: 0.000100
+2024-02-01 02:49:20,524 Epoch  59: Total Training Recognition Loss 2126.57  Total Training Translation Loss 6848.24 
+2024-02-01 02:49:20,524 EPOCH 60
+2024-02-01 02:49:34,379 [Epoch: 060 Step: 00004000] Batch Recognition Loss:  28.043056 => Gls Tokens per Sec:      536 || Batch Translation Loss: 111.977188 => Txt Tokens per Sec:     1486 || Lr: 0.000100
+2024-02-01 02:50:00,769 Validation result at epoch  60, step     4000: duration: 26.3902s
+	Recognition Beam Size: 1	Translation Beam Size: 1	Translation Beam Alpha: -1
+	Recognition Loss: 686.47473	Translation Loss: 73452.52344	PPL: 1556.81482
+	Eval Metric: BLEU
+	WER 545.90	(DEL: 3.81,	INS: 456.43,	SUB: 85.66)
+	BLEU-4 0.00	(BLEU-1: 0.01,	BLEU-2: 0.00,	BLEU-3: 0.00,	BLEU-4: 0.00)
+	CHRF 3.52	ROUGE 0.02
+2024-02-01 02:50:00,771 Logging Recognition and Translation Outputs
+2024-02-01 02:50:00,771 ========================================================================================================================
+2024-02-01 02:50:00,771 Logging Sequence: 133_173.00
+2024-02-01 02:50:00,771 	Gloss Reference :	A B+C+D+E
+2024-02-01 02:50:00,771 	Gloss Hypothesis:	* E      
+2024-02-01 02:50:00,771 	Gloss Alignment :	D S      
+2024-02-01 02:50:00,772 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:50:00,775 	Text Reference  :	*** *** *** *** ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* according to      sources the     leaders of      the     two     countries are     set     to      join    the     commentary panel   as      well   
+2024-02-01 02:50:00,775 	Text Hypothesis :	<s> <s> <s> <s> ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini   ashwini ashwini ashwini ashwini ashwini ashwini ashwini ashwini   ashwini ashwini ashwini ashwini ashwini ashwini    ashwini ashwini ashwini
+2024-02-01 02:50:00,776 	Text Alignment  :	I   I   I   I   I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       I       S         S       S       S       S       S       S       S       S         S       S       S       S       S       S          S       S       S      
+2024-02-01 02:50:00,776 ========================================================================================================================
+2024-02-01 02:50:00,776 Logging Sequence: 83_33.00
+2024-02-01 02:50:00,776 	Gloss Reference :	***** * ***** * ***** * ***** ************* ***** ********************* ***** ***** * ***** ***** * ***** ***** A     B+C+D+E                      
+2024-02-01 02:50:00,776 	Gloss Hypothesis:	<pad> B <pad> B <unk> C <unk> C+D+E+B+E+C+B <unk> C+B+C+E+C+E+D+C+E+B+E <pad> <unk> E <pad> <unk> C <unk> <pad> <unk> E+C+E+C+E+B+E+C+E+C+E+C+E+C+E
+2024-02-01 02:50:00,777 	Gloss Alignment :	I     I I     I I     I I     I             I     I                     I     I     I I     I     I I     I     S     S                            
+2024-02-01 02:50:00,777 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:50:00,780 	Text Reference  :	*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** a   football match lasts for two equal halves of  45  minutes
+2024-02-01 02:50:00,780 	Text Hypothesis :	<s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s>      <s>   <s>   <s> <s> <s>   <s>    <s> <s> <s>    
+2024-02-01 02:50:00,780 	Text Alignment  :	I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   S   S        S     S     S   S   S     S      S   S   S      
+2024-02-01 02:50:00,780 ========================================================================================================================
+2024-02-01 02:50:00,780 Logging Sequence: 68_147.00
+2024-02-01 02:50:00,781 	Gloss Reference :	***** * ***** ******* ***** ******* ***** ************* ***** * ***** * ***** ***** ********* ***** ************* ***** * A     B+C+D+E
+2024-02-01 02:50:00,781 	Gloss Hypothesis:	<unk> C <pad> C+E+D+C <unk> C+E+B+E <unk> B+E+C+E+C+E+D <unk> E <unk> E <unk> <pad> B+C+E+C+B <unk> E+C+E+C+E+C+E <unk> E <unk> E      
+2024-02-01 02:50:00,781 	Gloss Alignment :	I     I I     I       I     I       I     I             I     I I     I I     I     I         I     I             I     I S     S      
+2024-02-01 02:50:00,781 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:50:00,784 	Text Reference  :	*** *** *** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** remember the   2007  t20   world cup   amid  a     lot   of    sledging by    english players
+2024-02-01 02:50:00,784 	Text Hypothesis :	<s> <s> <s> sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha    sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha    sabha sabha   sabha  
+2024-02-01 02:50:00,784 	Text Alignment  :	I   I   I   I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     S        S     S     S     S     S     S     S     S     S     S        S     S       S      
+2024-02-01 02:50:00,784 ========================================================================================================================
+2024-02-01 02:50:00,784 Logging Sequence: 165_8.00
+2024-02-01 02:50:00,785 	Gloss Reference :	A     B+C+D+E
+2024-02-01 02:50:00,785 	Gloss Hypothesis:	<unk> E      
+2024-02-01 02:50:00,785 	Gloss Alignment :	S     S      
+2024-02-01 02:50:00,785 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:50:00,787 	Text Reference  :	*** *** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** however many  don't believe in    it    it    varies among people
+2024-02-01 02:50:00,787 	Text Hypothesis :	<s> <s> sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha sabha   sabha sabha sabha   sabha sabha sabha sabha  sabha sabha 
+2024-02-01 02:50:00,787 	Text Alignment  :	I   I   I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     I     S       S     S     S       S     S     S     S      S     S     
+2024-02-01 02:50:00,788 ========================================================================================================================
+2024-02-01 02:50:00,788 Logging Sequence: 119_71.00
+2024-02-01 02:50:00,788 	Gloss Reference :	* ***** * ***** * A     B+C+D+E
+2024-02-01 02:50:00,788 	Gloss Hypothesis:	B <pad> B <pad> B <pad> B+E+B  
+2024-02-01 02:50:00,788 	Gloss Alignment :	I I     I I     I S     S      
+2024-02-01 02:50:00,788 	--------------------------------------------------------------------------------------------------------------------
+2024-02-01 02:50:00,792 	Text Reference  :	*** *** *** *** *** *** *** *** *** *** *** *** *** ************* ************* ************* ************* ************* ************* ************* ************* ************* ************* ************* ************* the           special       gold          devices       have          each          player'       names         and           jersey        numbers       next          to            the           camera       
+2024-02-01 02:50:00,792 	Text Hypothesis :	<s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> <s> contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions contributions
+2024-02-01 02:50:00,792 	Text Alignment  :	I   I   I   I   I   I   I   I   I   I   I   I   I   I             I             I             I             I             I             I             I             I             I             I             I             S             S             S             S             S             S             S             S             S             S             S             S             S             S             S            
+2024-02-01 02:50:00,792 ========================================================================================================================
+2024-02-01 02:50:08,374 Epoch  60: Total Training Recognition Loss 2127.48  Total Training Translation Loss 6849.05 
+2024-02-01 02:50:08,375 EPOCH 61
+2024-02-01 02:50:29,728 Epoch  61: Total Training Recognition Loss 2131.97  Total Training Translation Loss 6849.56 
+2024-02-01 02:50:29,728 EPOCH 62
+2024-02-01 02:50:33,452 [Epoch: 062 Step: 00004100] Batch Recognition Loss:  40.607109 => Gls Tokens per Sec:      559 || Batch Translation Loss: 118.281021 => Txt Tokens per Sec:     1527 || Lr: 0.000100
+2024-02-01 02:50:49,756 Epoch  62: Total Training Recognition Loss 2129.12  Total Training Translation Loss 6849.51 
+2024-02-01 02:50:49,757 EPOCH 63
+2024-02-01 02:51:02,225 [Epoch: 063 Step: 00004200] Batch Recognition Loss:  23.633804 => Gls Tokens per Sec:      590 || Batch Translation Loss:  83.054176 => Txt Tokens per Sec:     1613 || Lr: 0.000100
+2024-02-01 02:51:09,645 Epoch  63: Total Training Recognition Loss 2128.50  Total Training Translation Loss 6849.93 
+2024-02-01 02:51:09,646 EPOCH 64
+2024-02-01 02:51:29,985 Epoch  64: Total Training Recognition Loss 2129.41  Total Training Translation Loss 6849.30 
+2024-02-01 02:51:29,986 EPOCH 65
+2024-02-01 02:51:32,752 [Epoch: 065 Step: 00004300] Batch Recognition Loss:  16.501938 => Gls Tokens per Sec:      694 || Batch Translation Loss:  70.437454 => Txt Tokens per Sec:     1725 || Lr: 0.000100
+2024-02-01 02:51:50,148 Epoch  65: Total Training Recognition Loss 2129.99  Total Training Translation Loss 6850.22 
+2024-02-01 02:51:50,148 EPOCH 66
+2024-02-01 02:52:04,583 [Epoch: 066 Step: 00004400] Batch Recognition Loss:  30.956535 => Gls Tokens per Sec:      493 || Batch Translation Loss: 109.234352 => Txt Tokens per Sec:     1402 || Lr: 0.000100
