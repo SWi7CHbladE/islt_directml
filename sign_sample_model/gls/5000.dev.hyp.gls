@@ -1,0 +1,708 @@
+100_50.00|A C+A+C
+100_52.00|D C+D+C
+100_106.00|C+B+C
+100_119.00|C B+C+B
+100_169.00|C+B+C
+100_178.00|B C+B+C+B
+101_39.00|<unk> <pad> <unk> A <pad> <unk> <pad> <unk>
+101_47.00|<unk> B <unk> <pad> <unk>
+101_114.00|<unk> A <unk> A <unk> A <unk> A <unk> A <unk> A <unk> <pad> <unk> A <unk>
+101_120.00|<unk> <pad> <unk> A <pad> <unk> <pad>
+101_202.00|<unk> A <unk> <pad> <unk>
+101_214.00|<unk> <pad> <unk> <pad> <unk>
+102_48.00|A C+A <unk> A+C+B+A+B <unk> C <unk> C <unk> C <unk> C+B <pad> A <unk>
+102_56.00|B <unk> B <unk> B <pad> B <unk> B <unk> B <pad> B+C+B <unk>
+102_160.00|C B+C <pad>
+102_169.00|C B+C+B+C+B+C <pad> B <unk> <pad> C
+103_33.00|<unk>
+103_37.00|<unk> C <unk>
+103_101.00|C
+103_107.00|C <unk> C+B
+103_172.00|C
+103_182.00|<unk> C <unk> C
+103_257.00|<unk> <pad> <unk>
+103_261.00|<unk> C <unk> C <unk> <pad> <unk>
+104_44.00|<unk> <pad> <unk> <pad> <unk>
+104_55.00|<unk> C <unk>
+104_115.00|<unk> A <unk>
+104_119.00|<unk> C <unk>
+105_42.00|C <pad> C <pad>
+105_53.00|C B+C+B <pad> C <pad> C+B+C <pad>
+105_131.00|C B+C+B+C
+105_136.00|C A+C+B+C <pad>
+105_190.00|A <pad> A <pad> A+B
+105_193.00|C <pad> C <pad> C <pad>
+106_70.00|A <unk> C <unk>
+106_75.00|<unk> A <unk>
+106_160.00|<unk>
+106_169.00|<unk>
+107_14.00|B <unk> C+B
+107_17.00|C+B+C
+107_80.00|C <unk> C
+107_89.00|B C+B+C
+107_144.00|C
+108_2.00|<unk>
+108_126.00|<unk> <pad> <unk>
+108_138.00|<unk>
+108_213.00|B
+108_218.00|B <unk> B <pad> B
+109_21.00|C <unk> C <unk> C <unk> B <pad> B+C
+109_26.00|C
+109_94.00|<unk>
+109_101.00|C
+109_167.00|C
+110_2.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+110_65.00|<unk> C <unk> <pad> <unk> <pad> <unk> <pad> <unk> C <pad> <unk> B <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> B
+110_78.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk>
+111_1.00|<unk> B+A <unk> A <unk> A+B <unk> A <unk> <pad> B
+111_8.00|C+D <unk> C+A <unk> A <unk> A <pad> <unk> A <unk> D <unk> A <unk> D
+111_78.00|A <unk> A <unk> A
+111_83.00|C <unk> C+A <unk> A <unk> D
+111_146.00|A <unk> A <unk> A <unk>
+111_150.00|A <unk> A <unk> A <unk> A <unk> A <unk>
+112_62.00|C <pad> <unk> <pad> <unk> <pad> <unk>
+112_69.00|<unk> C <unk> <pad> B <pad> B <pad> <unk> <pad>
+112_177.00|<unk> <pad> B <pad> B <pad> <unk> <pad>
+112_184.00|<unk> C <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad>
+113_85.00|<unk>
+113_94.00|<unk> C <unk> C <unk> C <unk> C <unk> <pad> <unk> C <unk>
+114_2.00|
+114_15.00|C <pad>
+114_72.00|C <pad>
+114_82.00|C
+114_135.00|C
+114_138.00|C
+115_6.00|C <pad> <unk>
+115_17.00|A
+115_65.00|
+115_71.00|A <unk> A
+115_112.00|<unk>
+116_2.00|C <unk> C <unk> B <unk> <pad> C+B <unk> A <unk> B <unk> B <unk>
+116_84.00|<unk> A <unk> B <pad> <unk>
+116_92.00|A <unk> A <unk> A <unk> A <unk> A <unk> A <unk> A <unk> A <unk>
+116_162.00|<unk> A <pad> <unk> <pad> A <unk> A <unk> <pad> <unk> <pad> <unk> A <unk> A
+116_175.00|A <unk> A <unk> A <unk> A <unk> B <unk> <pad>
+117_50.00|<pad> <unk> <pad> <unk> <pad> <unk> <pad> A <pad> <unk> <pad> <unk> <pad> A <unk> <pad> A <unk> <pad> <unk>
+117_61.00|<unk> <pad> <unk> <pad> <unk>
+117_153.00|A <unk> B <unk> <pad> B <unk> <pad> <unk> <pad>
+117_160.00|B <pad> <unk> <pad> <unk> B <pad> <unk> <pad> <unk>
+118_42.00|C <unk> C
+118_46.00|<unk>
+118_130.00|C <unk>
+118_144.00|<unk> C <unk>
+118_223.00|<unk>
+118_232.00|<unk> <pad>
+118_304.00|C <unk>
+118_314.00|<unk> D <unk> C
+118_402.00|<unk> C <unk>
+118_416.00|C <unk>
+119_43.00|A <pad>
+119_52.00|
+119_114.00|<unk> A
+119_122.00|<pad> C+E <unk>
+120_2.00|C <pad> C <pad>
+120_7.00|<pad>
+120_61.00|B <pad> B
+120_66.00|C <pad>
+120_139.00|C
+120_145.00|C
+121_32.00|C
+121_42.00|C A
+121_154.00|C
+121_164.00|B C+B+C
+121_231.00|C D+C+D
+122_2.00|
+122_73.00|C
+122_81.00|<unk> B
+122_135.00|B
+122_137.00|<unk>
+122_190.00|C
+122_199.00|<unk> C
+123_24.00|<pad> <unk> <pad>
+123_31.00|<unk> C <pad> <unk> <pad> <unk> <pad>
+123_104.00|C
+123_110.00|C <unk> C <pad>
+124_35.00|<unk>
+124_48.00|<unk> A <unk> B <unk>
+124_156.00|<unk> <pad> <unk> <pad> <unk> B <unk> C
+124_172.00|<unk> B <unk> B <unk> <pad> <unk>
+125_82.00|B <pad> B <pad> B <pad> B <pad> B
+125_87.00|C <pad> B <unk> C+A <pad> <unk> <pad> <unk>
+125_172.00|B <unk> B <unk> <pad> B <pad> B <pad> B <pad> B <pad> B <pad>
+125_179.00|A+B <unk> B+A <pad> <unk> <pad> <unk> <pad> B <unk> B <pad> B
+126_16.00|A
+126_24.00|
+126_99.00|B
+126_103.00|A <unk> A
+126_163.00|
+126_171.00|C
+126_224.00|
+126_231.00|C
+127_2.00|C+B <unk> C <unk> B <unk> <pad> B <unk> <pad> B <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+127_15.00|C <unk> C <pad> C+B <unk> B <pad>
+127_127.00|C <unk> C+B+C+B+C <pad> C+B+C <unk> <pad> <unk> <pad> D+E <pad> <unk> B
+127_140.00|C <unk> A+C+B+C <pad> E <unk> E+B+C <pad> <unk> C+B <unk> B <unk> <pad> <unk> <pad> B+E <pad> <unk> <pad> <unk> D <unk> B
+128_8.00|B <unk> B <unk> C+B+C+B+D+B
+128_11.00|B
+128_66.00|B
+128_70.00|B+C+B
+128_145.00|D <unk> C+B
+128_148.00|C <pad> <unk> <pad> D+C+D <pad>
+128_230.00|C <unk> C <unk>
+129_2.00|C
+129_73.00|C
+129_84.00|C <unk> C+B
+129_155.00|C
+129_182.00|<unk>
+130_75.00|<unk> C
+130_79.00|C
+130_152.00|
+130_165.00|
+131_53.00|C <pad> <unk> <pad> C
+131_62.00|A <unk> C+A <unk> A <pad> B
+131_140.00|C <pad> C <pad>
+131_159.00|C <pad> C
+132_62.00|C A+C+A <unk> C+A <pad> <unk> A <pad> A <pad> C <pad> A <pad> <unk> A
+132_69.00|C <pad> <unk> <pad> C <pad>
+132_141.00|C <unk> C <unk> C <pad> <unk> C <pad> C <unk> <pad> <unk> D <pad>
+132_153.00|A <pad> A <pad> A <pad> A <pad>
+133_59.00|<unk> <pad> <unk> <pad> <unk>
+133_70.00|<unk> A+B <unk>
+133_145.00|C <unk> A <pad> <unk> <pad> <unk>
+133_157.00|C <unk> <pad> <unk>
+134_16.00|
+134_32.00|
+134_102.00|<pad> <unk> C <unk> B <unk> B <pad>
+134_107.00|<unk>
+134_196.00|<unk>
+134_203.00|<unk> <pad> <unk>
+135_9.00|
+135_17.00|C
+135_86.00|
+135_92.00|C
+136_10.00|<unk> <pad>
+136_18.00|<unk> <pad> <unk> <pad>
+136_87.00|A <pad> <unk> <pad> A <pad> <unk> <pad> B
+136_91.00|<unk> <pad> B <pad> <unk> <pad> <unk> <pad>
+136_175.00|<unk> B <unk> <pad> <unk> B <unk> <pad> <unk> B <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> B <unk> B <unk> B <unk> B <unk> B <unk> B <unk> B <unk> <pad> <unk> <pad> B <pad> <unk> B <unk> B <unk> B <unk>
+136_202.00|<unk> <pad> <unk> <pad> <unk> <pad>
+137_51.00|<unk> C+B <unk> B
+137_66.00|<unk> B <unk> B <unk>
+137_136.00|C <unk>
+137_155.00|<unk> C <unk> <pad> <unk>
+137_286.00|<unk> C <pad> C <unk> C <pad> C <pad> <unk> D <unk> <pad> <unk> <pad> <unk> <pad> D+C <unk> C <pad> <unk>
+137_307.00|<unk> B <unk> B <unk>
+138_90.00|C B+C <pad> B+C
+138_95.00|C <pad> <unk> C <pad>
+138_211.00|C B+C+B+C+B
+138_217.00|C B+C+B+C+B+C+B+C+B
+138_289.00|C B+C+B+C <unk> C+D
+138_298.00|C <unk> C <pad> C
+139_97.00|C <unk> C
+139_114.00|<unk> C <unk>
+139_215.00|<unk> B <unk>
+139_221.00|<unk> C <unk> C <unk>
+140_55.00|A <unk> <pad> <unk> <pad> <unk>
+140_71.00|<unk> A <unk> A <unk> <pad> A <unk>
+140_145.00|<unk> C <unk> <pad> <unk>
+140_159.00|<unk> A+B <unk> <pad> <unk>
+141_68.00|<unk>
+141_72.00|C
+141_128.00|
+141_135.00|<unk>
+142_32.00|C B+C <unk> C <unk> C <pad> C <pad> C <pad> C <pad>
+142_38.00|C B+C <pad> B <pad> C+B+C
+142_116.00|C B+C <unk> C <pad> C <pad> C <pad>
+142_123.00|B+C <unk> C <unk> B+C <unk> C <pad> C
+142_192.00|<unk> C+B+C <unk> B+C+B
+142_199.00|C <unk> C <unk> C <unk> C <unk> C
+143_59.00|A C+A <pad> A <pad> C+A+C+A <unk> A <pad> <unk> <pad>
+143_71.00|A+C <unk> A <unk> A
+143_138.00|A <unk> C+A <unk> A <unk>
+143_147.00|A C+A+C+A+C+A <unk> A+C
+144_56.00|C <unk>
+144_74.00|<unk> A <unk>
+144_154.00|<unk>
+144_161.00|<unk> B <pad>
+145_52.00|<unk> B
+145_58.00|<unk> B <unk> B <unk> <pad> <unk> <pad> <unk> <pad> <unk> B <unk> B
+145_139.00|<unk> <pad> <unk> <pad>
+145_149.00|<unk>
+145_207.00|<unk> <pad>
+145_216.00|<unk> <pad>
+146_56.00|C <unk> C+A <pad> C <unk> <pad> C <unk> <pad> <unk> <pad> D <pad> C
+146_69.00|C <unk> C <unk> <pad> C <pad> C <pad>
+147_2.00|<unk> <pad> <unk>
+147_14.00|<unk> <pad> <unk> <pad> <unk>
+147_105.00|<unk> <pad> <unk> <pad>
+147_117.00|<unk> B <unk> B <unk> <pad> B <pad> B
+147_174.00|<unk> <pad> <unk> <pad> <unk>
+147_184.00|<unk> <pad> <unk>
+148_19.00|A <unk> A <unk> A <unk> A <unk> A <unk> A <unk> A <pad> <unk> <pad> <unk> A <pad> A+B <pad>
+148_26.00|<unk> A <unk> <pad> <unk> <pad> <unk> A <unk> <pad> <unk> A <unk> A <unk>
+148_105.00|<unk> <pad> <unk> A <pad> <unk> <pad> <unk> A+B <unk> <pad> <unk> A <pad> <unk> <pad> <unk> <pad> <unk> A <unk> A <pad>
+148_119.00|A <unk> A <unk> A+B+A <unk> B <unk> B <unk> B <unk> B+A <unk>
+148_200.00|C <unk> C <unk> <pad> C+B <unk> <pad> <unk> <pad> <unk> A <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+148_212.00|A <unk> B <unk> <pad> B <pad> <unk> <pad> B <unk> <pad> B <pad>
+149_10.00|C <unk> C <unk> B <pad> E <pad> <unk> <pad> E <pad> E
+149_14.00|<unk> C <unk> A <unk> B <unk> <pad> B+E <pad> A <unk> <pad> <unk>
+149_87.00|C <unk> C <unk> C <unk> C <pad> <unk>
+149_96.00|A <unk> C+A <unk> A <pad>
+149_178.00|C <unk> C <unk> C <pad> <unk> <pad> <unk>
+149_188.00|<unk> C <unk> C+A <unk> <pad> <unk> <pad> C <pad> C+A <pad>
+150_20.00|<unk>
+150_28.00|<unk>
+150_87.00|<unk> A <unk>
+150_98.00|A <unk> A <unk> A <unk> B <unk>
+150_174.00|<unk> B <unk> <pad> <unk>
+150_185.00|<unk> B <unk>
+151_75.00|C
+151_94.00|C
+151_180.00|A
+152_2.00|C A+C <unk> <pad> <unk> B <pad> <unk> <pad>
+152_73.00|C <pad> C <pad> <unk> <pad>
+152_85.00|B <unk> B+A+B+A+B
+152_176.00|C+B <pad> C <pad> C+B <pad> <unk> <pad>
+153_2.00|<unk> B <unk> <pad> <unk> <pad>
+153_60.00|<unk> <pad> <unk> <pad> <unk>
+153_67.00|<unk> <pad>
+153_152.00|<unk> <pad> B <pad> <unk> <pad> B+A
+153_158.00|<unk> B <unk> <pad> <unk> B <unk> B
+153_259.00|<unk> C <unk> B+A <pad> <unk>
+153_263.00|C <unk> C <pad> C <pad> <unk> <pad> <unk>
+154_40.00|C <pad> C
+154_51.00|C B+C+B <pad> C+D <pad> B+C
+154_138.00|C B+C+B
+154_146.00|D+C <pad> B
+155_62.00|A <unk> C <unk>
+155_69.00|<unk> C <pad> <unk> <pad> <unk> <pad> <unk> <pad>
+155_164.00|<unk> C <unk> <pad> <unk> <pad> <unk> <pad>
+155_170.00|<unk> C <unk> <pad> <unk> C <pad> C <unk>
+156_70.00|<unk> A <unk> A <pad> A <unk> <pad> <unk> <pad> <unk> B <pad> <unk> <pad>
+156_76.00|<unk> A <unk> <pad> <unk> A <unk> <pad> A <pad> <unk> <pad> <unk> <pad> <unk> B <pad>
+156_166.00|B <unk> B <pad> B <pad> B <pad>
+156_173.00|C <pad> <unk> <pad> B+C <pad> C <pad> C <unk> <pad> <unk> A <unk> D <unk> B
+156_272.00|<unk> B <unk> B <unk>
+156_288.00|<unk> A <unk> <pad> <unk> B <unk> <pad> <unk>
+157_61.00|<unk>
+157_72.00|<unk>
+157_173.00|<unk> B <unk>
+157_178.00|C <unk>
+158_26.00|<unk> B <unk> B
+158_33.00|<unk> B <unk> B <unk> B <unk> B <unk>
+158_104.00|<unk> B <unk> B <unk> B <unk>
+158_112.00|C <pad> <unk> B
+158_191.00|<unk> B <unk>
+158_200.00|<unk> C <unk> B <unk>
+158_270.00|<unk> C+B+C+B+A+B+A+B
+158_276.00|<unk> B <unk>
+159_39.00|<unk> B <unk> B <unk> B <unk> B
+159_46.00|<unk> B <unk> <pad> <unk> B <pad> <unk>
+159_139.00|<unk> B <unk>
+159_147.00|<unk>
+160_62.00|C <unk>
+160_73.00|C <unk> C <unk> <pad> <unk>
+160_169.00|<unk>
+161_2.00|C <unk> <pad> C <pad> <unk> <pad> <unk>
+161_80.00|<pad> <unk> C <pad> C <unk> <pad> <unk> <pad> <unk> <pad>
+161_88.00|C <pad> C <pad>
+161_178.00|C <pad> C <pad> C <pad> <unk> <pad>
+161_188.00|C <unk> C <pad> C <pad> C <pad> C <pad> <unk> <pad> D
+162_46.00|<unk>
+162_55.00|<unk> B <pad> <unk> <pad> <unk>
+162_176.00|<pad> <unk>
+162_189.00|<unk>
+163_75.00|C
+163_84.00|C <pad> C
+164_2.00|C <unk> C <unk> C <unk>
+164_14.00|C <unk> C <unk> C <unk> <pad>
+164_100.00|<unk> C <unk> A <unk> C <unk> C <unk> C <unk> C <unk>
+164_128.00|<unk> C <unk> C <unk> C <unk> B+C+B+C <unk> C <unk> C <unk> C+B <unk> C+B+C <unk> C <unk> B <unk>
+164_218.00|C <unk> C <unk> C
+164_232.00|<unk> <pad> <unk> <pad> <unk>
+164_310.00|<unk> C <unk> C <unk> C <pad> <unk>
+164_319.00|C <unk> C <unk> C <unk> C <unk> C <unk> C <unk> C <unk> C <unk>
+164_394.00|C <unk> C <unk> C <unk> C
+164_401.00|C <unk> C+B+C
+164_494.00|C <unk> C <unk> C <unk> <pad> <unk> <pad> <unk> C
+164_508.00|C
+165_8.00|A <unk> C <unk> <pad> <unk> <pad>
+165_12.00|C <unk> D
+165_108.00|<unk> C <unk> C <unk> <pad> <unk> <pad> <unk> <pad> D
+165_124.00|<unk> A <unk> <pad> <unk>
+165_206.00|<unk> <pad> C <unk> <pad>
+165_213.00|<unk> B
+165_303.00|C <unk> C <unk>
+165_315.00|<unk> C <unk> <pad> A <pad> <unk> <pad> <unk>
+165_406.00|<unk> <pad> <unk> B <unk> <pad> <unk> <pad> <unk> <pad> <unk> B
+165_411.00|<unk> <pad> <unk> <pad>
+165_476.00|<unk> C <unk> C <pad> <unk> <pad>
+165_493.00|<unk> <pad>
+165_577.00|<unk> B <unk> B <unk> <pad> <unk>
+165_584.00|<pad> <unk> C <unk> <pad> <unk> C <pad> <unk> D <pad> <unk> D <unk> <pad>
+166_15.00|<unk> <pad> <unk>
+166_20.00|<unk> A <unk>
+166_61.00|<unk>
+166_63.00|<unk> A <unk>
+166_135.00|<unk>
+166_146.00|<unk>
+166_223.00|<unk>
+166_233.00|<unk> B <unk> B <unk> B <unk> B <unk> <pad> B <unk> <pad> B
+166_323.00|<unk> A <unk> A <unk>
+166_330.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk> B <unk> B <pad> <unk> B <unk> B <unk>
+167_60.00|B <unk> B
+167_67.00|<unk> <pad> <unk>
+167_112.00|C <unk> B <pad> B <unk> <pad> <unk> <pad> B
+167_116.00|<unk> B <unk> B+A+B <unk>
+168_11.00|A <unk> A <unk> <pad> <unk> <pad> <unk> A <unk> <pad> <unk> A <unk>
+168_15.00|A <unk> A <pad> A
+168_87.00|B <unk> B <unk> B <unk> B
+168_93.00|B <pad> <unk> <pad>
+168_160.00|C <pad> <unk> C <unk> <pad> C+D
+168_178.00|A B+C+B
+169_80.00|C <unk>
+169_95.00|B <unk> B <unk> B
+169_205.00|<unk> C <pad> <unk>
+169_214.00|C <pad> <unk>
+169_309.00|<unk>
+170_2.00|C
+170_76.00|A <unk> A <unk> A <unk> A <unk> A <pad> <unk> <pad> A <unk> A <unk>
+170_82.00|<unk> A <unk> A
+170_150.00|A <unk> A
+170_155.00|A <pad> A <unk> A <unk> <pad> <unk> <pad>
+170_203.00|A <unk> A <unk> <pad> <unk>
+170_213.00|A <unk> <pad> A <pad> <unk> A
+171_50.00|<unk> A
+171_52.00|<unk>
+171_125.00|A <unk> B <unk>
+171_128.00|<unk>
+172_33.00|C <unk> C <unk> <pad>
+172_39.00|<unk> C <unk> C <unk>
+172_131.00|<unk> C <pad> <unk>
+172_141.00|C <unk> C <unk> <pad> <unk>
+172_229.00|C <unk> C <unk> A
+172_234.00|<unk>
+172_291.00|C <unk>
+172_307.00|C
+173_74.00|<unk> B <pad> <unk> B <unk> B <pad> B <pad> <unk> <pad> B <pad> B <unk> B
+173_79.00|<unk> A <unk> <pad> <unk> B <unk> <pad> <unk> <pad> A <unk> A <unk>
+173_142.00|<unk> C <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> B <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> D <unk> <pad> <unk> D <unk> C <unk> <pad> <unk> <pad> <unk>
+174_2.00|B <unk> B <unk> B <unk> B <unk> B <unk>
+174_76.00|<unk> B <unk> <pad> <unk>
+174_90.00|D <unk> C <unk> B <unk> B+C <unk> C+B <unk> D <unk>
+174_161.00|<unk> B <unk> B <unk> B <unk>
+174_171.00|<unk> A <unk> B <unk> B+A <unk>
+175_28.00|<unk> A <unk> A <unk> A <unk> A <unk> A <unk> A <unk>
+175_40.00|<unk> A <unk> <pad> A <unk> <pad> B <unk> <pad> <unk> <pad> <unk>
+175_122.00|<unk> B <unk> C <unk>
+175_138.00|A <unk> A <unk> A <unk> A <unk> A <pad> <unk> A <unk> <pad> <unk>
+176_74.00|<unk> <pad> <unk>
+176_102.00|C <unk> C <unk>
+177_22.00|C <pad> <unk> <pad>
+177_35.00|
+177_136.00|
+177_140.00|C
+178_25.00|C B
+178_29.00|C <pad>
+178_97.00|D+C+A
+178_100.00|C <pad> C
+178_182.00|C
+178_185.00|C <pad> C+D+C+D <pad>
+179_38.00|C <pad> <unk> C+B
+179_63.00|B C
+179_156.00|C <unk> C
+179_170.00|C A+C+A <unk> <pad> <unk>
+179_245.00|C
+179_252.00|C
+179_328.00|C
+179_341.00|C
+179_409.00|C <unk> C
+179_414.00|C
+180_53.00|<unk>
+180_56.00|A <unk> A
+180_138.00|C <unk> C
+180_157.00|<unk>
+180_236.00|<unk>
+180_241.00|<unk>
+180_319.00|<unk>
+180_328.00|A <unk>
+180_409.00|<unk>
+180_420.00|<unk>
+180_494.00|<unk>
+180_507.00|<unk>
+180_575.00|A <unk> A <unk> A
+181_2.00|C <pad> <unk> C <pad>
+181_67.00|C <unk> C+B <unk> <pad> <unk> <pad> <unk> C <pad> C <unk>
+181_90.00|C B+C <unk>
+182_74.00|C <pad> <unk> C <unk> <pad> C <unk> <pad> <unk>
+182_83.00|<unk> <pad> <unk> <pad> <unk> <pad>
+183_37.00|C
+183_46.00|C
+51_2.00|<unk> B <unk>
+51_10.00|B <unk> B <unk> <pad> <unk>
+51_101.00|<unk> <pad> <unk>
+51_110.00|B <pad> <unk> B <unk>
+51_159.00|<unk> B <unk> B <unk> <pad> <unk> B <pad> B <unk>
+51_163.00|B <unk> B
+52_45.00|<unk>
+52_56.00|<unk> A <unk> B <unk> B <unk>
+52_149.00|<unk> B <unk> B <unk> B
+52_153.00|<unk> B <unk> B <unk>
+52_239.00|<unk>
+52_246.00|C <unk> C <unk>
+53_88.00|<unk>
+53_96.00|B <unk> <pad> <unk> <pad> B <unk> <pad> <unk> B <pad> <unk> B <pad>
+53_196.00|<unk> <pad> <unk> <pad> <unk> C
+53_210.00|<unk> <pad> <unk> <pad> <unk> A <pad> <unk> <pad> <unk>
+54_39.00|A
+54_41.00|<unk> A <unk> A <unk> A <unk> B
+54_103.00|<unk> C <unk> C+B <unk> B <unk> <pad> <unk>
+54_114.00|<unk> B <unk> B <unk> B <unk> B <unk>
+54_182.00|<unk> A <unk>
+54_190.00|<unk> <pad> <unk>
+54_321.00|A <unk> A <unk> A <unk> A <unk> A <unk> <pad> <unk> A <unk> <pad> A <unk>
+55_2.00|<unk> A <pad> <unk> <pad> <unk> C <pad> C
+55_70.00|A+C <unk> C+B+A+B <pad> C
+55_74.00|C A+C <pad>
+55_131.00|C
+55_141.00|C <pad> C
+56_50.00|<unk>
+56_58.00|<unk> A <unk>
+56_122.00|<unk>
+56_128.00|<unk>
+57_68.00|<unk> A <unk> A <unk> <pad> A <unk> B <unk> B
+57_75.00|<unk> <pad> <unk> <pad> <unk>
+57_159.00|A <unk> A <unk> A
+57_161.00|<unk> C <unk> B+A <pad> <unk> A <unk> <pad> <unk> A <unk> B <unk> D <unk>
+57_251.00|C <unk> B <unk> B <unk> C
+57_269.00|<unk> B <unk> B <unk> B+A
+58_39.00|C
+58_52.00|<unk>
+58_138.00|
+58_147.00|
+59_12.00|<unk> C <unk>
+59_18.00|<unk> C <unk> D
+59_101.00|C
+59_112.00|C <unk>
+60_10.00|<unk> C <unk>
+60_24.00|<unk> <pad> <unk>
+60_103.00|<unk> C <unk> C <unk>
+60_112.00|<unk> C <unk> C <unk> C <unk> C <pad> <unk>
+60_195.00|<unk> C <unk> C <pad> C+B <unk> <pad> <unk> <pad>
+60_202.00|C <unk>
+60_271.00|<unk> <pad> <unk>
+61_2.00|<unk> A <unk>
+61_55.00|B <unk> B <unk>
+61_65.00|<unk> B <unk> B <unk> B
+61_132.00|C <unk> C <unk>
+61_153.00|<unk> B <unk> A <unk> B <unk> B <unk> B <unk> B <unk> B
+61_243.00|<unk> B <unk>
+61_251.00|<unk>
+61_326.00|<unk>
+61_334.00|<unk> B <pad> <unk> <pad>
+62_2.00|C <unk> C <unk> C <unk> C <unk> C <unk> B <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+62_14.00|C <unk> C <unk> C <unk> C <unk> <pad> <unk>
+62_83.00|C <unk> C <unk> C+B+C
+62_89.00|C B+C <unk> C <unk> C+B+C+B+C <unk> C <unk> C <pad> C <pad> C+B <pad>
+62_149.00|C+B+C
+62_155.00|C+E <pad> <unk> C <unk> C
+62_249.00|C <unk> C <unk> C <unk> C <pad> C <unk> C <unk> C <unk> C <unk> C <unk> C <unk> <pad> <unk> <pad> <unk>
+62_261.00|<pad> <unk> <pad> <unk> C <unk> C <unk> <pad> C <pad> C <unk>
+63_31.00|B <unk> B
+63_35.00|<unk>
+63_115.00|B
+63_123.00|<unk> B
+64_2.00|C+D <unk> B <unk> B <unk> B <unk> B
+64_9.00|D <unk> C+B+D+B+D+C+D
+64_69.00|<unk> B+D <unk> C+B+C+B+C+B+C+B
+64_75.00|<unk> D <unk> D <unk> B+D+B <unk> C+D
+64_147.00|B <unk> B <unk> B+C+B+C+B <unk> C+B
+64_151.00|B+C <pad>
+65_19.00|<unk> B <unk> <pad> <unk>
+65_28.00|A <unk>
+65_96.00|<unk> B
+65_104.00|A <unk> A
+66_14.00|<unk>
+66_24.00|<unk> A <unk>
+66_100.00|<unk> A <unk> <pad> <unk>
+66_114.00|<unk> A <unk> A <unk>
+67_56.00|<unk> <pad> <unk> <pad> <unk> B <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> B <unk> B
+67_62.00|<pad> <unk> <pad> <unk> B <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+67_126.00|<unk> B <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+67_129.00|<unk> A <unk> B <unk> A <unk> A <unk>
+68_77.00|C <unk> C <unk> C <unk> <pad> <unk> <pad> <unk> C <unk> C
+68_91.00|C <unk> C <unk> C <unk> C <unk> C <unk> C <unk> <pad> <unk> C
+68_191.00|<unk> C <unk> <pad> <unk> <pad> <unk>
+68_208.00|C <pad> C <unk> <pad> <unk> <pad>
+69_41.00|A <unk> A <unk> A <unk> A <unk> A <unk>
+69_46.00|<unk> A <unk> A <unk> A <unk> <pad> <unk>
+69_110.00|<unk>
+69_119.00|A <unk> A <unk> <pad> <unk> A <unk> A <unk> A <unk>
+69_172.00|A <unk> A
+69_175.00|A <unk> E <unk>
+70_22.00|<unk> C
+70_31.00|
+70_81.00|C
+70_88.00|C
+70_166.00|<unk> C
+70_172.00|
+70_224.00|C <unk>
+70_234.00|<unk>
+71_15.00|C <pad> C+E+C+E+C <pad> E+C
+71_19.00|C <pad> C+A+C+A <pad> C+E+C
+71_97.00|C E+C+A+E+A <pad> C
+71_107.00|C <pad> C <pad> C
+72_32.00|<unk> B <unk> B <unk>
+72_36.00|<unk> B <unk>
+72_102.00|B <unk> B
+72_108.00|B <unk> B
+72_198.00|<unk>
+72_211.00|<unk> C <unk>
+73_13.00|C <unk> <pad> <unk>
+73_23.00|B <unk> B
+73_88.00|C <unk> D
+73_102.00|C <unk> A+B <unk> D
+74_2.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+74_13.00|<pad> <unk> A <unk>
+74_84.00|A <unk> <pad> <unk> <pad> B <pad> <unk> <pad> B <pad> B <pad>
+74_90.00|A B+A+B+A+B
+75_2.00|C <unk> C <unk>
+75_14.00|A <unk> A <pad> <unk> <pad>
+75_88.00|<unk> C
+75_104.00|C <unk> C
+75_197.00|C <unk>
+75_207.00|<unk> C <unk> C <unk>
+76_21.00|<unk> C <unk> C <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+76_32.00|<unk> B <unk> A
+76_87.00|<unk> <pad> <unk> <pad> <unk> <pad>
+76_92.00|A <unk> A <unk> <pad> <unk> <pad>
+77_30.00|<unk> B <unk> <pad> <unk> <pad> <unk> B <unk> <pad>
+77_35.00|<unk> <pad> <unk> <pad> <unk> <pad> B <pad> <unk> <pad> <unk> <pad> <unk> <pad> A <unk> <pad> <unk> A <pad> <unk> A
+77_82.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+77_91.00|<unk> <pad> <unk> <pad> B <pad> B <pad> B <pad>
+77_147.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+77_156.00|<unk> B <unk> B <unk> B <unk> <pad> <unk> B <unk> <pad> <unk> <pad> B <unk> <pad> B <unk> <pad> <unk> <pad> <unk>
+78_2.00|<pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad>
+78_7.00|<unk> <pad> <unk>
+78_64.00|<unk> C <unk> C <unk> C <unk> C
+78_66.00|C <unk> C <unk> C <pad> C <pad> <unk> <pad> <unk>
+78_150.00|<unk> C <unk> C <unk> C <unk> C
+78_164.00|<unk> B <pad>
+79_16.00|C <unk> C <unk> C <unk>
+79_25.00|C <unk> <pad> <unk> C <pad> <unk>
+79_127.00|<unk> A+C <unk> <pad> <unk> <pad> C+A <unk> <pad> <unk> C <pad>
+79_138.00|C <unk> C <unk> C <pad> <unk> <pad> C <pad> <unk> <pad>
+79_222.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+79_228.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad>
+80_53.00|A+B <unk> B <unk> B
+80_58.00|<unk> B <unk> B
+80_158.00|A <unk> <pad> <unk>
+80_170.00|<unk> A <unk>
+81_38.00|C <unk> <pad> <unk>
+81_46.00|A+B <unk> B <unk> B <unk>
+81_126.00|C <unk> C <unk> C <unk> B <unk>
+81_134.00|C <pad> <unk> C <unk> <pad> C <pad> C <pad> <unk> C
+81_230.00|C <unk> C <unk> C <unk> C <unk> C <unk> <pad> <unk>
+81_238.00|C <unk> C <unk> <pad> <unk> <pad> C <unk> <pad> <unk> C <unk> C <unk> C
+81_355.00|C <pad> <unk> C <pad>
+81_360.00|C <unk> C <unk> C <unk> <pad> C <pad>
+81_431.00|C <unk> C <pad> <unk> C+B+C
+81_447.00|<unk> C <pad> <unk>
+82_43.00|<unk> <pad> <unk> <pad> <unk>
+82_52.00|<unk> <pad> <unk>
+82_148.00|A <unk> B
+82_154.00|A <unk> A
+83_57.00|
+83_62.00|
+83_114.00|C <unk>
+83_124.00|B <unk> B
+84_27.00|<unk> A <unk>
+84_31.00|<unk>
+84_102.00|<unk> B <unk> B <unk> B <unk> B <unk> B <unk>
+84_108.00|<unk> <pad>
+84_176.00|<unk> C <unk>
+84_186.00|<unk>
+85_2.00|A+C <unk> C <unk>
+85_8.00|C <unk>
+85_74.00|<unk> C <unk> C <pad> <unk> C
+85_84.00|A+B <pad> B
+85_134.00|C <unk> C <pad> C+A <pad> <unk>
+85_144.00|<unk>
+86_20.00|C <pad> C <pad> C <pad>
+86_34.00|C
+86_118.00|C
+86_126.00|C
+86_213.00|C D
+86_224.00|B C
+87_52.00|<unk> C <unk>
+87_59.00|<unk> C <unk>
+87_116.00|<unk> C
+87_123.00|<unk> C <unk> C <unk> C+B <unk>
+87_182.00|C <unk> C <unk> C <unk> C <unk> B <unk>
+87_190.00|<unk> C <unk> B
+88_2.00|<unk>
+88_7.00|A <unk>
+88_84.00|<unk>
+88_89.00|A <unk> A
+88_164.00|<unk>
+88_172.00|
+89_60.00|C <unk> <pad> C <unk> <pad> C <pad> C <pad> C <pad> C <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad> C
+89_73.00|<pad> <unk> <pad> <unk> <pad> <unk> <pad>
+89_144.00|<unk> C <pad> <unk> C <unk> <pad> C <pad> C <pad> C <pad> C <unk> <pad> <unk> <pad>
+89_153.00|B C+B <unk> C <pad> <unk> B <pad> <unk> <pad> E <pad>
+90_43.00|<unk> C <unk>
+90_57.00|<unk> B <unk> B <unk> B+A+B
+90_134.00|<unk> B <unk>
+90_146.00|<unk> B <unk> <pad> <unk>
+90_230.00|B <unk> B
+91_2.00|
+91_73.00|<unk>
+91_80.00|A <unk> A
+92_2.00|<unk> A <unk> A <unk> B <unk>
+92_7.00|<unk> C <unk> <pad> C <pad> C <pad> <unk> <pad> <unk>
+92_85.00|<unk> <pad> B <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+92_97.00|<unk> B <pad> <unk> B <pad> B <unk> <pad> B <pad>
+92_171.00|C <pad> C <pad> B+C <pad>
+92_189.00|C <unk> <pad> C <pad> C+B <pad> <unk> <pad>
+93_65.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk> <pad>
+93_71.00|<unk> C <unk> C <unk> <pad> C <pad> <unk> <pad> <unk> <pad> <unk> <pad> <unk>
+93_166.00|C <unk> C <unk> C <pad> <unk> <pad> C <unk>
+93_183.00|<unk> <pad> <unk> <pad> <unk> <pad> <unk>
+93_265.00|<unk> E <unk> E
+93_267.00|C <unk> B+C <pad> C <pad> <unk> <pad>
+94_19.00|A+C <unk> A <unk> A <unk> A+B <pad> A
+94_23.00|C <unk> C <unk> C <unk> B <unk> D <unk> B
+94_112.00|A <unk> <pad> <unk> A <unk>
+94_123.00|<unk> A <unk> A <unk> A <unk> A <unk> <pad> <unk> A <pad> A <pad> <unk> A <pad> <unk> <pad> <unk> A <pad> <unk> <pad> <unk>
+94_225.00|<unk> A <pad> A <unk> <pad> A <pad> A <pad> A <pad> A <unk> <pad>
+94_233.00|<unk> <pad> <unk> <pad> A <pad> C <pad> A <pad> <unk> A <pad> <unk> <pad> <unk>
+95_43.00|D+B <unk> B <unk> <pad>
+95_51.00|<unk> C <pad> <unk> <pad>
+95_105.00|C <unk> C <pad> B <pad>
+95_118.00|<unk> C <unk>
+96_12.00|<unk> A <unk> A <unk> A <unk> A <unk> B <unk>
+96_18.00|<unk> <pad> A <pad> <unk> <pad> A <pad> <unk> A
+96_74.00|B <unk> B <unk> B
+96_79.00|<unk> B <unk>
+96_132.00|<unk>
+96_141.00|<unk> B <unk> A <unk> B <unk>
+96_203.00|<unk> D <unk> C <unk> A <unk> A <unk> D <unk> D <unk>
+96_216.00|A <unk> A <unk> <pad> <unk>
+96_283.00|A <unk> A <unk> A <unk> A <unk>
+96_287.00|<unk> A <unk> A <unk>
+97_60.00|<unk> B <unk> B <unk> <pad> B <unk> <pad> B+A <pad>
+97_64.00|B <unk> C+B
+97_148.00|<unk> B <unk> B <unk> B
+97_155.00|C <unk> B+C <unk> <pad> <unk> <pad>
+97_235.00|<unk> B <unk> <pad> <unk> A
+98_2.00|A+B <unk> B <pad> B <unk> <pad> <unk> <pad> <unk> <pad> B <pad>
+98_78.00|C <unk> <pad> <unk> <pad> <unk> A+B <pad>
+98_84.00|A C+A+B <pad> A+B
+98_139.00|<unk> B <unk> C <unk> <pad> <unk> <pad> B <pad>
+98_145.00|C <unk> C <unk> <pad> <unk> <pad>
+98_207.00|C <pad> <unk> C
+99_2.00|C <pad> C <unk> <pad>
+99_80.00|A <pad>
+99_85.00|C <pad> C <pad> C <pad> C <pad> C <pad> C <pad> C <pad>
+99_137.00|<pad> C <pad> C <pad> C <pad> C <pad>
+99_144.00|C <unk> <pad> C <pad>
