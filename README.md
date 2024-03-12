@@ -49,7 +49,7 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
     `conda install numpy scipy cython numba pandas tensorboard matplotlib tqdm pyyaml -y`
     `pip install opencv-python wget mediapipe seaborn scikit-learn`
     `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7`
-    `pip install torch-directml tensorflow-rocm torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
+    `pip install tensorflow-rocm torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
 
 ## Usage
 * for CUDA version
