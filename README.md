@@ -37,6 +37,21 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
     `conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y`
     `pip install torch-directml tensorflow-cpu==2.10 tensorflow-directml-plugin torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
 
+## ROCm installation
+* Create a conda or python virtual environment. Use these commands for conda environment creation:
+    `conda create --name slt_rocm python="3.10"`
+
+* Activate the environment. For conda:
+    `conda activate slt_rocm`
+
+* Create a conda python 3.10 environment and execute the following commands on the environment terminal.
+
+    `conda install numpy scipy cython numba pandas tensorboard matplotlib tqdm pyyaml -y`
+    `conda install cuda -c nvidia`
+    `pip install opencv-python wget mediapipe seaborn scikit-learn`
+    `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7`
+    `pip install torch-directml tensorflow-rocm torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
+
 ## Usage
 * for CUDA version
   `set CUDA_LAUNCH_BLOCKING=1`
@@ -45,6 +60,10 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 * for DirectML version
   `set CUDA_LAUNCH_BLOCKING=1`
   `python -m signjoey_dml train configs/sign.yaml`
+
+* for ROCm version
+  `python -m signjoey train configs/sign.yaml`
+
 
 
 ## Alternate Usage
