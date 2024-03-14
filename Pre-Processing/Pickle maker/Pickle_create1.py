@@ -100,8 +100,7 @@ def get_features(filename, destination):
             # 210*260
             # Crop the image to the specified ROI
             image = image[y1:y2, x1:x2]
-            image = cv2.resize(image, (224, 224))  # Resize to the input size of MobileNet
-
+            image = cv2.resize(image, (600, 600))  # Resize to the input size of EfficientNetB7
             # Preprocess the image
             image = preprocess_input(image)
         
