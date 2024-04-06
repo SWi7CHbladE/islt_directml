@@ -24,13 +24,16 @@ from progress.bar import Bar
 def save_checkpoint(checkpoint_path, list_of_inputs):
     with open(checkpoint_path, 'wb') as f:
         pickle.dump(list_of_inputs, f)
+        print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path):
     if os.path.exists(checkpoint_path):
+        print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
         with open(checkpoint_path, 'rb') as f:
             return pickle.load(f)
     else:
+        print("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
         return None
 
 # Function for extraction of features
