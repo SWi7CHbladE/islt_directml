@@ -1,6 +1,7 @@
 import pickle
 import gzip
 import os
+import shutil
 from tensorflow import keras
 import tensorflow as tf
 import cv2
@@ -14,35 +15,46 @@ from tensorflow.keras.applications.efficientnet import EfficientNetB7
 from tensorflow.keras.layers import GlobalAveragePooling2D
 from tensorflow.keras.models import Model
 from tensorflow.keras.applications.efficientnet import preprocess_input
+from tensorflow.keras import mixed_precision
 from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
 
-# Function to load or create a checkpoint
-def load_or_create_checkpoint(checkpoint_path):
-    if not os.path.exists(checkpoint_path):
-        save_checkpoint(checkpoint_path, 0)
-    with open(checkpoint_path, 'rb') as f:
-        return pickle.load(f)
-
-def save_checkpoint(checkpoint_path, count):
+# Function to save checkpoint
+def save_checkpoint(checkpoint_path, data, count):
+    checkpoint_dir = os.path.dirname(checkpoint_path)
+    if not os.path.exists(checkpoint_dir):
+        os.makedirs(checkpoint_dir)
     with open(checkpoint_path, 'wb') as f:
-        pickle.dump(count, f)
+        pickle.dump({'data': data, 'count': count}, f)
 
-# Function to get features
+# Function to load checkpoint
+def load_checkpoint(checkpoint_path):
+    if os.path.exists(checkpoint_path):
+        with open(checkpoint_path, 'rb') as f:
+            return pickle.load(f)
+    else:
+        return None
+
+# ***Function for extraction of features***
 def get_features(filename, destination, checkpoint_path):
-    checkpoint = load_or_create_checkpoint(checkpoint_path)
+    checkpoint_data = load_checkpoint(checkpoint_path)
+    checkpoint_count = checkpoint_data['count'] if checkpoint_data else 0
+    processed_data = checkpoint_data['data'] if checkpoint_data else []
+    
     input_string = filename
     pattern = r'\d+'
     match = re.search(pattern, input_string)
+    
     if match:
         first_match = match.group()
         input_folder = os.path.join(os.getcwd(), destination, first_match, input_string)
+        
         try:
             file_paths_frames = [file for file in sorted(os.listdir(input_folder)) if file.endswith(".jpg")]
         except:
             return None
-        
+
         base_model = EfficientNetB7(weights='EfficientNet7_Emot.h5', include_top=False)
         x = base_model.output
         x = GlobalAveragePooling2D()(x)
@@ -57,11 +69,13 @@ def get_features(filename, destination, checkpoint_path):
             image = np.expand_dims(image, axis=0)
             spatial_embedding = feature_extractor.predict(image)[0]
             features_listofList.append(spatial_embedding)
-            checkpoint += 1
-            if checkpoint % 10 == 0:
-                save_checkpoint(checkpoint_path, checkpoint)
-    
-        save_checkpoint(checkpoint_path, checkpoint)
+            checkpoint_count += 1
+            processed_data.append({'filename': frame_file, 'features': spatial_embedding})
+            if checkpoint_count % 10 == 0:
+                print("Checkpoint created:", checkpoint_count)
+                save_checkpoint(checkpoint_path, processed_data, checkpoint_count)
+
+        save_checkpoint(checkpoint_path, processed_data, checkpoint_count)
         return torch.tensor(features_listofList)
     else:
         print("No match found.")
@@ -92,11 +106,6 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
     with gzip.open(os.path.join(os.getcwd(), output_dest), 'wb') as f:
         pickle.dump(list_of_inputs, f)
 
-# Checkpoint paths
-dev_checkpoint_path = 'dev_checkpoint.pkl'
-test_checkpoint_path = 'test_checkpoint.pkl'
-train_checkpoint_path = 'train_checkpoint.pkl'
-
 # Files to access
 vw_dest = "Dataset/excels/Validation.xlsx"
 vo_dest = "Dataset/Pickles/excel_data.dev"
@@ -110,13 +119,14 @@ w_dest = "Dataset/excels/Train.xlsx"
 o_dest = "Dataset/Pickles/excel_data.train"
 f_dest = "Dataset/Final folder for frames"
 
-# Validation pickle
+# Checkpoint paths
+dev_checkpoint_path = 'Dataset/dev_checkpoint.pkl'
+test_checkpoint_path = 'Dataset/test_checkpoint.pkl'
+train_checkpoint_path = 'Dataset/train_checkpoint.pkl'
+
+# Create pickles
 create_pickle(vw_dest, vo_dest, vf_dest, dev_checkpoint_path)
-
-# Testing pickle
 create_pickle(tw_dest, to_dest, tf_dest, test_checkpoint_path)
-
-# Training pickle
 create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path)
 
 print("Done creating pickle files.")
