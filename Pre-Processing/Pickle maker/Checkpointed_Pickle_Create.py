@@ -20,11 +20,10 @@ from progress.bar import Bar
 
 # Function to load or create a checkpoint
 def load_or_create_checkpoint(checkpoint_path):
-    if os.path.exists(checkpoint_path):
-        with open(checkpoint_path, 'rb') as f:
-            return pickle.load(f)
-    else:
-        return 0
+    if not os.path.exists(checkpoint_path):
+        save_checkpoint(checkpoint_path, 0)
+    with open(checkpoint_path, 'rb') as f:
+        return pickle.load(f)
 
 def save_checkpoint(checkpoint_path, count):
     with open(checkpoint_path, 'wb') as f:
