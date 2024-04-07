@@ -22,12 +22,13 @@ from progress.bar import Bar
 
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, list_of_inputs):
-    with open(checkpoint_path, 'wb') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
         pickle.dump(list_of_inputs, f)
         print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path):
+    checkpoint_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
     if os.path.exists(checkpoint_path):
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
         with open(checkpoint_path, 'rb') as f:
@@ -77,7 +78,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         excel_data.append(row)
 
     # Load checkpoint
-    list_of_inputs = load_checkpoint(os.path.join(os.path.dirname(os.path.abspath(__file__)),checkpoint_path))
+    list_of_inputs = load_checkpoint(checkpoint_path)
     if list_of_inputs is None:
         list_of_inputs = []
 
