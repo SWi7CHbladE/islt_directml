@@ -43,13 +43,13 @@ def get_features(filename, destination):
     match = re.search(pattern, input_string)
     if match:
         first_match = match.group()
-        input_folder = os.path.join(os.getcwd(), destination, first_match, input_string)
+        input_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), destination, first_match, input_string)
         try:
             file_paths_frames = [file for file in sorted(os.listdir(input_folder)) if file.endswith(".jpg")]
         except:
             return None
 
-        base_model = EfficientNetB7(weights='EfficientNet7_Emot.h5', include_top=False)
+        base_model = EfficientNetB7(weights=os.path.join(os.path.dirname(os.path.abspath(__file__)),'EfficientNet7_Emot.h5'), include_top=False)
         x = base_model.output
         x = GlobalAveragePooling2D()(x)
         feature_extractor = Model(inputs=base_model.input, outputs=x)
@@ -70,14 +70,14 @@ def get_features(filename, destination):
 
 # Function to create the pickle file
 def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
-    workbook = load_workbook(workbook_dest)
+    workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)),workbook_dest))
     sheet = workbook.active
     excel_data = []
     for row in sheet.iter_rows(values_only=True):
         excel_data.append(row)
 
     # Load checkpoint
-    list_of_inputs = load_checkpoint(checkpoint_path)
+    list_of_inputs = load_checkpoint(os.path.join(os.path.dirname(os.path.abspath(__file__)),checkpoint_path))
     if list_of_inputs is None:
         list_of_inputs = []
 
@@ -104,7 +104,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         save_checkpoint(checkpoint_path, list_of_inputs)
 
     # Save final pickle file
-    with gzip.open(os.path.join(os.getcwd(), output_dest), 'wb') as f:
+    with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
         pickle.dump(list_of_inputs, f)
 
 # Files to access
