@@ -46,10 +46,11 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 
 * Create a conda python 3.10 environment and execute the following commands on the environment terminal.
 
-    `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7`
-    `pip install tensorflow-rocm`
-    `conda install scipy cython numba pandas matplotlib pyyaml -y`
-    `pip install opencv-python wget mediapipe seaborn scikit-learn torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
+    `conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0 -y`
+    `conda install numpy pandas tensorboard matplotlib tqdm pyyaml -y`
+    `pip install opencv-python wget`
+    `conda install pytorch torchvision torchaudio pytorch-cuda -c pytorch -c nvidia -y`
+    `pip install torchtext==0.6.0 "tensorflow<2.11" portalocker openpyxl progress jupyterlab notebook voila`
 
 ## Usage
 * for CUDA version
