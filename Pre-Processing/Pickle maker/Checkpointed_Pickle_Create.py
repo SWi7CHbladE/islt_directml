@@ -19,21 +19,29 @@ from tensorflow.keras import mixed_precision
 from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
+import threading
 
+
+print("***\nCurrent working directory:\n")
+print(os.getcwd())
+print("***")
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, list_of_inputs):
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
-        pickle.dump(list_of_inputs, f)
+    print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
+    with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+        pickle.dump(list_of_inputs, f, protocol=pickle.HIGHEST_PROTOCOL)
         print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path):
     checkpoint_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
     if os.path.exists(checkpoint_path):
+        print("loading from: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
-        with open(checkpoint_path, 'rb') as f:
+        with gzip.open(checkpoint_path, 'rb') as f:
             return pickle.load(f)
     else:
+        print("creating at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
         print("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
         return None
 
@@ -70,17 +78,23 @@ def get_features(filename, destination):
         return None
 
 # Function to create the pickle file
-def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
+def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, check_after_creation=True):
     workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)),workbook_dest))
     sheet = workbook.active
     excel_data = []
     for row in sheet.iter_rows(values_only=True):
         excel_data.append(row)
+    
+    # Load existing checkpoint and check for corruption
+    existing_checkpoint_data = load_checkpoint(checkpoint_path)
+    if existing_checkpoint_data is not None:
+        print("Loaded existing checkpoint from:", checkpoint_path)
+        # Save existing checkpoint with a different name for backup
+        backup_checkpoint_path = checkpoint_path.replace('.pkl', '_backup.pkl')
+        save_checkpoint(backup_checkpoint_path, existing_checkpoint_data)
 
     # Load checkpoint
-    list_of_inputs = load_checkpoint(checkpoint_path)
-    if list_of_inputs is None:
-        list_of_inputs = []
+    list_of_inputs = existing_checkpoint_data if existing_checkpoint_data is not None else []
 
     # Get the features
     for index in range(len(list_of_inputs), len(excel_data), 10):
@@ -121,7 +135,7 @@ to_dest = "Dataset/Pickles/excel_data.test"
 tf_dest = "Dataset/Final folder for frames"
 test_checkpoint_path = 'Dataset/test_checkpoint.pkl'
 
-create_pickle(tw_dest, to_dest, tf_dest, dev_checkpoint_path)
+create_pickle(tw_dest, to_dest, tf_dest, test_checkpoint_path)
 
 w_dest = "Dataset/excels/Train.xlsx"
 o_dest = "Dataset/Pickles/excel_data.train"
