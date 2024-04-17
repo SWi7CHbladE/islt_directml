@@ -25,12 +25,32 @@ import threading
 print("***\nCurrent working directory:\n")
 print(os.getcwd())
 print("***")
+
+
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, list_of_inputs):
-    print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
-    with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+    abs_checkpoint_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
+    print("Saving checkpoint to:", abs_checkpoint_path)
+    
+    # Create a backup of the current checkpoint file
+    backup_checkpoint_path = checkpoint_path.replace('.pkl', '_backup.pkl')
+    abs_backup_checkpoint_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), backup_checkpoint_path)
+    shutil.copyfile(abs_checkpoint_path, abs_backup_checkpoint_path)
+    print("Backup of the current checkpoint created:", abs_backup_checkpoint_path)
+
+    # Save the new checkpoint
+    with gzip.open(abs_checkpoint_path, 'wb') as f:
         pickle.dump(list_of_inputs, f, protocol=pickle.HIGHEST_PROTOCOL)
-        print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
+    print("New checkpoint saved:", abs_checkpoint_path)
+
+    # Load the new checkpoint to check for corruption
+    loaded_data = load_checkpoint(abs_checkpoint_path)
+    print("Loaded data from", abs_checkpoint_path, ":", loaded_data)
+    # Add your data checking logic here
+    print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
+
+
+    
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path):
@@ -78,23 +98,17 @@ def get_features(filename, destination):
         return None
 
 # Function to create the pickle file
-def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, check_after_creation=True):
+def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
     workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)),workbook_dest))
     sheet = workbook.active
     excel_data = []
     for row in sheet.iter_rows(values_only=True):
         excel_data.append(row)
-    
-    # Load existing checkpoint and check for corruption
-    existing_checkpoint_data = load_checkpoint(checkpoint_path)
-    if existing_checkpoint_data is not None:
-        print("Loaded existing checkpoint from:", checkpoint_path)
-        # Save existing checkpoint with a different name for backup
-        backup_checkpoint_path = checkpoint_path.replace('.pkl', '_backup.pkl')
-        save_checkpoint(backup_checkpoint_path, existing_checkpoint_data)
 
     # Load checkpoint
-    list_of_inputs = existing_checkpoint_data if existing_checkpoint_data is not None else []
+    list_of_inputs = load_checkpoint(checkpoint_path)
+    if list_of_inputs is None:
+        list_of_inputs = []
 
     # Get the features
     for index in range(len(list_of_inputs), len(excel_data), 10):
@@ -122,7 +136,15 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, check
     with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
         pickle.dump(list_of_inputs, f)
 
+
 # Files to access
+w_dest = "Dataset/excels/Train.xlsx"
+o_dest = "Dataset/Pickles/excel_data.train"
+f_dest = "Dataset/Final folder for frames"
+train_checkpoint_path = 'Dataset/train_checkpoint.pkl'
+
+create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path)
+
 vw_dest = "Dataset/excels/Validation.xlsx"
 vo_dest = "Dataset/Pickles/excel_data.dev"
 vf_dest = "Dataset/Final folder for frames"
@@ -137,11 +159,6 @@ test_checkpoint_path = 'Dataset/test_checkpoint.pkl'
 
 create_pickle(tw_dest, to_dest, tf_dest, test_checkpoint_path)
 
-w_dest = "Dataset/excels/Train.xlsx"
-o_dest = "Dataset/Pickles/excel_data.train"
-f_dest = "Dataset/Final folder for frames"
-train_checkpoint_path = 'Dataset/train_checkpoint.pkl'
 
-create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path)
 
 print("Done creating pickle files.")
