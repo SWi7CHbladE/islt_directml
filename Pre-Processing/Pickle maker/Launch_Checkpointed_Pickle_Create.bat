@@ -16,7 +16,7 @@ if exist "C:\Users\Admin\Rahul\islt_directml\Pre-Processing\Pickle maker\Dataset
 )
 
 :loop
-python -m Checkpointed_Pickle_Create
+python -m Checkpointed_Pickle_Create0 && python -m Checkpointed_Pickle_Create1 && python -m Checkpointed_Pickle_Create2 && python -m Checkpointed_Pickle_Create3 && python -m Checkpointed_Pickle_Create4 && python -m Checkpointed_Pickle_Create5 && python -m Checkpointed_Pickle_Create6 && python -m Checkpointed_Pickle_Create7 && python -m Checkpointed_Pickle_Create8 && python -m Checkpointed_Pickle_Create9
 WMIC process where name="python.exe" CALL setpriority "high"
 if %errorlevel% equ 0 (
     echo Process completed successfully.
