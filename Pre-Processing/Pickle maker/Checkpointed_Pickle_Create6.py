@@ -89,7 +89,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         list_of_inputs = []
 
     # Get the features
-    checkpoint_range = 250
+    checkpoint_range = 50
     for index in range(len(list_of_inputs), len(excel_data), checkpoint_range):
         batch_list_of_inputs = []
         for tmp in excel_data[index:index + checkpoint_range]:
