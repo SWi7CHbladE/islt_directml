@@ -1,0 +1,13 @@
+conda activate slt_cuda
+start python -m Checkpointed_Pickle_Create0
+start python -m Checkpointed_Pickle_Create1
+start python -m Checkpointed_Pickle_Create2
+start python -m Checkpointed_Pickle_Create3 
+start python -m Checkpointed_Pickle_Create4 
+start python -m Checkpointed_Pickle_Create5 
+start python -m Checkpointed_Pickle_Create6 
+start python -m Checkpointed_Pickle_Create7
+start python -m Checkpointed_Pickle_Create8
+start python -m Checkpointed_Pickle_Create9
+WMIC process where name="python.exe" CALL setpriority "high"
+
