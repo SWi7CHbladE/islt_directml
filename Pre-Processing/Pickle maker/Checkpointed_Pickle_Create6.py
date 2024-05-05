@@ -19,7 +19,7 @@ from tensorflow.keras import mixed_precision
 from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
-tf.config.run_functions_eagerly = True
+#tf.config.run_functions_eagerly = False
 
 print("***\nCurrent working directory:\n")
 print(os.getcwd())

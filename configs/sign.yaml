@@ -56,7 +56,7 @@ training:
     eval_metric: bleu
     optimizer: adam
     learning_rate: 0.0001
-    batch_size: 16
+    batch_size: 8
     num_valid_log: 5
     epochs: 50000
     early_stopping_metric: eval_metric
@@ -66,8 +66,8 @@ training:
     eval_translation_beam_size: 1
     eval_translation_beam_alpha: -1
     overwrite: true
-    shuffle: true
-    use_cuda: true
+    shuffle: false
+    use_cuda: false
     translation_max_output_length: 40
     keep_last_ckpts: 1
     batch_multiplier: 1
