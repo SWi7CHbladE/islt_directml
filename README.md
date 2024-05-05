@@ -39,18 +39,17 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 
 ## ROCm installation
 * Create a conda or python virtual environment. Use these commands for conda environment creation:
-    `conda create --name slt_rocm python="3.10"`
+    `conda create --name slt_rocm python="3.11"`
 
 * Activate the environment. For conda:
     `conda activate slt_rocm`
 
-* Create a conda python 3.10 environment and execute the following commands on the environment terminal.
+* Create a conda python 3.11 environment and execute the following commands on the environment terminal.
 
-    `conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0 -y`
+    `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0`
     `conda install numpy pandas tensorboard matplotlib tqdm pyyaml -y`
     `pip install opencv-python wget`
-    `conda install pytorch torchvision torchaudio pytorch-cuda -c pytorch -c nvidia -y`
-    `pip install torchtext==0.6.0 "tensorflow<2.11" portalocker openpyxl progress jupyterlab notebook voila`
+    `pip install torchtext==0.6.0 tensorflow-rocm "tensorflow==2.14.1" portalocker openpyxl progress jupyterlab notebook voila`
 
 ## Usage
 * for CUDA version
