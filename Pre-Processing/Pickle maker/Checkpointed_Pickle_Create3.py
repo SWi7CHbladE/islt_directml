@@ -53,7 +53,7 @@ feature_extractor = Model(inputs=base_model.input, outputs=x)
 
 # Function for extraction of features
 def get_features(filename, destination):
-    tf.keras.backend.clear_session()
+    #tf.keras.backend.clear_session()
     input_string = filename
     pattern = r'\d+'
     match = re.search(pattern, input_string)
