@@ -56,7 +56,7 @@ def get_features(filename, destination):
         except:
             return None
 
-        base_model = EfficientNetB7(weights=os.path.join(os.path.dirname(os.path.abspath(__file__)),'EfficientNet7_Emot.h5'), include_top=False)
+        base_model = EfficientNetB7(weights='imagenet', include_top=False)
         x = base_model.output
         x = GlobalAveragePooling2D()(x)
         feature_extractor = Model(inputs=base_model.input, outputs=x)
