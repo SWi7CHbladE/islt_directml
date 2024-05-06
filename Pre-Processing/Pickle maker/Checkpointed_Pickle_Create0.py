@@ -19,7 +19,7 @@ from tensorflow.keras import mixed_precision
 from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
-#tf.config.run_functions_eagerly = False
+tf.config.run_functions_eagerly = True
 
 print("***\nCurrent working directory:\n")
 print(os.getcwd())
@@ -45,15 +45,15 @@ def load_checkpoint(checkpoint_path):
         return None
 
 
-base_model = EfficientNetB7(weights=os.path.join(os.path.dirname(os.path.abspath(__file__)),'EfficientNet7_Emot.h5'), include_top=False)
-x = base_model.output
-x = GlobalAveragePooling2D()(x)
-feature_extractor = Model(inputs=base_model.input, outputs=x)
+# base_model = EfficientNetB7(weights=os.path.join(os.path.dirname(os.path.abspath(__file__)),'EfficientNet7_Emot.h5'), include_top=False)
+# x = base_model.output
+# x = GlobalAveragePooling2D()(x)
+# feature_extractor = Model(inputs=base_model.input, outputs=x)
 
 
 # Function for extraction of features
 def get_features(filename, destination):
-    #tf.keras.backend.clear_session()
+    tf.keras.backend.clear_session()
     input_string = filename
     pattern = r'\d+'
     match = re.search(pattern, input_string)
@@ -65,10 +65,10 @@ def get_features(filename, destination):
         except:
             return None
 
-        # base_model = EfficientNetB7(weights=os.path.join(os.path.dirname(os.path.abspath(__file__)),'EfficientNet7_Emot.h5'), include_top=False)
-        # x = base_model.output
-        # x = GlobalAveragePooling2D()(x)
-        # feature_extractor = Model(inputs=base_model.input, outputs=x)
+        base_model = EfficientNetB7(weights=os.path.join(os.path.dirname(os.path.abspath(__file__)),'EfficientNet7_Emot.h5'), include_top=False)
+        x = base_model.output
+        x = GlobalAveragePooling2D()(x)
+        feature_extractor = Model(inputs=base_model.input, outputs=x)
 
         try:
             features_listofList.clear()
