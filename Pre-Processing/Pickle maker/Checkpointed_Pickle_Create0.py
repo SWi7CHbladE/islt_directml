@@ -19,7 +19,6 @@ from tensorflow.keras import mixed_precision
 from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
-tf.config.run_functions_eagerly = True
 
 print("***\nCurrent working directory:\n")
 print(os.getcwd())
@@ -44,16 +43,8 @@ def load_checkpoint(checkpoint_path):
         print("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
         return None
 
-
-# base_model = EfficientNetB7(weights=os.path.join(os.path.dirname(os.path.abspath(__file__)),'EfficientNet7_Emot.h5'), include_top=False)
-# x = base_model.output
-# x = GlobalAveragePooling2D()(x)
-# feature_extractor = Model(inputs=base_model.input, outputs=x)
-
-
 # Function for extraction of features
 def get_features(filename, destination):
-    tf.keras.backend.clear_session()
     input_string = filename
     pattern = r'\d+'
     match = re.search(pattern, input_string)
@@ -65,15 +56,12 @@ def get_features(filename, destination):
         except:
             return None
 
-        base_model = EfficientNetB7(weights=os.path.join(os.path.dirname(os.path.abspath(__file__)),'EfficientNet7_Emot.h5'), include_top=False)
+        base_model = EfficientNetB7(weights='imagenet', include_top=False)
         x = base_model.output
         x = GlobalAveragePooling2D()(x)
         feature_extractor = Model(inputs=base_model.input, outputs=x)
 
-        try:
-            features_listofList.clear()
-        except:
-            features_listofList = []
+        features_listofList = []
         for indx, frame_file in enumerate(file_paths_frames):
             frame_filename = os.path.join(input_folder, frame_file)
             image = cv2.imread(frame_filename)
@@ -101,12 +89,8 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         list_of_inputs = []
 
     # Get the features
-    checkpoint_range = 50
-    none_counter = 0
-    flag = 0
+    checkpoint_range = 250
     for index in range(len(list_of_inputs), len(excel_data), checkpoint_range):
-        if flag == 1:
-            exit()
         batch_list_of_inputs = []
         for tmp in excel_data[index:index + checkpoint_range]:
             features = get_features(str(tmp[0]), frame_dest)
@@ -120,16 +104,6 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
                         'sign': features + 1e-8
                     }
                     batch_list_of_inputs.append(data_dict)
-            else:
-                none_counter += 1
-                if(none_counter >= checkpoint_range - 1):
-                    flag = 1
-                    break
-        if flag == 1:
-            break
-
-
-
         
         # Update list_of_inputs
         list_of_inputs.extend(batch_list_of_inputs)
