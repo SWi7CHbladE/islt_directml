@@ -135,7 +135,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
 w_dest = "Dataset/excels/Train/Train_8.xlsx"
 o_dest = "Dataset/Pickles/train_pickles/excel_data_8.train"
 f_dest = "Dataset/Final folder for frames"
-train_checkpoint_path = 'Dataset/Checkpoints/train_checkpoint_8.pkl'
+train_checkpoint_path = 'Dataset/Checkpoints/unstable/train_checkpoint_8.pkl'
 
 create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path)
 

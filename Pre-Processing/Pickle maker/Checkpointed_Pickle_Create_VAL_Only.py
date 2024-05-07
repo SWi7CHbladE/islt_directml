@@ -122,7 +122,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
 vw_dest = "Dataset/excels/Validation.xlsx"
 vo_dest = "Dataset/Pickles/excel_data.dev"
 vf_dest = "Dataset/Final folder for frames"
-dev_checkpoint_path = 'Dataset/Checkpoints/dev_checkpoint.pkl'
+dev_checkpoint_path = 'Dataset/Checkpoints/unstable/dev_checkpoint.pkl'
 
 create_pickle(vw_dest, vo_dest, vf_dest, dev_checkpoint_path)
 
