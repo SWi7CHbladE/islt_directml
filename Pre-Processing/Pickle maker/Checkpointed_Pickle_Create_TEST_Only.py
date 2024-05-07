@@ -120,7 +120,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
 tw_dest = "Dataset/excels/Test.xlsx"
 to_dest = "Dataset/Pickles/excel_data.test"
 tf_dest = "Dataset/Final folder for frames"
-test_checkpoint_path = 'Dataset/test_checkpoint.pkl'
+test_checkpoint_path = 'Dataset/Checkpoints/test_checkpoint.pkl'
 
 create_pickle(tw_dest, to_dest, tf_dest, test_checkpoint_path)
 
