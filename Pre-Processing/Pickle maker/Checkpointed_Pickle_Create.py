@@ -19,6 +19,7 @@ from tensorflow.keras import mixed_precision
 from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
+tf.config.run_functions_eagerly(False)
 
 print("***\nCurrent working directory:\n")
 print(os.getcwd())
@@ -110,6 +111,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
 
         # Save checkpoint
         save_checkpoint(checkpoint_path, list_of_inputs)
+        list_of_inputs = load_checkpoint(checkpoint_path)
 
     # Save final pickle file
     with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
