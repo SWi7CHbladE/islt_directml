@@ -89,12 +89,17 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         list_of_inputs = []
 
     # Get the features
-    checkpoint_range = 250
+    checkpoint_range = 20
+    none_counter = 0
+    flag = 0
     for index in range(len(list_of_inputs), len(excel_data), checkpoint_range):
+        if flag == 1:
+            exit()
         batch_list_of_inputs = []
         for tmp in excel_data[index:index + checkpoint_range]:
             features = get_features(str(tmp[0]), frame_dest)
             if features is not None:
+                none_counter = 0
                 if len(features) > 0:
                     data_dict = {
                         'name': tmp[0],
@@ -104,12 +109,20 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
                         'sign': features + 1e-8
                     }
                     batch_list_of_inputs.append(data_dict)
+            else:
+                none_counter += 1
+                if(none_counter >= checkpoint_range - 1):
+                    flag = 1
+                    break
+        if flag == 1:
+            break
         
         # Update list_of_inputs
         list_of_inputs.extend(batch_list_of_inputs)
 
         # Save checkpoint
         save_checkpoint(checkpoint_path, list_of_inputs)
+
 
     # Save final pickle file
     with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
@@ -125,4 +138,4 @@ create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path)
 
 
 
-print("Done creating pickle files.")
+print("Done creating pickle 2.")

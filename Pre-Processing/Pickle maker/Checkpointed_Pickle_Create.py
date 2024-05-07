@@ -123,7 +123,6 @@ train_checkpoint_path = 'Dataset/train_checkpoint.pkl'
 
 create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path)
 
-
 vw_dest = "Dataset/excels/Validation.xlsx"
 vo_dest = "Dataset/Pickles/excel_data.dev"
 vf_dest = "Dataset/Final folder for frames"

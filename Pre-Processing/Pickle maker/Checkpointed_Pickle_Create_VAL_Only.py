@@ -89,17 +89,12 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         list_of_inputs = []
 
     # Get the features
-    checkpoint_range = 20
-    none_counter = 0
-    flag = 0
+    checkpoint_range = 250
     for index in range(len(list_of_inputs), len(excel_data), checkpoint_range):
-        if flag == 1:
-            exit()
         batch_list_of_inputs = []
         for tmp in excel_data[index:index + checkpoint_range]:
             features = get_features(str(tmp[0]), frame_dest)
             if features is not None:
-                none_counter = 0
                 if len(features) > 0:
                     data_dict = {
                         'name': tmp[0],
@@ -109,13 +104,6 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
                         'sign': features + 1e-8
                     }
                     batch_list_of_inputs.append(data_dict)
-            else:
-                none_counter += 1
-                if(none_counter >= checkpoint_range - 1):
-                    flag = 1
-                    break
-        if flag == 1:
-            break
         
         # Update list_of_inputs
         list_of_inputs.extend(batch_list_of_inputs)
@@ -123,17 +111,17 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         # Save checkpoint
         save_checkpoint(checkpoint_path, list_of_inputs)
 
-
     # Save final pickle file
     with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
         pickle.dump(list_of_inputs, f)
 
 # Files to access
-w_dest = "Dataset/excels/Train/Train_6.xlsx"
-o_dest = "Dataset/Pickles/train_pickles/excel_data_6.train"
-f_dest = "Dataset/Final folder for frames"
-train_checkpoint_path = 'Dataset/train_checkpoints/train_checkpoint_6.pkl'
+vw_dest = "Dataset/excels/Validation.xlsx"
+vo_dest = "Dataset/Pickles/excel_data.dev"
+vf_dest = "Dataset/Final folder for frames"
+dev_checkpoint_path = 'Dataset/dev_checkpoint.pkl'
 
-create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path)
+create_pickle(vw_dest, vo_dest, vf_dest, dev_checkpoint_path)
 
-print("Done creating pickle 6.")
+
+print("Done creating pickle files.")
