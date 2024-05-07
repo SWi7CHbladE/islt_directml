@@ -123,7 +123,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
 
         # Save checkpoint
         save_checkpoint(checkpoint_path, list_of_inputs)
-        tf.keras.backend.clear_session()
+        tf.keras.backend.clear_session(free_memory=True)
         list_of_inputs = load_checkpoint(checkpoint_path)
 
 
