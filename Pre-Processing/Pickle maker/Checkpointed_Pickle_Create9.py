@@ -26,14 +26,16 @@ print(os.getcwd())
 print("***")
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, list_of_inputs):
-    print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
-    with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+    #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
+    print("saving at: "+ str(checkpoint_path))
+    #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+    with gzip.open(checkpoint_path, 'wb') as f:
         pickle.dump(list_of_inputs, f)
         print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path):
-    checkpoint_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
+    #checkpoint_path  = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
     if os.path.exists(checkpoint_path):
         print("loading from: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
@@ -135,7 +137,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
 w_dest = "Dataset/excels/Train/Train_9.xlsx"
 o_dest = "Dataset/Pickles/train_pickles/excel_data_9.train"
 f_dest = "Dataset/Final folder for frames"
-train_checkpoint_path = 'Dataset/Checkpoints/unstable/train_checkpoint_9.pkl'
+train_checkpoint_path = 'C:/Users/Admin/Rahul/islt_directml/Pre-Processing/Pickle maker/Dataset/Checkpoint/unstable/train_checkpoint_9.pkl'
 
 create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path)
 

@@ -26,14 +26,16 @@ print(os.getcwd())
 print("***")
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, list_of_inputs):
-    print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
-    with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+    #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
+    print("saving at: "+ str(checkpoint_path))
+    #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+    with gzip.open(checkpoint_path, 'wb') as f:
         pickle.dump(list_of_inputs, f)
         print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path):
-    checkpoint_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
+    #checkpoint_path  = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
     if os.path.exists(checkpoint_path):
         print("loading from: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
@@ -90,12 +92,17 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         list_of_inputs = []
 
     # Get the features
-    checkpoint_range = 250
+    checkpoint_range = 20
+    none_counter = 0
+    flag = 0
     for index in range(len(list_of_inputs), len(excel_data), checkpoint_range):
+        if flag == 1:
+            exit()
         batch_list_of_inputs = []
         for tmp in excel_data[index:index + checkpoint_range]:
             features = get_features(str(tmp[0]), frame_dest)
             if features is not None:
+                none_counter = 0
                 if len(features) > 0:
                     data_dict = {
                         'name': tmp[0],
@@ -105,6 +112,13 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
                         'sign': features + 1e-8
                     }
                     batch_list_of_inputs.append(data_dict)
+            else:
+                none_counter += 1
+                if(none_counter >= checkpoint_range - 1):
+                    flag = 1
+                    break
+        if flag == 1:
+            break
         
         # Update list_of_inputs
         list_of_inputs.extend(batch_list_of_inputs)
@@ -113,6 +127,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         save_checkpoint(checkpoint_path, list_of_inputs)
         tf.keras.backend.clear_session()
         list_of_inputs = load_checkpoint(checkpoint_path)
+
 
     # Save final pickle file
     with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
@@ -123,7 +138,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
 tw_dest = "Dataset/excels/Test.xlsx"
 to_dest = "Dataset/Pickles/excel_data.test"
 tf_dest = "Dataset/Final folder for frames"
-test_checkpoint_path = 'Dataset/Checkpoints/unstable/test_checkpoint.pkl'
+test_checkpoint_path = 'C:/Users/Admin/Rahul/islt_directml/Pre-Processing/Pickle maker/Dataset/Checkpoint/unstable/test_checkpoint.pkl'
 
 create_pickle(tw_dest, to_dest, tf_dest, test_checkpoint_path)
 

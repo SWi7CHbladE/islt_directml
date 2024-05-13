@@ -26,14 +26,16 @@ print(os.getcwd())
 print("***")
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, list_of_inputs):
-    print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
-    with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+    #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
+    print("saving at: "+ str(checkpoint_path))
+    #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+    with gzip.open(checkpoint_path, 'wb') as f:
         pickle.dump(list_of_inputs, f)
         print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path):
-    checkpoint_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
+    #checkpoint_path  = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
     if os.path.exists(checkpoint_path):
         print("loading from: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
