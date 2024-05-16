@@ -158,7 +158,7 @@ tf_dest = "Dataset/Final folder for frames"
 checkpoint_name = 'test_checkpoint.pkl'
 store_to_path = 'C:\\Users\\Admin\\Rahul\\islt_directml\\Pre-Processing\\Pickle maker\\Dataset\\Checkpoint\\'
 
-create_pickle(vw_dest, vo_dest, vf_dest, store_to_path, checkpoint_name)
+create_pickle(tw_dest, to_dest, tf_dest, store_to_path, checkpoint_name)
 
 
 
