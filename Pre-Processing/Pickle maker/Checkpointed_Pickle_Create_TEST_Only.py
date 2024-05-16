@@ -19,15 +19,23 @@ from tensorflow.keras import mixed_precision
 from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
-tf.config.run_functions_eagerly(False)
+import shutil
+
+# initialise the model
+base_model = EfficientNetB7(weights='imagenet', include_top=False)
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+feature_extractor = Model(inputs=base_model.input, outputs=x)
+
 
 print("***\nCurrent working directory:\n")
 print(os.getcwd())
 print("***")
 # Function to save checkpoint
-def save_checkpoint(checkpoint_path, list_of_inputs):
+def save_checkpoint(checkpoint_path, destination_path, list_of_inputs):
     #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
     print("saving at: "+ str(checkpoint_path))
+    shutil.move(checkpoint_path, destination_path)
     #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
     with gzip.open(checkpoint_path, 'wb') as f:
         pickle.dump(list_of_inputs, f)
@@ -59,10 +67,10 @@ def get_features(filename, destination):
         except:
             return None
 
-        base_model = EfficientNetB7(weights='imagenet', include_top=False)
-        x = base_model.output
-        x = GlobalAveragePooling2D()(x)
-        feature_extractor = Model(inputs=base_model.input, outputs=x)
+        # base_model = EfficientNetB7(weights='imagenet', include_top=False)
+        # x = base_model.output
+        # x = GlobalAveragePooling2D()(x)
+        # feature_extractor = Model(inputs=base_model.input, outputs=x)
 
         features_listofList = []
         for indx, frame_file in enumerate(file_paths_frames):
@@ -79,7 +87,7 @@ def get_features(filename, destination):
         return None
 
 # Function to create the pickle file
-def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
+def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, destination_path):
     workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)),workbook_dest))
     sheet = workbook.active
     excel_data = []
@@ -124,8 +132,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         list_of_inputs.extend(batch_list_of_inputs)
 
         # Save checkpoint
-        save_checkpoint(checkpoint_path, list_of_inputs)
-        tf.keras.backend.clear_session()
+        save_checkpoint(checkpoint_path, destination_path, list_of_inputs)
         list_of_inputs = load_checkpoint(checkpoint_path)
 
 
@@ -139,8 +146,9 @@ tw_dest = "Dataset/excels/Test.xlsx"
 to_dest = "Dataset/Pickles/excel_data.test"
 tf_dest = "Dataset/Final folder for frames"
 test_checkpoint_path = 'C:/Users/Admin/Rahul/islt_directml/Pre-Processing/Pickle maker/Dataset/Checkpoint/unstable/test_checkpoint.pkl'
+test_checkpoint_backup_path = 'D:/islt_directml/Pre-Processing/Pickle maker/Dataset/Checkpoint/unstable/'
 
-create_pickle(tw_dest, to_dest, tf_dest, test_checkpoint_path)
+create_pickle(tw_dest, to_dest, tf_dest, test_checkpoint_path, test_checkpoint_backup_path)
 
 
 

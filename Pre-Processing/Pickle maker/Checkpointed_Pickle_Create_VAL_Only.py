@@ -19,15 +19,23 @@ from tensorflow.keras import mixed_precision
 from openpyxl import Workbook, load_workbook
 import platform
 from progress.bar import Bar
-tf.config.run_functions_eagerly(False)
+import shutil
+
+# initialise the model
+base_model = EfficientNetB7(weights='imagenet', include_top=False)
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+feature_extractor = Model(inputs=base_model.input, outputs=x)
+
 
 print("***\nCurrent working directory:\n")
 print(os.getcwd())
 print("***")
 # Function to save checkpoint
-def save_checkpoint(checkpoint_path, list_of_inputs):
+def save_checkpoint(checkpoint_path, destination_path, list_of_inputs):
     #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
     print("saving at: "+ str(checkpoint_path))
+    shutil.move(checkpoint_path, destination_path)
     #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
     with gzip.open(checkpoint_path, 'wb') as f:
         pickle.dump(list_of_inputs, f)
@@ -59,10 +67,10 @@ def get_features(filename, destination):
         except:
             return None
 
-        base_model = EfficientNetB7(weights='imagenet', include_top=False)
-        x = base_model.output
-        x = GlobalAveragePooling2D()(x)
-        feature_extractor = Model(inputs=base_model.input, outputs=x)
+        # base_model = EfficientNetB7(weights='imagenet', include_top=False)
+        # x = base_model.output
+        # x = GlobalAveragePooling2D()(x)
+        # feature_extractor = Model(inputs=base_model.input, outputs=x)
 
         features_listofList = []
         for indx, frame_file in enumerate(file_paths_frames):
@@ -79,7 +87,7 @@ def get_features(filename, destination):
         return None
 
 # Function to create the pickle file
-def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
+def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, destination_path):
     workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)),workbook_dest))
     sheet = workbook.active
     excel_data = []
@@ -92,12 +100,17 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
         list_of_inputs = []
 
     # Get the features
-    checkpoint_range = 250
+    checkpoint_range = 20
+    none_counter = 0
+    flag = 0
     for index in range(len(list_of_inputs), len(excel_data), checkpoint_range):
+        if flag == 1:
+            exit()
         batch_list_of_inputs = []
         for tmp in excel_data[index:index + checkpoint_range]:
             features = get_features(str(tmp[0]), frame_dest)
             if features is not None:
+                none_counter = 0
                 if len(features) > 0:
                     data_dict = {
                         'name': tmp[0],
@@ -107,14 +120,21 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path):
                         'sign': features + 1e-8
                     }
                     batch_list_of_inputs.append(data_dict)
+            else:
+                none_counter += 1
+                if(none_counter >= checkpoint_range - 1):
+                    flag = 1
+                    break
+        if flag == 1:
+            break
         
         # Update list_of_inputs
         list_of_inputs.extend(batch_list_of_inputs)
 
         # Save checkpoint
-        save_checkpoint(checkpoint_path, list_of_inputs)
-        tf.keras.backend.clear_session()
+        save_checkpoint(checkpoint_path, destination_path, list_of_inputs)
         list_of_inputs = load_checkpoint(checkpoint_path)
+
 
     # Save final pickle file
     with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
@@ -125,8 +145,9 @@ vw_dest = "Dataset/excels/Validation.xlsx"
 vo_dest = "Dataset/Pickles/excel_data.dev"
 vf_dest = "Dataset/Final folder for frames"
 dev_checkpoint_path = 'Dataset/Checkpoints/unstable/dev_checkpoint.pkl'
+dev_checkpoint_backup_path = 'D:/islt_directml/Pre-Processing/Pickle maker/Dataset/Checkpoint/unstable/'
 
-create_pickle(vw_dest, vo_dest, vf_dest, dev_checkpoint_path)
+create_pickle(vw_dest, vo_dest, vf_dest, dev_checkpoint_path, dev_checkpoint_backup_path)
 
 
 print("Done creating pickle files.")
