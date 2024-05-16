@@ -52,7 +52,7 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path, checkpoint_name):
-    backup_file = os.path.join(os.path.dirname(checkpoint_path, checkpoint_name))
+    backup_file = checkpoint_path + checkpoint_name
     #checkpoint_path  = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
     if os.path.exists(backup_file):
         print("loading from: "+ str(backup_file))
