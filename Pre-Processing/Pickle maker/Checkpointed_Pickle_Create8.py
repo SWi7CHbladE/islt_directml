@@ -33,8 +33,8 @@ print(os.getcwd())
 print("***")
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
-    unstable_path = str(os.path.join(os.path.dirname(checkpoint_path + r"unstable")))
-    unstable_file = str(os.path.join(os.path.dirname(unstable_path, checkpoint_name)))
+    unstable_path = checkpoint_path + r"unstable"
+    unstable_file = unstable_path + checkpoint_name
     #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
     #print("saving at: "+ str(checkpoint_path))
     if not os.path.exists(unstable_path):
