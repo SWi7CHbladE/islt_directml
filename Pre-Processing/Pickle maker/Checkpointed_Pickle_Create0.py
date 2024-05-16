@@ -32,25 +32,35 @@ print("***\nCurrent working directory:\n")
 print(os.getcwd())
 print("***")
 # Function to save checkpoint
-def save_checkpoint(checkpoint_path, destination_path, list_of_inputs):
+def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
+    unstable_path = str(os.path.join(os.path.dirname(checkpoint_path + r"unstable")))
+    unstable_file = str(os.path.join(os.path.dirname(unstable_path, checkpoint_name)))
     #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
-    print("saving at: "+ str(checkpoint_path))
-    shutil.move(checkpoint_path, destination_path)
+    #print("saving at: "+ str(checkpoint_path))
+    if not os.path.exists(unstable_path):
+        os.makedirs(unstable_path)
+    try:
+        shutil.move(unstable_file, checkpoint_path)
+        print("backup made at: "+str(checkpoint_path))
+    except:
+        print("\n\nError!!!! Could not create backup")
+        exit()
     #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
-    with gzip.open(checkpoint_path, 'wb') as f:
+    with gzip.open(unstable_path, 'wb') as f:
         pickle.dump(list_of_inputs, f)
         print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
 
 # Function to load checkpoint
-def load_checkpoint(checkpoint_path):
+def load_checkpoint(checkpoint_path, checkpoint_name):
+    backup_file = os.path.join(os.path.dirname(checkpoint_path, checkpoint_name))
     #checkpoint_path  = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
-    if os.path.exists(checkpoint_path):
-        print("loading from: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
+    if os.path.exists(backup_file):
+        print("loading from: "+ str(backup_file))
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
-        with gzip.open(checkpoint_path, 'rb') as f:
+        with gzip.open(backup_file, 'rb') as f:
             return pickle.load(f)
     else:
-        print("creating at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
+        print("creating at: "+ str(backup_file))
         print("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
         return None
 
@@ -87,7 +97,7 @@ def get_features(filename, destination):
         return None
 
 # Function to create the pickle file
-def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, destination_path):
+def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filename):
     workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)),workbook_dest))
     sheet = workbook.active
     excel_data = []
@@ -95,7 +105,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, desti
         excel_data.append(row)
 
     # Load checkpoint
-    list_of_inputs = load_checkpoint(checkpoint_path)
+    list_of_inputs = load_checkpoint(checkpoint_path, filename)
     if list_of_inputs is None:
         list_of_inputs = []
 
@@ -132,8 +142,8 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, desti
         list_of_inputs.extend(batch_list_of_inputs)
 
         # Save checkpoint
-        save_checkpoint(checkpoint_path, destination_path, list_of_inputs)
-        list_of_inputs = load_checkpoint(checkpoint_path)
+        save_checkpoint(checkpoint_path, filename, list_of_inputs)
+        list_of_inputs = load_checkpoint(checkpoint_path, filename)
 
 
     # Save final pickle file
@@ -141,13 +151,13 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, desti
         pickle.dump(list_of_inputs, f)
 
 # Files to access
-w_dest = "Dataset/excels/Train/Train_0.xlsx"
-o_dest = "Dataset/Pickles/train_pickles/excel_data_0.train"
-f_dest = "Dataset/Final folder for frames"
-train_checkpoint_path = 'C:/Users/Admin/Rahul/islt_directml/Pre-Processing/Pickle maker/Dataset/Checkpoint/unstable/train_checkpoint_0.pkl'
-train_checkpoint_backup_path = 'D:/islt_directml/Pre-Processing/Pickle maker/Dataset/Checkpoint/unstable/'
+w_dest = "Dataset\\excels\\Train\\Train_0.xlsx"
+o_dest = "Dataset\\Pickles\\train_pickles\\excel_data_0.train"
+f_dest = "Dataset\\Final folder for frames"
+checkpoint_name = 'train_checkpoint_0.pkl'
+store_to_path = 'C:\\Users\\Admin\\Rahul\\islt_directml\\Pre-Processing\\Pickle maker\\Dataset\\Checkpoint\\'
 
-create_pickle(w_dest, o_dest, f_dest, train_checkpoint_path, train_checkpoint_backup_path)
+create_pickle(w_dest, o_dest, f_dest, store_to_path, checkpoint_name)
 
 
 
