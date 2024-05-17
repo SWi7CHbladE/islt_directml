@@ -2,65 +2,62 @@ import pickle
 import gzip
 import os
 import shutil
-from tensorflow import keras
-import tensorflow as tf
+import tempfile
+import re
 import cv2
 import numpy as np
-import re
-import os
 import torch
-from tqdm.notebook import tqdm
-from tensorflow.keras.applications import imagenet_utils
-from tensorflow.keras.applications.efficientnet import EfficientNetB7
+from tensorflow.keras.applications import EfficientNetB7
 from tensorflow.keras.layers import GlobalAveragePooling2D
 from tensorflow.keras.models import Model
 from tensorflow.keras.applications.efficientnet import preprocess_input
-from tensorflow.keras import mixed_precision
-from openpyxl import Workbook, load_workbook
-import platform
-from progress.bar import Bar
-import shutil
+from openpyxl import load_workbook
+import msvcrt
 
-# initialise the model
+# Initialise the model
 base_model = EfficientNetB7(weights='imagenet', include_top=False)
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
 feature_extractor = Model(inputs=base_model.input, outputs=x)
 
-
 print("***\nCurrent working directory:\n")
 print(os.getcwd())
 print("***")
+
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
-    unstable_path = checkpoint_path + r"unstable\\"
-    unstable_file = unstable_path + checkpoint_name
-    #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
-    #print("saving at: "+ str(checkpoint_path))
-    #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
-    with gzip.open(unstable_file, 'wb') as f:
-        pickle.dump(list_of_inputs, f)
-        print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
+    unstable_path = os.path.join(checkpoint_path, "unstable")
+    unstable_file = os.path.join(unstable_path, checkpoint_name)
     if not os.path.exists(unstable_path):
         os.makedirs(unstable_path)
+    
+    with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+        with gzip.GzipFile(fileobj=tmp_file) as gz:
+            pickle.dump(list_of_inputs, gz)
+        tmp_filename = tmp_file.name
+
     try:
-        shutil.move(unstable_file, checkpoint_path)
-        print("backup made at: "+str(checkpoint_path))
-    except:
-        print("\n\nError!!!! Could not create backup")
+        shutil.move(tmp_filename, unstable_file)
+        shutil.move(unstable_file, os.path.join(checkpoint_path, checkpoint_name))
+        print("Backup made at: " + str(checkpoint_path))
+    except Exception as e:
+        print("\n\nError!!!! Could not create backup: " + str(e))
         exit()
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path, checkpoint_name):
-    backup_file = checkpoint_path + checkpoint_name
-    #checkpoint_path  = os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)
+    backup_file = os.path.join(checkpoint_path, checkpoint_name)
     if os.path.exists(backup_file):
-        print("loading from: "+ str(backup_file))
+        print("Loading from: " + str(backup_file))
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
-        with gzip.open(backup_file, 'rb') as f:
-            return pickle.load(f)
+        with open(backup_file, 'rb') as f:
+            msvcrt.locking(f.fileno(), msvcrt.LK_RLCK, 1)  # Acquire a read lock
+            with gzip.GzipFile(fileobj=f) as gz:
+                data = pickle.load(gz)
+            msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)  # Release the lock
+        return data
     else:
-        print("creating at: "+ str(backup_file))
+        print("Creating at: " + str(backup_file))
         print("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
         return None
 
@@ -76,11 +73,6 @@ def get_features(filename, destination):
             file_paths_frames = [file for file in sorted(os.listdir(input_folder)) if file.endswith(".jpg")]
         except:
             return None
-
-        # base_model = EfficientNetB7(weights='imagenet', include_top=False)
-        # x = base_model.output
-        # x = GlobalAveragePooling2D()(x)
-        # feature_extractor = Model(inputs=base_model.input, outputs=x)
 
         features_listofList = []
         for indx, frame_file in enumerate(file_paths_frames):
@@ -98,7 +90,7 @@ def get_features(filename, destination):
 
 # Function to create the pickle file
 def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filename):
-    workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)),workbook_dest))
+    workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)), workbook_dest))
     sheet = workbook.active
     excel_data = []
     for row in sheet.iter_rows(values_only=True):
@@ -132,7 +124,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filen
                     batch_list_of_inputs.append(data_dict)
             else:
                 none_counter += 1
-                if(none_counter >= checkpoint_range - 1):
+                if none_counter >= checkpoint_range - 1:
                     flag = 1
                     break
         if flag == 1:
@@ -146,10 +138,10 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filen
         torch.cuda.empty_cache()
         list_of_inputs = load_checkpoint(checkpoint_path, filename)
 
-
     # Save final pickle file
-    with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
-        pickle.dump(list_of_inputs, f)
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
+        with gzip.GzipFile(fileobj=f) as gz:
+            pickle.dump(list_of_inputs, gz)
 
 
 # Files to access
