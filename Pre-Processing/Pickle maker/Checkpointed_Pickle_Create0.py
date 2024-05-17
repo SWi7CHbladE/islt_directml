@@ -40,6 +40,14 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
         shutil.move(tmp_filename, unstable_file)
         shutil.move(unstable_file, os.path.join(checkpoint_path, checkpoint_name))
         print("Backup made at: " + str(checkpoint_path))
+
+        # Backup the unstable folder
+        backup_folder = os.path.join(checkpoint_path, "backup")
+        if not os.path.exists(backup_folder):
+            os.makedirs(backup_folder)
+        backup_unstable_folder = os.path.join(backup_folder, f"unstable_{checkpoint_name}")
+        shutil.copytree(unstable_path, backup_unstable_folder)
+        print("Unstable folder backed up at: " + str(backup_unstable_folder))
     except Exception as e:
         print("\n\nError!!!! Could not create backup: " + str(e))
         exit()
@@ -51,10 +59,11 @@ def load_checkpoint(checkpoint_path, checkpoint_name):
         print("Loading from: " + str(backup_file))
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
         with open(backup_file, 'rb') as f:
-            msvcrt.locking(f.fileno(), msvcrt.LK_RLCK, 1)  # Acquire a read lock
+            file_size = os.path.getsize(backup_file)
+            msvcrt.locking(f.fileno(), msvcrt.LK_RLCK, file_size)  # Acquire a read lock
             with gzip.GzipFile(fileobj=f) as gz:
                 data = pickle.load(gz)
-            msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)  # Release the lock
+            msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, file_size)  # Release the lock
         return data
     else:
         print("Creating at: " + str(backup_file))
