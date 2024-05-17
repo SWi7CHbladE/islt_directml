@@ -33,7 +33,7 @@ print(os.getcwd())
 print("***")
 # Function to save checkpoint
 def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
-    unstable_path = checkpoint_path + r"unstable"
+    unstable_path = checkpoint_path + r"unstable\\"
     unstable_file = unstable_path + checkpoint_name
     #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
     #print("saving at: "+ str(checkpoint_path))
@@ -143,6 +143,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filen
 
         # Save checkpoint
         save_checkpoint(checkpoint_path, filename, list_of_inputs)
+        torch.cuda.empty_cache()
         list_of_inputs = load_checkpoint(checkpoint_path, filename)
 
 
