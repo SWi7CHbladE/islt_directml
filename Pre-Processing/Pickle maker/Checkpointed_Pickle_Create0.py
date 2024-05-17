@@ -13,6 +13,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.applications.efficientnet import preprocess_input
 from openpyxl import load_workbook
 import portalocker
+import datetime
 
 # Initialize the model
 base_model = EfficientNetB7(weights='imagenet', include_top=False)
@@ -32,7 +33,7 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
         os.makedirs(unstable_path)
     
     with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
-        with gzip.GzipFile(fileobj=tmp_file) as gz:
+        with gzip.GzipFile(fileobj=tmp_file, mode='wb') as gz:
             pickle.dump(list_of_inputs, gz)
         tmp_filename = tmp_file.name
 
@@ -41,11 +42,12 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
         shutil.move(unstable_file, os.path.join(checkpoint_path, checkpoint_name))
         print("Backup made at: " + str(checkpoint_path))
 
-        # Backup the unstable folder
+        # Backup the unstable folder with a unique name
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         backup_folder = os.path.join(checkpoint_path, "backup")
         if not os.path.exists(backup_folder):
             os.makedirs(backup_folder)
-        backup_unstable_folder = os.path.join(backup_folder, f"unstable_{checkpoint_name}")
+        backup_unstable_folder = os.path.join(backup_folder, f"unstable_{checkpoint_name}_{timestamp}")
         shutil.copytree(unstable_path, backup_unstable_folder)
         print("Unstable folder backed up at: " + str(backup_unstable_folder))
     except Exception as e:
@@ -155,7 +157,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filen
 
     # Save final pickle file
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
-        with gzip.GzipFile(fileobj=f) as gz:
+        with gzip.GzipFile(fileobj=f, mode='wb') as gz:
             pickle.dump(list_of_inputs, gz)
 
 # Files to access
