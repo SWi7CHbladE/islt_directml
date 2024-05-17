@@ -12,9 +12,9 @@ from tensorflow.keras.layers import GlobalAveragePooling2D
 from tensorflow.keras.models import Model
 from tensorflow.keras.applications.efficientnet import preprocess_input
 from openpyxl import load_workbook
-import msvcrt
+import portalocker
 
-# Initialise the model
+# Initialize the model
 base_model = EfficientNetB7(weights='imagenet', include_top=False)
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
@@ -58,13 +58,19 @@ def load_checkpoint(checkpoint_path, checkpoint_name):
     if os.path.exists(backup_file):
         print("Loading from: " + str(backup_file))
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
-        with open(backup_file, 'rb') as f:
-            file_size = os.path.getsize(backup_file)
-            msvcrt.locking(f.fileno(), msvcrt.LK_RLCK, file_size)  # Acquire a read lock
-            with gzip.GzipFile(fileobj=f) as gz:
-                data = pickle.load(gz)
-            msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, file_size)  # Release the lock
-        return data
+        try:
+            with open(backup_file, 'rb') as f:
+                portalocker.lock(f, portalocker.LOCK_SH)  # Acquire a shared lock
+                try:
+                    with gzip.GzipFile(fileobj=f) as gz:
+                        data = pickle.load(gz)
+                finally:
+                    portalocker.unlock(f)  # Ensure the lock is released
+                    print("File unlocked successfully")
+            return data
+        except Exception as e:
+            print(f"Failed to read and lock the file: {e}")
+            raise e
     else:
         print("Creating at: " + str(backup_file))
         print("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
