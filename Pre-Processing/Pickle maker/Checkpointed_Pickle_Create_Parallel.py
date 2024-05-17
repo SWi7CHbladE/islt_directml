@@ -7,7 +7,7 @@ import re
 import cv2
 import numpy as np
 import torch
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from tensorflow.keras.applications import EfficientNetB7
 from tensorflow.keras.layers import GlobalAveragePooling2D
 from tensorflow.keras.models import Model
@@ -15,18 +15,15 @@ from tensorflow.keras.applications.efficientnet import preprocess_input
 from openpyxl import load_workbook
 import portalocker
 import datetime
+import multiprocessing
 
-# Initialize the model
-base_model = EfficientNetB7(weights='imagenet', include_top=False)
-x = base_model.output
-x = GlobalAveragePooling2D()(x)
-feature_extractor = Model(inputs=base_model.input, outputs=x)
+def initialize_model():
+    base_model = EfficientNetB7(weights='imagenet', include_top=False)
+    x = base_model.output
+    x = GlobalAveragePooling2D()(x)
+    feature_extractor = Model(inputs=base_model.input, outputs=x)
+    return feature_extractor
 
-print("***\nCurrent working directory:\n")
-print(os.getcwd())
-print("***")
-
-# Function to save checkpoint
 def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
     unstable_path = os.path.join(checkpoint_path, "unstable")
     unstable_file = os.path.join(unstable_path, checkpoint_name)
@@ -43,7 +40,6 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
         shutil.move(unstable_file, os.path.join(checkpoint_path, checkpoint_name))
         print("Backup made at: " + str(checkpoint_path))
 
-        # Backup the unstable folder with a unique name
         timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         backup_folder = os.path.join(checkpoint_path, "backup")
         if not os.path.exists(backup_folder):
@@ -55,7 +51,6 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
         print("\n\nError!!!! Could not create backup: " + str(e))
         exit()
 
-# Function to load checkpoint
 def load_checkpoint(checkpoint_path, checkpoint_name):
     backup_file = os.path.join(checkpoint_path, checkpoint_name)
     if os.path.exists(backup_file):
@@ -63,12 +58,12 @@ def load_checkpoint(checkpoint_path, checkpoint_name):
         print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
         try:
             with open(backup_file, 'rb') as f:
-                portalocker.lock(f, portalocker.LOCK_SH)  # Acquire a shared lock
+                portalocker.lock(f, portalocker.LOCK_SH)
                 try:
                     with gzip.GzipFile(fileobj=f) as gz:
                         data = pickle.load(gz)
                 finally:
-                    portalocker.unlock(f)  # Ensure the lock is released
+                    portalocker.unlock(f)
                     print("File unlocked successfully")
             return data
         except Exception as e:
@@ -79,8 +74,7 @@ def load_checkpoint(checkpoint_path, checkpoint_name):
         print("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
         return None
 
-# Function for extraction of features
-def get_features(filename, destination):
+def get_features(filename, destination, feature_extractor):
     input_string = filename
     pattern = r'\d+'
     match = re.search(pattern, input_string)
@@ -106,20 +100,23 @@ def get_features(filename, destination):
         print("No match found for: " + input_string + "\n")
         return None
 
-# Function to create the pickle file
-def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filename):
-    workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)), workbook_dest))
+def create_pickle(config, frame_dest, checkpoint_path):
+    vw_dest = config['vw_dest']
+    vo_dest = config['vo_dest']
+    checkpoint_name = config['checkpoint_name']
+
+    feature_extractor = initialize_model()
+
+    workbook = load_workbook(os.path.join(os.path.dirname(os.path.abspath(__file__)), vw_dest))
     sheet = workbook.active
     excel_data = []
     for row in sheet.iter_rows(values_only=True):
         excel_data.append(row)
 
-    # Load checkpoint
-    list_of_inputs = load_checkpoint(checkpoint_path, filename)
+    list_of_inputs = load_checkpoint(checkpoint_path, checkpoint_name)
     if list_of_inputs is None:
         list_of_inputs = []
 
-    # Get the features
     checkpoint_range = 20
     none_counter = 0
     flag = 0
@@ -128,7 +125,7 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filen
             exit()
         batch_list_of_inputs = []
         for tmp in excel_data[index:index + checkpoint_range]:
-            features = get_features(str(tmp[0]), frame_dest)
+            features = get_features(str(tmp[0]), frame_dest, feature_extractor)
             if features is not None:
                 none_counter = 0
                 if len(features) > 0:
@@ -148,29 +145,24 @@ def create_pickle(workbook_dest, output_dest, frame_dest, checkpoint_path, filen
         if flag == 1:
             break
         
-        # Update list_of_inputs
         list_of_inputs.extend(batch_list_of_inputs)
 
-        # Save checkpoint
-        save_checkpoint(checkpoint_path, filename, list_of_inputs)
+        save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs)
         torch.cuda.empty_cache()
-        list_of_inputs = load_checkpoint(checkpoint_path, filename)
+        list_of_inputs = load_checkpoint(checkpoint_path, checkpoint_name)
 
-    # Save final pickle file
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dest), 'wb') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), vo_dest), 'wb') as f:
         with gzip.GzipFile(fileobj=f, mode='wb') as gz:
             pickle.dump(list_of_inputs, gz)
 
-# Function to run multiple pickle creations in parallel
+    print(f"Done processing {vw_dest}")
+
 def run_multiple_pickle_creations(configurations, frame_dest, checkpoint_path):
-    with ThreadPoolExecutor() as executor:
+    with ProcessPoolExecutor() as executor:
         futures = []
         for config in configurations:
-            vw_dest = config['vw_dest']
-            vo_dest = config['vo_dest']
-            checkpoint_name = config['checkpoint_name']
-            print(f"Submitting {vw_dest} -> {vo_dest} with checkpoint {checkpoint_name}")
-            futures.append(executor.submit(create_pickle, vw_dest, vo_dest, frame_dest, checkpoint_path, checkpoint_name))
+            print(f"Submitting {config['vw_dest']} -> {config['vo_dest']} with checkpoint {config['checkpoint_name']}")
+            futures.append(executor.submit(create_pickle, config, frame_dest, checkpoint_path))
         
         for future in as_completed(futures):
             try:
@@ -178,75 +170,81 @@ def run_multiple_pickle_creations(configurations, frame_dest, checkpoint_path):
             except Exception as e:
                 print(f"Error occurred: {e}")
 
-# List of configurations to process
-configurations = [
-    {
-        'vw_dest': "Dataset/excels/Validation.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data.dev",
-        'checkpoint_name': 'dev_checkpoint.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Test.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data.test",
-        'checkpoint_name': 'test_checkpoint.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_0.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data0.train",
-        'checkpoint_name': 'train_checkpoint_0.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_1.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data1.train",
-        'checkpoint_name': 'train_checkpoint_1.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_2.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data2.train",
-        'checkpoint_name': 'train_checkpoint_2.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_3.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data3.train",
-        'checkpoint_name': 'train_checkpoint_3.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_4.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data4.train",
-        'checkpoint_name': 'train_checkpoint_4.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_5.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data5.train",
-        'checkpoint_name': 'train_checkpoint_5.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_6.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data6.train",
-        'checkpoint_name': 'train_checkpoint_6.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_7.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data7.train",
-        'checkpoint_name': 'train_checkpoint_7.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_8.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data8.train",
-        'checkpoint_name': 'train_checkpoint_8.pkl'
-    },
-    {
-        'vw_dest': "Dataset/excels/Train/Train_9.xlsx",
-        'vo_dest': "Dataset/Pickles/excel_data9.train",
-        'checkpoint_name': 'train_checkpoint_9.pkl'
-    }
-]
+if __name__ == "__main__":
+    multiprocessing.freeze_support()
 
-# Common destinations
-vf_dest = "Dataset/Final folder for frames"
-store_to_path = 'C:\\Users\\Admin\\Rahul\\islt_directml\\Pre-Processing\\Pickle maker\\Dataset\\Checkpoint\\'
+    # List of configurations to process
+    configurations = [
+        {
+            'vw_dest': "Dataset/excels/Validation.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data.dev",
+            'checkpoint_name': 'dev_checkpoint.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Test.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data.test",
+            'checkpoint_name': 'test_checkpoint.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_0.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data0.train",
+            'checkpoint_name': 'train_checkpoint_0.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_1.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data1.train",
+            'checkpoint_name': 'train_checkpoint_1.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_2.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data2.train",
+            'checkpoint_name': 'train_checkpoint_2.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_3.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data3.train",
+            'checkpoint_name': 'train_checkpoint_3.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_4.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data4.train",
+            'checkpoint_name': 'train_checkpoint_4.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_5.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data5.train",
+            'checkpoint_name': 'train_checkpoint_5.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_6.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data6.train",
+            'checkpoint_name': 'train_checkpoint_6.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_7.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data7.train",
+            'checkpoint_name': 'train_checkpoint_7.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_8.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data8.train",
+            'checkpoint_name': 'train_checkpoint_8.pkl'
+        },
+        {
+            'vw_dest': "Dataset/excels/Train/Train_9.xlsx",
+            'vo_dest': "Dataset/Pickles/excel_data9.train",
+            'checkpoint_name': 'train_checkpoint_9.pkl'
+        }
+    ]
 
-# Run the pickle creation for all configurations in parallel
-run_multiple_pickle_creations(configurations, vf_dest, store_to_path)
+    vf_dest = "Dataset/Final folder for frames"
+    store_to_path = 'C:\\Users\\Admin\\Rahul\\islt_directml\\Pre-Processing\\Pickle maker\\Dataset\\Checkpoint\\'
 
-print("Done creating pickle files for all configurations.")
+    run_multiple_pickle_creations(configurations, vf_dest, store_to_path)
+
+    print("Done creating pickle files for all configurations.")
+
+
+
+
+
