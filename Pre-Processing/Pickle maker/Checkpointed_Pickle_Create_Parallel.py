@@ -90,7 +90,19 @@ def get_features(filename, destination, feature_extractor):
         for indx, frame_file in enumerate(file_paths_frames):
             frame_filename = os.path.join(input_folder, frame_file)
             image = cv2.imread(frame_filename)
-            image = cv2.resize(image, (600, 600))
+            
+            # Resize image while maintaining aspect ratio and padding to 600x600
+            h, w, _ = image.shape
+            target_size = 600
+            scale = min(target_size / h, target_size / w)
+            new_h, new_w = int(h * scale), int(w * scale)
+            resized_image = cv2.resize(image, (new_w, new_h))
+            top_pad = (target_size - new_h) // 2
+            bottom_pad = target_size - new_h - top_pad
+            left_pad = (target_size - new_w) // 2
+            right_pad = target_size - new_w - left_pad
+            image = cv2.copyMakeBorder(resized_image, top_pad, bottom_pad, left_pad, right_pad, cv2.BORDER_CONSTANT, value=[0, 0, 0])
+            
             image = preprocess_input(image)
             image = np.expand_dims(image, axis=0)
             spatial_embedding = feature_extractor.predict(image)[0]
@@ -99,6 +111,23 @@ def get_features(filename, destination, feature_extractor):
     else:
         print("No match found for: " + input_string + "\n")
         return None
+
+def validate_and_pad_data(data):
+    if not data:
+        return []
+    
+    max_length = max(item['sign'].shape[0] for item in data)
+    expected_shape = data[0]['sign'].shape[1:]
+    
+    for item in data:
+        tensor_shape = item['sign'].shape
+        if tensor_shape[0] < max_length:
+            padding = torch.zeros((max_length - tensor_shape[0], *expected_shape))
+            item['sign'] = torch.cat((item['sign'], padding), dim=0)
+        elif tensor_shape[0] > max_length:
+            item['sign'] = item['sign'][:max_length]
+        
+    return data
 
 def create_pickle(config, frame_dest, checkpoint_path):
     vw_dest = config['vw_dest']
@@ -147,6 +176,8 @@ def create_pickle(config, frame_dest, checkpoint_path):
         
         list_of_inputs.extend(batch_list_of_inputs)
 
+        list_of_inputs = validate_and_pad_data(list_of_inputs)
+        
         save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs)
         torch.cuda.empty_cache()
         list_of_inputs = load_checkpoint(checkpoint_path, checkpoint_name)
