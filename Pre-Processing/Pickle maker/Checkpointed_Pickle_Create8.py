@@ -37,6 +37,10 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
     unstable_file = unstable_path + checkpoint_name
     #print("saving at: "+ str(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path)))
     #print("saving at: "+ str(checkpoint_path))
+    #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
+    with gzip.open(unstable_file, 'wb') as f:
+        pickle.dump(list_of_inputs, f)
+        print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
     if not os.path.exists(unstable_path):
         os.makedirs(unstable_path)
     try:
@@ -45,10 +49,6 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
     except:
         print("\n\nError!!!! Could not create backup")
         exit()
-    #with gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), checkpoint_path), 'wb') as f:
-    with gzip.open(unstable_file, 'wb') as f:
-        pickle.dump(list_of_inputs, f)
-        print("\n************************\n************************\n************************\n*** Checkpoint Saved ***\n************************\n************************\n************************\n")
 
 # Function to load checkpoint
 def load_checkpoint(checkpoint_path, checkpoint_name):
