@@ -17,6 +17,7 @@ import portalocker
 import datetime
 import multiprocessing
 import logging
+import time
 
 # Initialize logging
 logging.basicConfig(filename='pickle_creation.log', level=logging.INFO, 
@@ -53,37 +54,46 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
         shutil.copytree(unstable_path, backup_unstable_folder)
         logging.info("Unstable folder backed up at: " + str(backup_unstable_folder))
     except Exception as e:
-        logging.error("\n\nError!!!! Could not create backup: " + str(e))
+        logging.error("Error!!!! Could not create backup: " + str(e))
         exit()
 
 def load_checkpoint(checkpoint_path, checkpoint_name):
     backup_file = os.path.join(checkpoint_path, checkpoint_name)
-    if os.path.exists(backup_file):
-        logging.info("Loading from: " + str(backup_file))
-        logging.info("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
-        try:
-            with open(backup_file, 'rb') as f:
-                portalocker.lock(f, portalocker.LOCK_SH)
-                try:
-                    with gzip.GzipFile(fileobj=f) as gz:
-                        data = pickle.load(gz)
-                finally:
-                    portalocker.unlock(f)
-                    logging.info("File unlocked successfully")
-            if data:
-                last_entry = data.pop()  # Remove the last entry
-                logging.info(f"Reprocessing entry: {last_entry['name']}")
-            else:
-                last_entry = None
-            processed_names = {entry['name'] for entry in data}
-            return data, processed_names
-        except Exception as e:
-            logging.error(f"Failed to read and lock the file: {e}")
-            raise e
-    else:
-        logging.info("Creating at: " + str(backup_file))
-        logging.info("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
-        return None, set()
+    retry_attempts = 30  # Number of retry attempts
+    retry_delay = 15  # Delay in seconds (15 seconds)
+
+    for attempt in range(retry_attempts):
+        if os.path.exists(backup_file):
+            logging.info("Loading from: " + str(backup_file))
+            logging.info("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
+            try:
+                with open(backup_file, 'rb') as f:
+                    portalocker.lock(f, portalocker.LOCK_SH)
+                    try:
+                        with gzip.GzipFile(fileobj=f) as gz:
+                            data = pickle.load(gz)
+                    finally:
+                        portalocker.unlock(f)
+                        logging.info("File unlocked successfully")
+                if data:
+                    last_entry = data.pop()  # Remove the last entry
+                    logging.info(f"Reprocessing entry: {last_entry['name']}")
+                else:
+                    last_entry = None
+                processed_names = {entry['name'] for entry in data}
+                return data, processed_names
+            except Exception as e:
+                logging.error(f"Failed to read and lock the file: {e}")
+                if attempt < retry_attempts - 1:
+                    logging.info(f"Retrying in {retry_delay} seconds...")
+                    time.sleep(retry_delay)
+                else:
+                    logging.error("Maximum retry attempts reached. Could not lock the file.")
+                    raise e
+        else:
+            logging.info("Creating at: " + str(backup_file))
+            logging.info("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
+            return None, set()
 
 def get_features(filename, destination, feature_extractor):
     input_string = filename
