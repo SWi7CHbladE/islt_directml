@@ -16,6 +16,11 @@ from openpyxl import load_workbook
 import portalocker
 import datetime
 import multiprocessing
+import logging
+
+# Initialize logging
+logging.basicConfig(filename='pickle_creation.log', level=logging.INFO, 
+                    format='%(asctime)s:%(levelname)s:%(message)s')
 
 def initialize_model():
     base_model = EfficientNetB7(weights='imagenet', include_top=False)
@@ -38,7 +43,7 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
     try:
         shutil.move(tmp_filename, unstable_file)
         shutil.move(unstable_file, os.path.join(checkpoint_path, checkpoint_name))
-        print("Backup made at: " + str(checkpoint_path))
+        logging.info("Backup made at: " + str(checkpoint_path))
 
         timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         backup_folder = os.path.join(checkpoint_path, "backup")
@@ -46,16 +51,16 @@ def save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs):
             os.makedirs(backup_folder)
         backup_unstable_folder = os.path.join(backup_folder, f"unstable_{checkpoint_name}_{timestamp}")
         shutil.copytree(unstable_path, backup_unstable_folder)
-        print("Unstable folder backed up at: " + str(backup_unstable_folder))
+        logging.info("Unstable folder backed up at: " + str(backup_unstable_folder))
     except Exception as e:
-        print("\n\nError!!!! Could not create backup: " + str(e))
+        logging.error("\n\nError!!!! Could not create backup: " + str(e))
         exit()
 
 def load_checkpoint(checkpoint_path, checkpoint_name):
     backup_file = os.path.join(checkpoint_path, checkpoint_name)
     if os.path.exists(backup_file):
-        print("Loading from: " + str(backup_file))
-        print("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
+        logging.info("Loading from: " + str(backup_file))
+        logging.info("\n*************************\n*************************\n*************************\n*** Checkpoint Loaded ***\n*************************\n*************************\n*************************\n")
         try:
             with open(backup_file, 'rb') as f:
                 portalocker.lock(f, portalocker.LOCK_SH)
@@ -64,15 +69,21 @@ def load_checkpoint(checkpoint_path, checkpoint_name):
                         data = pickle.load(gz)
                 finally:
                     portalocker.unlock(f)
-                    print("File unlocked successfully")
-            return data
+                    logging.info("File unlocked successfully")
+            if data:
+                last_entry = data.pop()  # Remove the last entry
+                logging.info(f"Reprocessing entry: {last_entry['name']}")
+            else:
+                last_entry = None
+            processed_names = {entry['name'] for entry in data}
+            return data, processed_names
         except Exception as e:
-            print(f"Failed to read and lock the file: {e}")
+            logging.error(f"Failed to read and lock the file: {e}")
             raise e
     else:
-        print("Creating at: " + str(backup_file))
-        print("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
-        return None
+        logging.info("Creating at: " + str(backup_file))
+        logging.info("\n****************************************\n****************************************\n****************************************\n*** Checkpoint Loading Failed!!!!!!! ***\n****************************************\n****************************************\n****************************************\n")
+        return None, set()
 
 def get_features(filename, destination, feature_extractor):
     input_string = filename
@@ -107,9 +118,10 @@ def get_features(filename, destination, feature_extractor):
             image = np.expand_dims(image, axis=0)
             spatial_embedding = feature_extractor.predict(image)[0]
             features_listofList.append(spatial_embedding)
+        
         return torch.tensor(features_listofList)
     else:
-        print("No match found for: " + input_string + "\n")
+        logging.info("No match found for: " + input_string + "\n")
         return None
 
 def validate_and_pad_data(data):
@@ -117,12 +129,12 @@ def validate_and_pad_data(data):
         return []
     
     max_length = max(item['sign'].shape[0] for item in data)
-    expected_shape = data[0]['sign'].shape[1:]
+    expected_shape = data[0]['sign'].shape[1]
     
     for item in data:
         tensor_shape = item['sign'].shape
         if tensor_shape[0] < max_length:
-            padding = torch.zeros((max_length - tensor_shape[0], *expected_shape))
+            padding = torch.zeros((max_length - tensor_shape[0], expected_shape))
             item['sign'] = torch.cat((item['sign'], padding), dim=0)
         elif tensor_shape[0] > max_length:
             item['sign'] = item['sign'][:max_length]
@@ -142,18 +154,22 @@ def create_pickle(config, frame_dest, checkpoint_path):
     for row in sheet.iter_rows(values_only=True):
         excel_data.append(row)
 
-    list_of_inputs = load_checkpoint(checkpoint_path, checkpoint_name)
+    list_of_inputs, processed_names = load_checkpoint(checkpoint_path, checkpoint_name)
     if list_of_inputs is None:
         list_of_inputs = []
 
     checkpoint_range = 20
     none_counter = 0
     flag = 0
+    reprocessed_entries = []  # List to track reprocessed entries
+
     for index in range(len(list_of_inputs), len(excel_data), checkpoint_range):
         if flag == 1:
-            exit()
+            break
         batch_list_of_inputs = []
         for tmp in excel_data[index:index + checkpoint_range]:
+            if tmp[0] in processed_names:
+                continue
             features = get_features(str(tmp[0]), frame_dest, feature_extractor)
             if features is not None:
                 none_counter = 0
@@ -166,9 +182,12 @@ def create_pickle(config, frame_dest, checkpoint_path):
                         'sign': features + 1e-8
                     }
                     batch_list_of_inputs.append(data_dict)
+                    processed_names.add(tmp[0])
+                    if tmp[0] in processed_names:
+                        reprocessed_entries.append(tmp[0])
             else:
                 none_counter += 1
-                if none_counter >= checkpoint_range - 1:
+                if none_counter >= 5 * checkpoint_range - 1:
                     flag = 1
                     break
         if flag == 1:
@@ -180,26 +199,29 @@ def create_pickle(config, frame_dest, checkpoint_path):
         
         save_checkpoint(checkpoint_path, checkpoint_name, list_of_inputs)
         torch.cuda.empty_cache()
-        list_of_inputs = load_checkpoint(checkpoint_path, checkpoint_name)
+        list_of_inputs, processed_names = load_checkpoint(checkpoint_path, checkpoint_name)
+
+    if reprocessed_entries:
+        logging.info(f"Reprocessed entries: {reprocessed_entries}")
 
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), vo_dest), 'wb') as f:
         with gzip.GzipFile(fileobj=f, mode='wb') as gz:
             pickle.dump(list_of_inputs, gz)
 
-    print(f"Done processing {vw_dest}")
+    logging.info(f"Done processing {vw_dest}")
 
 def run_multiple_pickle_creations(configurations, frame_dest, checkpoint_path):
     with ProcessPoolExecutor() as executor:
         futures = []
         for config in configurations:
-            print(f"Submitting {config['vw_dest']} -> {config['vo_dest']} with checkpoint {config['checkpoint_name']}")
+            logging.info(f"Submitting {config['vw_dest']} -> {config['vo_dest']} with checkpoint {config['checkpoint_name']}")
             futures.append(executor.submit(create_pickle, config, frame_dest, checkpoint_path))
         
         for future in as_completed(futures):
             try:
                 future.result()
             except Exception as e:
-                print(f"Error occurred: {e}")
+                logging.error(f"Error occurred: {e}")
 
 if __name__ == "__main__":
     multiprocessing.freeze_support()
@@ -273,9 +295,4 @@ if __name__ == "__main__":
 
     run_multiple_pickle_creations(configurations, vf_dest, store_to_path)
 
-    print("Done creating pickle files for all configurations.")
-
-
-
-
-
+    logging.info("Done creating pickle files for all configurations.")
