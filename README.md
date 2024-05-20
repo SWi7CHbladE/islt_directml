@@ -19,9 +19,9 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 
     `conda install numpy scipy cython numba pandas tensorboard matplotlib tqdm pyyaml -y`
     `conda install cuda -c nvidia`
-    `pip install opencv-python wget mediapipe seaborn scikit-learn`
+    `pip install opencv-python wget mediapipe seaborn scikit-learn cupy`
     `conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y`
-    `pip install torch-directml tensorflow-cpu==2.10 tensorflow-directml-plugin torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
+    `pip install tensorflow[and-cuda] torchtext==0.6.0 portalocker openpyxl progress jupyterlab notebook voila`
 
 
 ## Usage
