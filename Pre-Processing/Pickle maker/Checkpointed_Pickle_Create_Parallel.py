@@ -112,17 +112,8 @@ def get_features(filename, destination, feature_extractor):
             frame_filename = os.path.join(input_folder, frame_file)
             image = cv2.imread(frame_filename)
             
-            # Resize image while maintaining aspect ratio and padding to 600x600
-            h, w, _ = image.shape
-            target_size = 600
-            scale = min(target_size / h, target_size / w)
-            new_h, new_w = int(h * scale), int(w * scale)
-            resized_image = cv2.resize(image, (new_w, new_h))
-            top_pad = (target_size - new_h) // 2
-            bottom_pad = target_size - new_h - top_pad
-            left_pad = (target_size - new_w) // 2
-            right_pad = target_size - new_w - left_pad
-            image = cv2.copyMakeBorder(resized_image, top_pad, bottom_pad, left_pad, right_pad, cv2.BORDER_CONSTANT, value=[0, 0, 0])
+            # Resize image to 600x600 using interpolation
+            image = cv2.resize(image, (600, 600), interpolation=cv2.INTER_CUBIC)
             
             image = preprocess_input(image)
             image = np.expand_dims(image, axis=0)
