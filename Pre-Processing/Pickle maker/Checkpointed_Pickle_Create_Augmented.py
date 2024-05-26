@@ -180,7 +180,7 @@ def create_pickle(config, frame_dest, checkpoint_path, augment_params, num_augme
     if list_of_inputs is None:
         list_of_inputs = []
 
-    checkpoint_range = 20
+    checkpoint_range = 5
     none_counter = 0
     flag = 0
     reprocessed_entries = []  # List to track reprocessed entries
@@ -368,15 +368,15 @@ if __name__ == "__main__":
 
     # Variables for augmentation
     augment_params = {
-        'brightness': 0.1,  # 10% brightness change
-        'rotation': 30,  # 30 degrees rotation
+        'brightness': 0.15,  # 15% brightness change
+        'rotation': 20,  # 20 degrees rotation
         'width_shift': 0.2,  # 20% width shift
         'height_shift': 0.2,  # 20% height shift
-        'zoom': 0.1,  # 10% zoom
-        'shear': 0.12,  # 12% shear
+        'zoom': 0.15,  # 15% zoom
+        'shear': 0.15,  # 15% shear
         'max_noise_std': 0.1  # Maximum standard deviation of Gaussian noise
     }
-    num_augmentations = 4  # Number of augmented copies
+    num_augmentations = 25  # Number of augmented copies
 
     run_multiple_pickle_creations(configurations, vf_dest, store_to_path, augment_params, num_augmentations)
 
