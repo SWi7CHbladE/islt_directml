@@ -50,12 +50,18 @@ This code is based on [Joey NMT](https://github.com/joeynmt/joeynmt) but modifie
 
 Please cite the paper below if you use this code in your research:
 
-    @inproceedings{camgoz2020sign,
-      author = {Praveen Kumar and Rina Damdoo and Rahul Gogoi},
-      title = {Sign Language Transformers: Joint End-to-end Sign Language Recognition and Translation on Indian Sign language},
-      booktitle = {pending},
-      year = {2023}
-    }
+    @INPROCEEDINGS{10724360,
+     author={Gogoi, Rahul and Kumar, Praveen and Damdoo, Rina},
+     booktitle={2024 15th International Conference on Computing Communication and Networking Technologies (ICCCNT)}, 
+     title={End to End Simple Indian Sign Language Sentence Translation Using Sign Transformer Network}, 
+     year={2024},
+     volume={},
+     number={},
+     pages={1-13},
+     keywords={Sign language;Accuracy;Computational modeling;Auditory system;Assistive technologies;Transformers;Compounds;Character recognition;Videos;Sign Language Translation;Transformers;Machine Learning;Image Processing;Gesture Recognition},
+     doi={10.1109/ICCCNT61001.2024.10724360}}
+
 
 ## Acknowledgements
 <sub>This work was funded by the SNSF Sinergia project "Scalable Multimodal Sign Language Technology for Sign Language Learning and Assessment" (SMILE) grant agreement number CRSII2 160811 and the European Union’s Horizon2020 research and innovation programme under grant agreement no. 762021 (Content4All). This work reflects only the author’s view and the Commission is not responsible for any use that may be made of the information it contains. We would also like to thank NVIDIA Corporation for their GPU grant. </sub>
+
