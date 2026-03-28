@@ -1,4 +1,4 @@
-# Sign Language Transformers (CVPR'20)
+# Sign Language Transformers
 
 This repo contains the training and evaluation code for the paper [Sign Language Transformers: Sign Language Transformers: Joint End-to-end Sign Language Recognition and Translation on Indian Sign Language](pending_link). 
 
